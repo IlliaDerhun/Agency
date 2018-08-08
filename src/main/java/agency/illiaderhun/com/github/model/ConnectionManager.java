@@ -12,25 +12,12 @@ import java.sql.SQLException;
 public class ConnectionManager {
 
     private static Connection connection = null;
+    private static SJDataSource dataSource = null;
 
-    public static Connection getConnection(String connectionType) {
-        if (connectionType.equalsIgnoreCase("model")){
-            return modelConnection();
-        }else {
-            return servletConnection();
-        }
-
-    }
-
-    private static Connection modelConnection(){
+    public static Connection getConnection(String d){
         try {
-            if (connection != null) {
-                connection = null;
-            }
-            SJDataSource dataSource = (SJDataSource) (new InitialContext().lookup("db"));
-
+            dataSource = (SJDataSource) (new InitialContext().lookup("db"));
             connection = dataSource.getConnection();
-
         } catch (NamingException e) {
             e.printStackTrace();
         } catch (SQLException ex) {
@@ -39,7 +26,18 @@ public class ConnectionManager {
         return connection;
     }
 
-    private static Connection servletConnection(){
+    public static SJDataSource modelConnection(){
+        try {
+
+            dataSource = (SJDataSource) (new InitialContext().lookup("db"));
+
+        } catch (NamingException e) {
+            e.printStackTrace();
+        }
+        return dataSource;
+    }
+
+    public static Connection servletConnection(){
         try {
             if (connection != null) {
                 connection = null;
@@ -49,8 +47,8 @@ public class ConnectionManager {
 
             connection = dataSource.getConnection();
 
-        } catch (NamingException e) {
-            e.printStackTrace();
+        } catch (NamingException ex) {
+            ex.printStackTrace();
         } catch (SQLException e) {
             e.printStackTrace();
         }

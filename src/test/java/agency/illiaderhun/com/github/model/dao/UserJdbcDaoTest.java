@@ -3,62 +3,96 @@ package agency.illiaderhun.com.github.model.dao;
 import agency.illiaderhun.com.github.model.daoFactory.UserDaoFactory;
 import agency.illiaderhun.com.github.model.daoInterface.UserDao;
 import agency.illiaderhun.com.github.model.entities.User;
-import com.sun.istack.internal.NotNull;
-import org.junit.After;
+import agency.illiaderhun.com.github.model.exeptions.IdInvalid;
+import agency.illiaderhun.com.github.model.exeptions.InvalidSearchingString;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.Mock;
+import org.mockito.runners.MockitoJUnitRunner;
+import org.osjava.sj.loader.SJDataSource;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 import static org.junit.Assert.*;
+import static org.mockito.Matchers.any;
+import static org.mockito.Mockito.when;
 
+@RunWith(MockitoJUnitRunner.class)
 public class UserJdbcDaoTest {
 
-    @NotNull
-    private UserDao<User, Integer> userDao = UserDaoFactory.getUser("mysql");
+    @Mock
+    private SJDataSource dataSource;
+
+    @Mock
+    private Connection connection;
+
+    @Mock
+    private PreparedStatement statement;
+
+    @Mock
+    private ResultSet resultSet;
 
     private User user;
 
-    @Before
-    public void setUp(){
-        user = new User.Builder(0, 1, "simple@mail.com")
-                .build();
-    }
+    private UserDao<User, Integer> userDao = UserDaoFactory.getUser("mysql");
 
-    @After
-    public void tearDown(){
+    @Before
+    public void setUp() throws Exception {
+        assertNotNull(dataSource);
+        when(connection.prepareStatement(any(String.class))).thenReturn(statement);
+        when(dataSource.getConnection()).thenReturn(connection);
+
+        user = new User.Builder(1, 1, "alex.petrov@gmail.com")
+                .firstName("Александр")
+                .lastName("Петров")
+                .phone("+38(095)45-55-782")
+                .catchword("8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92")
+                .build();
+
+        when(resultSet.first()).thenReturn(true);
+        when(resultSet.getInt(1)).thenReturn(user.getUserId());
+        when(resultSet.getString(2)).thenReturn(user.getFirstName());
+        when(resultSet.getString(3)).thenReturn(user.getLastName());
+        when(resultSet.getString(4)).thenReturn(user.geteMail());
+        when(resultSet.getString(5)).thenReturn(user.getPhone());
+        when(resultSet.getInt(6)).thenReturn(user.getRoleId());
     }
 
     @Test
-    public void readByEmail() {
-        assertEquals(userDao.read(1), userDao.readByEmail("alex.petrov@gmail.com"));
+    public void readByValidEmail() throws InvalidSearchingString{
+        assertEquals(user, userDao.readByEmail("alex.petrov@gmail.com"));
+    }
+
+    @Test(expected = InvalidSearchingString.class)
+    public void couldntReadByInvalidEmail() throws InvalidSearchingString{
+        new UserJdbcDao(dataSource).readByEmail(null);
     }
 
     @Test
     public void create() {
-        assertTrue(userDao.create(user));
-        userDao.delete(user.getUserId());
+        new UserJdbcDao(dataSource).create(user);
+    }
+
+    @Test(expected = NullPointerException.class)
+    public void nullCreateThrowException() {
+        userDao.create(null);
     }
 
     @Test
-    public void read() {
-        userDao.create(user);
-        assertEquals(user, userDao.read(user.getUserId()));
-        userDao.delete(user.getUserId());
+    public void readByValidId() throws IdInvalid {
+        assertEquals(user, userDao.read(1));
+    }
+
+    @Test(expected = IdInvalid.class)
+    public void readByInvalidId() throws IdInvalid {
+        assertEquals(user, new UserJdbcDao(dataSource).read(1));
     }
 
     @Test
-    public void update() {
-        userDao.create(user);
-        user.setFirstName("NewFirstName");
-        user.setLastName("NewLastName");
-        assertTrue(userDao.update(user));
-        assertEquals(user, userDao.read(user.getUserId()));
-        userDao.delete(user.getUserId());
+    public void deleteNoExistEntity() {
+        assertFalse(new UserJdbcDao(dataSource).delete(0));
     }
-
-    @Test
-    public void delete() {
-        userDao.create(user);
-        assertTrue(userDao.delete(user.getUserId()));
-    }
-
 }

@@ -1,11 +1,13 @@
 package agency.illiaderhun.com.github.model.dao;
 
-import agency.illiaderhun.com.github.model.ConnectionManager;
 import agency.illiaderhun.com.github.model.daoInterface.UserDao;
 import agency.illiaderhun.com.github.model.entities.User;
+import agency.illiaderhun.com.github.model.exeptions.IdInvalid;
+import agency.illiaderhun.com.github.model.exeptions.InvalidSearchingString;
 import com.sun.istack.internal.NotNull;
 import org.apache.log4j.Logger;
 
+import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -24,32 +26,36 @@ public class UserJdbcDao implements UserDao<User, Integer> {
     private static final Logger LOGGER = Logger.getLogger(UserJdbcDao.class.getSimpleName());
 
     @NotNull
-    private Connection connection;
+    private DataSource dataSource;
 
+    public UserJdbcDao(DataSource dataSource){
+        this.dataSource = dataSource;
+    }
+
+    /**
+     * Select user by its email
+     *
+     * @param eMail user's email for searching
+     * @return valid entity if it exist
+     * @exception InvalidSearchingString if email invalid
+     */
     @Override
-    public User readByEmail(String eMail) {
+    public User readByEmail(String eMail) throws InvalidSearchingString {
         User theUser = null;
-        connection = ConnectionManager.getConnection("model");
-        try (PreparedStatement statement = connection.prepareStatement(SqlUser.SELECT_BY_EMAIL.QUERY)){
+        try (Connection connection = dataSource.getConnection();
+             PreparedStatement statement = connection.prepareStatement(SqlUser.SELECT_BY_EMAIL.QUERY)){
             statement.setString(1, eMail);
             ResultSet resultSet = statement.executeQuery();
-            if (resultSet.next()){
+            if (resultSet != null && resultSet.next()){
                 theUser = madeUser(resultSet);
             } else {
-                try {
-                    throw new Exception("Could not find user by user email: " + eMail);
-                } catch (Exception ex) {
-                    LOGGER.error("nonexistent user email" + eMail);
-                    LOGGER.error(ex);
-                    ex.printStackTrace();
-                }
+                LOGGER.error("nonexistent user email " + eMail);
+                throw new InvalidSearchingString("Invalid user's email");
             }
         } catch (SQLException e) {
             LOGGER.error("-> Some problem with reading");
             LOGGER.error("-> " + e);
             e.printStackTrace();
-        } finally {
-            ConnectionManager.closeConnection();
         }
 
         return theUser;
@@ -64,8 +70,8 @@ public class UserJdbcDao implements UserDao<User, Integer> {
     @Override
     public boolean create(User user) {
         boolean result = false;
-        connection = ConnectionManager.getConnection("model");
-        try (PreparedStatement statement = connection.prepareStatement(SqlUser.INSERT.QUERY)){
+        try (Connection connection = dataSource.getConnection();
+             PreparedStatement statement = connection.prepareStatement(SqlUser.INSERT.QUERY)){
             setStatement(statement, user);
             statement.executeUpdate();
             user.setUserId(setInsertedId());
@@ -74,8 +80,6 @@ public class UserJdbcDao implements UserDao<User, Integer> {
             LOGGER.error("has got some problem with creation");
             LOGGER.error(e);
             e.printStackTrace();
-        } finally {
-            ConnectionManager.closeConnection();
         }
         return result;
     }
@@ -88,10 +92,10 @@ public class UserJdbcDao implements UserDao<User, Integer> {
      * @throws SQLException in case some problem with statement
      */
     private int setInsertedId() throws SQLException {
-        try (PreparedStatement statement = connection.prepareStatement(SqlUser.READ_INSERTED_ID.QUERY)){
+        try (Connection connection = dataSource.getConnection();
+             PreparedStatement statement = connection.prepareStatement(SqlUser.READ_INSERTED_ID.QUERY)){
             ResultSet resultSet = statement.executeQuery();
-
-            if (resultSet.next()){
+            if (resultSet != null && resultSet.next()){
                 return resultSet.getInt("user_id");
             }
         }
@@ -116,29 +120,22 @@ public class UserJdbcDao implements UserDao<User, Integer> {
      * If entity does not exist throw new Exception "Could not find user :"
      */
     @Override
-    public User read(Integer entityId) {
+    public User read(Integer entityId) throws IdInvalid {
         User theUser = null;
-        connection = ConnectionManager.getConnection("model");
-        try (PreparedStatement statement = connection.prepareStatement(SqlUser.SELECT.QUERY)){
+        try (Connection connection = dataSource.getConnection();
+             PreparedStatement statement = connection.prepareStatement(SqlUser.SELECT.QUERY)){
             statement.setInt(1, entityId);
             ResultSet resultSet = statement.executeQuery();
-            if (resultSet.next()){
+            if (resultSet != null && resultSet.next()){
                 theUser = madeUser(resultSet);
             } else {
-                try {
-                    throw new Exception("Could not find user by userId: " + entityId);
-                } catch (Exception ex) {
-                    LOGGER.error("nonexistent userId" + entityId);
-                    LOGGER.error(ex);
-                    ex.printStackTrace();
-                }
+                LOGGER.error("nonexistent userId : " + entityId);
+                throw new IdInvalid("Invalid user's ID : " + entityId);
             }
         } catch (SQLException e) {
             LOGGER.error("-> Some problem with reading");
             LOGGER.error("-> " + e);
             e.printStackTrace();
-        } finally {
-            ConnectionManager.closeConnection();
         }
 
         return theUser;
@@ -181,8 +178,8 @@ public class UserJdbcDao implements UserDao<User, Integer> {
     @Override
     public boolean update(User user) {
         boolean result = false;
-        connection = ConnectionManager.getConnection("model");
-        try (PreparedStatement statement = connection.prepareStatement(SqlUser.UPDATE.QUERY)){
+        try (Connection connection = dataSource.getConnection();
+             PreparedStatement statement = connection.prepareStatement(SqlUser.UPDATE.QUERY)){
             setStatement(statement, user);
             statement.setInt(7, user.getUserId());
 
@@ -191,8 +188,6 @@ public class UserJdbcDao implements UserDao<User, Integer> {
             LOGGER.error("Some problem with updating");
             LOGGER.error(e);
             e.printStackTrace();
-        } finally {
-            ConnectionManager.closeConnection();
         }
         return result;
     }
@@ -200,8 +195,8 @@ public class UserJdbcDao implements UserDao<User, Integer> {
     @Override
     public boolean delete(Integer entityId) {
         boolean result = false;
-        connection = ConnectionManager.getConnection("model");
-        try (PreparedStatement statement = connection.prepareStatement(SqlUser.DELETE.QUERY)){
+        try (Connection connection = dataSource.getConnection();
+             PreparedStatement statement = connection.prepareStatement(SqlUser.DELETE.QUERY)){
             statement.setInt(1, entityId);
 
             result = statement.executeUpdate() == 1;
@@ -209,10 +204,7 @@ public class UserJdbcDao implements UserDao<User, Integer> {
             LOGGER.error("Some problem with user deleting by userId" + entityId);
             LOGGER.error(e);
             e.printStackTrace();
-        } finally {
-            ConnectionManager.closeConnection();
         }
-
         return result;
     }
 

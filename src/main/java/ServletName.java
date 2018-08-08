@@ -28,7 +28,7 @@ public class ServletName extends HttpServlet {
         ResultSet myRs;
 
         try {
-            Connection cn = ConnectionManager.getConnection("servlet");
+            Connection cn = ConnectionManager.servletConnection();
             String sql = "SELECT * FROM agency_test.user;";
             myStmt = cn.createStatement();
 

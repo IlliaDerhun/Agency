@@ -1,0 +1,4 @@
+2018-08-08 20:50:29,720 ERROR UserJdbcDao:50 - nonexistent user email null
+2018-08-08 20:50:29,767 ERROR UserJdbcDao:130 - nonexistent userId : 1
+2018-08-08 20:50:56,912 ERROR UserJdbcDao:50 - nonexistent user email null
+2018-08-08 20:50:56,959 ERROR UserJdbcDao:130 - nonexistent userId : 1
