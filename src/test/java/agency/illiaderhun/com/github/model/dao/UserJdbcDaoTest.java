@@ -1,5 +1,6 @@
 package agency.illiaderhun.com.github.model.dao;
 
+import agency.illiaderhun.com.github.model.dao.daoFactory.UserDaoFactory;
 import agency.illiaderhun.com.github.model.daoInterface.UserDao;
 import agency.illiaderhun.com.github.model.entities.User;
 import com.sun.istack.internal.NotNull;
@@ -12,7 +13,7 @@ import static org.junit.Assert.*;
 public class UserJdbcDaoTest {
 
     @NotNull
-    private UserDao<User, Integer> userDao = new UserJdbcDao();
+    private UserDao<User, Integer> userDao = UserDaoFactory.getUser("mysql");
 
     private User user;
 
