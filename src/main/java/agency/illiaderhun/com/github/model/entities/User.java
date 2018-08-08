@@ -1,7 +1,9 @@
 package agency.illiaderhun.com.github.model.entities;
 
+import agency.illiaderhun.com.github.annotations.AutoGeneration;
 import agency.illiaderhun.com.github.annotations.Column;
 import agency.illiaderhun.com.github.annotations.Table;
+import agency.illiaderhun.com.github.annotations.TypeOfGeneration;
 import com.sun.istack.internal.NotNull;
 
 import java.util.Objects;
@@ -17,6 +19,7 @@ import java.util.Objects;
 public class User {
 
     @Column(name = "user_id")
+    @AutoGeneration(TypeOfGeneration.AUTOINCREMENT)
     private int userId;
 
     @Column(name = "first_name")
