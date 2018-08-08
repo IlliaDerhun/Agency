@@ -1,6 +1,6 @@
 package agency.illiaderhun.com.github.model.dao;
 
-import agency.illiaderhun.com.github.model.dao.daoFactory.UserDaoFactory;
+import agency.illiaderhun.com.github.model.daoFactory.UserDaoFactory;
 import agency.illiaderhun.com.github.model.daoInterface.UserDao;
 import agency.illiaderhun.com.github.model.entities.User;
 import com.sun.istack.internal.NotNull;

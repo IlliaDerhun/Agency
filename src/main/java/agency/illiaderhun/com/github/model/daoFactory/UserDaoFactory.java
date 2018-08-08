@@ -1,4 +1,4 @@
-package agency.illiaderhun.com.github.model.dao.daoFactory;
+package agency.illiaderhun.com.github.model.daoFactory;
 
 import agency.illiaderhun.com.github.model.dao.UserJdbcDao;
 import agency.illiaderhun.com.github.model.daoInterface.UserDao;
