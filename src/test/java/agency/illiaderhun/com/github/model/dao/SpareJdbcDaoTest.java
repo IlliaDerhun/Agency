@@ -1,9 +1,11 @@
 package agency.illiaderhun.com.github.model.dao;
 
+import agency.illiaderhun.com.github.model.QueriesManager;
 import agency.illiaderhun.com.github.model.daoFactory.SpareDaoFactory;
 import agency.illiaderhun.com.github.model.daoInterface.SpareDao;
 import agency.illiaderhun.com.github.model.entities.Spare;
 import agency.illiaderhun.com.github.model.entities.User;
+import agency.illiaderhun.com.github.model.exeptions.IdInvalid;
 import agency.illiaderhun.com.github.model.exeptions.InvalidSearchingString;
 import com.sun.istack.internal.NotNull;
 import org.junit.After;
@@ -15,9 +17,11 @@ import org.mockito.internal.matchers.Null;
 import org.mockito.runners.MockitoJUnitRunner;
 import org.osjava.sj.loader.SJDataSource;
 
+import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.Properties;
 
 import static org.junit.Assert.*;
 import static org.mockito.Matchers.any;
@@ -40,8 +44,10 @@ public class SpareJdbcDaoTest {
 
     private Spare spare;
 
+    private Properties properties = QueriesManager.getProperties("spare");
+
     @NotNull
-    SpareDao<Spare, Integer> spareDao = SpareDaoFactory.getSpare("mysql");
+    private SpareDao<Spare, Integer> spareDao = SpareDaoFactory.getSpare("mysql");
 
     @Before
     public void setUp() throws Exception {
@@ -70,27 +76,36 @@ public class SpareJdbcDaoTest {
 
     @Test(expected = InvalidSearchingString.class)
     public void readByInvalidNameThrowException() throws InvalidSearchingString {
-        new SpareJdbcDao(dataSource).readByName("");
+        new SpareJdbcDao(dataSource, properties).readByName("");
     }
 
     @Test(expected = NullPointerException.class)
     public void readByNameWithNullDataSourceThrowNPE() throws InvalidSearchingString {
-        new SpareJdbcDao(null).readByName("Engine");
+        new SpareJdbcDao(null, properties).readByName("Engine");
     }
 
     @Test
-    public void create() {
+    public void createNewValidSpareReturnTrue() {
+        assertTrue(new SpareJdbcDao(dataSource, properties).create(spare));
+    }
+
+    @Test(expected = NullPointerException.class)
+    public void createNewInValidSpareReturnFalse() {
+        new SpareJdbcDao(dataSource, QueriesManager.getProperties("spare")).create(null);
     }
 
     @Test
-    public void read() {
+    public void readExistEntityReturnValidSpare() throws IdInvalid {
+        assertEquals(spare, spareDao.read(1));
+    }
+
+    @Test(expected = IdInvalid.class)
+    public void readNonExistEntityReturnValidSpare() throws IdInvalid {
+        spareDao.read(0);
     }
 
     @Test
-    public void update() {
-    }
-
-    @Test
-    public void delete() {
+    public void deleteInValidEntityReturnFalse() {
+        assertFalse(new SpareJdbcDao(dataSource, properties).delete(0));
     }
 }

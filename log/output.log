@@ -38,3 +38,142 @@
 2018-08-11 10:24:39,998  INFO UserJdbcDao:166 - method madeUser start with resultSet: com.mysql.cj.jdbc.result.ResultSetImpl@527e5409
 2018-08-11 10:24:39,998  INFO UserJdbcDao:183 - method madeUser return user: User{userId=1, firstName='Александр', lastName='Петров', eMail='alex.petrov@gmail.com', phone='+38(095)45-55-782', catchword='8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', roleId=1}
 2018-08-11 10:24:39,998  INFO UserJdbcDao:66 - readByEmail end & return: User{userId=1, firstName='Александр', lastName='Петров', eMail='alex.petrov@gmail.com', phone='+38(095)45-55-782', catchword='8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', roleId=1}
+2018-08-11 10:59:59,836  INFO SpareJdbcDao:78 - method create start with spare: Spare{detailId=1, name='Engine', description='Engine for small coffee machine: Viena, Trevi...', quantity=4, price=243.55}
+2018-08-11 11:00:00,539  WARN SpareJdbcDao:91 - method create catch SQLException java.sql.SQLIntegrityConstraintViolationException: Duplicate entry 'Engine' for key 'name_UNIQUE'
+2018-08-11 11:00:00,555  INFO SpareJdbcDao:94 - method create return result of creation: false
+2018-08-11 11:00:25,002  INFO SpareJdbcDao:78 - method create start with spare: Spare{detailId=1, name='SEngine', description='Engine for small coffee machine: Viena, Trevi...', quantity=4, price=243.55}
+2018-08-11 11:00:25,641  INFO SpareJdbcDao:99 - method setInsertedId start with no parameters
+2018-08-11 11:00:25,664  INFO SpareJdbcDao:108 - method setInsertedId return spareId: 0
+2018-08-11 11:00:25,664  INFO SpareJdbcDao:94 - method create return result of creation: true
+2018-08-11 11:01:32,168  INFO SpareJdbcDao:78 - method create start with spare: Spare{detailId=1, name='SEngine', description='Engine for small coffee machine: Viena, Trevi...', quantity=4, price=243.55}
+2018-08-11 11:01:32,720  WARN SpareJdbcDao:91 - method create catch SQLException java.sql.SQLIntegrityConstraintViolationException: Duplicate entry 'SEngine' for key 'name_UNIQUE'
+2018-08-11 11:01:32,720  INFO SpareJdbcDao:94 - method create return result of creation: false
+2018-08-11 11:01:40,347  INFO SpareJdbcDao:78 - method create start with spare: Spare{detailId=1, name='SEngine', description='Engine for small coffee machine: Viena, Trevi...', quantity=4, price=243.55}
+2018-08-11 11:01:41,222  WARN SpareJdbcDao:91 - method create catch SQLException java.sql.SQLIntegrityConstraintViolationException: Duplicate entry 'SEngine' for key 'name_UNIQUE'
+2018-08-11 11:01:41,222  INFO SpareJdbcDao:94 - method create return result of creation: false
+2018-08-11 11:02:24,078  INFO SpareJdbcDao:78 - method create start with spare: Spare{detailId=1, name='SEngine', description='Engine for small coffee machine: Viena, Trevi...', quantity=4, price=243.55}
+2018-08-11 11:02:24,641  INFO SpareJdbcDao:99 - method setInsertedId start with no parameters
+2018-08-11 11:02:24,656  INFO SpareJdbcDao:108 - method setInsertedId return spareId: 0
+2018-08-11 11:02:24,656  INFO SpareJdbcDao:94 - method create return result of creation: true
+2018-08-11 11:02:56,373  INFO SpareJdbcDao:78 - method create start with spare: Spare{detailId=1, name='SEngine', description='Engine for small coffee machine: Viena, Trevi...', quantity=4, price=243.55}
+2018-08-11 11:02:57,296  INFO SpareJdbcDao:99 - method setInsertedId start with no parameters
+2018-08-11 11:05:24,859  INFO SpareJdbcDao:108 - method setInsertedId return spareId: 0
+2018-08-11 11:05:24,859  INFO SpareJdbcDao:94 - method create return result of creation: true
+2018-08-11 11:05:43,194  INFO SpareJdbcDao:78 - method create start with spare: Spare{detailId=1, name='SEngine', description='Engine for small coffee machine: Viena, Trevi...', quantity=4, price=243.55}
+2018-08-11 11:05:43,897  INFO SpareJdbcDao:99 - method setInsertedId start with no parameters
+2018-08-11 11:05:44,038  WARN SpareJdbcDao:91 - method create catch SQLException java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'FROM agency_test.spare' at line 1
+2018-08-11 11:05:44,038  INFO SpareJdbcDao:94 - method create return result of creation: false
+2018-08-11 11:06:19,451  INFO SpareJdbcDao:78 - method create start with spare: Spare{detailId=1, name='SEngine', description='Engine for small coffee machine: Viena, Trevi...', quantity=4, price=243.55}
+2018-08-11 11:06:20,014  INFO SpareJdbcDao:99 - method setInsertedId start with no parameters
+2018-08-11 11:06:20,092  INFO SpareJdbcDao:108 - method setInsertedId return spareId: 129
+2018-08-11 11:06:20,092  INFO SpareJdbcDao:94 - method create return result of creation: true
+2018-08-11 11:07:48,935  INFO UserJdbcDao:78 - method create start with user: null
+2018-08-11 11:07:49,592  INFO UserJdbcDao:117 - method setStatement start with parameters: statement: com.mysql.cj.jdbc.ClientPreparedStatement: INSERT INTO agency_test.user(first_name, last_name, e_mail, phone, catchword, role_id) VALUES(** NOT SPECIFIED **, ** NOT SPECIFIED **, ** NOT SPECIFIED **, ** NOT SPECIFIED **, ** NOT SPECIFIED **, ** NOT SPECIFIED **);. And user: null
+2018-08-11 11:07:49,592  INFO UserJdbcDao:136 - method read start with entityId: 1
+2018-08-11 11:07:49,623  INFO UserJdbcDao:165 - method madeUser start with resultSet: com.mysql.cj.jdbc.result.ResultSetImpl@56de5251
+2018-08-11 11:07:49,623  INFO UserJdbcDao:182 - method madeUser return user: User{userId=1, firstName='Александр', lastName='Петров', eMail='alex.petrov@gmail.com', phone='+38(095)45-55-782', catchword='8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', roleId=1}
+2018-08-11 11:07:49,623  INFO UserJdbcDao:153 - method read return user: User{userId=1, firstName='Александр', lastName='Петров', eMail='alex.petrov@gmail.com', phone='+38(095)45-55-782', catchword='8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', roleId=1}
+2018-08-11 11:07:49,623  INFO UserJdbcDao:213 - method delete start with entityId0
+2018-08-11 11:07:49,639  INFO UserJdbcDao:225 - method delete return result: false
+2018-08-11 11:07:49,639  INFO UserJdbcDao:78 - method create start with user: User{userId=1, firstName='Александр', lastName='Петров', eMail='alex.petrov@gmail.com', phone='+38(095)45-55-782', catchword='8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', roleId=1}
+2018-08-11 11:07:49,639  INFO UserJdbcDao:117 - method setStatement start with parameters: statement: statement. And user: User{userId=1, firstName='Александр', lastName='Петров', eMail='alex.petrov@gmail.com', phone='+38(095)45-55-782', catchword='8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', roleId=1}
+2018-08-11 11:07:49,639  INFO UserJdbcDao:124 - method setStatement end with parameters: statement: statement. And user: User{userId=1, firstName='Александр', lastName='Петров', eMail='alex.petrov@gmail.com', phone='+38(095)45-55-782', catchword='8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', roleId=1}
+2018-08-11 11:07:49,639  INFO UserJdbcDao:103 - setInsertedId start with no parameters
+2018-08-11 11:07:49,639  INFO UserJdbcDao:112 - setInsertedId return userId: 0
+2018-08-11 11:07:49,639  INFO UserJdbcDao:91 - method create return user: User{userId=0, firstName='Александр', lastName='Петров', eMail='alex.petrov@gmail.com', phone='+38(095)45-55-782', catchword='8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', roleId=1}
+2018-08-11 11:07:49,655  INFO UserJdbcDao:49 - readByEmail start with: email: null
+2018-08-11 11:07:49,655 ERROR UserJdbcDao:58 - nonexistent user email null
+2018-08-11 11:07:49,655  INFO UserJdbcDao:136 - method read start with entityId: 1
+2018-08-11 11:07:49,655 ERROR UserJdbcDao:145 - nonexistent userId : 1
+2018-08-11 11:07:49,670  INFO UserJdbcDao:49 - readByEmail start with: email: alex.petrov@gmail.com
+2018-08-11 11:07:49,717  INFO UserJdbcDao:165 - method madeUser start with resultSet: com.mysql.cj.jdbc.result.ResultSetImpl@49c386c8
+2018-08-11 11:07:49,717  INFO UserJdbcDao:182 - method madeUser return user: User{userId=1, firstName='Александр', lastName='Петров', eMail='alex.petrov@gmail.com', phone='+38(095)45-55-782', catchword='8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', roleId=1}
+2018-08-11 11:07:49,717  INFO UserJdbcDao:66 - readByEmail end & return: User{userId=1, firstName='Александр', lastName='Петров', eMail='alex.petrov@gmail.com', phone='+38(095)45-55-782', catchword='8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', roleId=1}
+2018-08-11 11:21:59,672  INFO SpareJdbcDao:78 - method create start with spare: Spare{detailId=1, name='SEngine', description='Engine for small coffee machine: Viena, Trevi...', quantity=4, price=243.55}
+2018-08-11 11:21:59,672  INFO SpareJdbcDao:99 - method setInsertedId start with no parameters
+2018-08-11 11:21:59,672  INFO SpareJdbcDao:108 - method setInsertedId return spareId: 0
+2018-08-11 11:21:59,672  INFO SpareJdbcDao:94 - method create return result of creation: true
+2018-08-11 11:23:27,803  INFO SpareJdbcDao:78 - method create start with spare: null
+2018-08-11 11:23:47,999  INFO SpareJdbcDao:78 - method create start with spare: null
+2018-08-11 11:24:43,323  INFO SpareJdbcDao:78 - method create start with spare: Spare{detailId=1, name='null', description='Engine for small coffee machine: Viena, Trevi...', quantity=4, price=243.55}
+2018-08-11 11:24:43,338  INFO SpareJdbcDao:99 - method setInsertedId start with no parameters
+2018-08-11 11:24:43,338  INFO SpareJdbcDao:108 - method setInsertedId return spareId: 0
+2018-08-11 11:24:43,338  INFO SpareJdbcDao:94 - method create return result of creation: true
+2018-08-11 11:26:14,280  INFO SpareJdbcDao:78 - method create start with spare: null
+2018-08-11 11:27:52,172  INFO SpareJdbcDao:121 - method read start with entityID: 1
+2018-08-11 11:27:52,657  INFO SpareJdbcDao:60 - method madeSpare start with resultSet: com.mysql.cj.jdbc.result.ResultSetImpl@60611244
+2018-08-11 11:27:52,657  INFO SpareJdbcDao:72 - method madeSpare return spare Spare{detailId=1, name='Engine', description='Engine for small coffee machine: Viena, Trevi...', quantity=4, price=243.55}
+2018-08-11 11:27:52,657  INFO SpareJdbcDao:140 - method read return spare: Spare{detailId=1, name='Engine', description='Engine for small coffee machine: Viena, Trevi...', quantity=4, price=243.55}
+2018-08-11 11:28:53,668  INFO SpareJdbcDao:121 - method read start with entityID: 0
+2018-08-11 11:28:54,136 ERROR SpareJdbcDao:132 - method read throw IdInvalid Exception with message: "Invalid spare's ID : "0
+2018-08-11 11:57:26,902  INFO SpareJdbcDao:146 - method update start with spare: Spare{detailId=1, name='NewName', description='Engine for small coffee machine: Viena, Trevi...', quantity=4, price=243.55}
+2018-08-11 11:57:28,105  WARN SpareJdbcDao:156 - method update catch SQLException java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'detail_id = 1' at line 1
+2018-08-11 11:57:28,105  INFO SpareJdbcDao:159 - method update return spare: Spare{detailId=1, name='NewName', description='Engine for small coffee machine: Viena, Trevi...', quantity=4, price=243.55}
+2018-08-11 11:58:20,257  INFO SpareJdbcDao:146 - method update start with spare: Spare{detailId=1, name='NewName', description='Engine for small coffee machine: Viena, Trevi...', quantity=4, price=243.55}
+2018-08-11 11:58:20,835  INFO SpareJdbcDao:159 - method update return spare: Spare{detailId=1, name='NewName', description='Engine for small coffee machine: Viena, Trevi...', quantity=4, price=243.55}
+2018-08-11 11:58:43,512  INFO SpareJdbcDao:146 - method update start with spare: Spare{detailId=1, name='Engine', description='Engine for small coffee machine: Viena, Trevi...', quantity=4, price=243.55}
+2018-08-11 11:58:44,121  INFO SpareJdbcDao:159 - method update return spare: Spare{detailId=1, name='Engine', description='Engine for small coffee machine: Viena, Trevi...', quantity=4, price=243.55}
+2018-08-11 12:05:15,078  INFO SpareJdbcDao:165 - method delete start with entityId 0
+2018-08-11 12:05:15,109  INFO SpareJdbcDao:177 - method delete return result: false
+2018-08-11 12:05:40,632  INFO SpareJdbcDao:78 - method create start with spare: Spare{detailId=1, name='Engine', description='Engine for small coffee machine: Viena, Trevi...', quantity=4, price=243.55}
+2018-08-11 12:05:40,632  INFO SpareJdbcDao:99 - method setInsertedId start with no parameters
+2018-08-11 12:05:40,632  INFO SpareJdbcDao:108 - method setInsertedId return spareId: 0
+2018-08-11 12:05:40,632  INFO SpareJdbcDao:94 - method create return result of creation: true
+2018-08-11 12:05:40,648  INFO SpareJdbcDao:78 - method create start with spare: null
+2018-08-11 12:05:40,648  INFO SpareJdbcDao:121 - method read start with entityID: 0
+2018-08-11 12:05:41,163 ERROR SpareJdbcDao:132 - method read throw IdInvalid Exception with message: "Invalid spare's ID : "0
+2018-08-11 12:05:41,179  INFO SpareJdbcDao:121 - method read start with entityID: 1
+2018-08-11 12:05:41,179  INFO SpareJdbcDao:60 - method madeSpare start with resultSet: com.mysql.cj.jdbc.result.ResultSetImpl@51e5fc98
+2018-08-11 12:05:41,179  INFO SpareJdbcDao:72 - method madeSpare return spare Spare{detailId=1, name='Engine', description='Engine for small coffee machine: Viena, Trevi...', quantity=4, price=243.55}
+2018-08-11 12:05:41,179  INFO SpareJdbcDao:140 - method read return spare: Spare{detailId=1, name='Engine', description='Engine for small coffee machine: Viena, Trevi...', quantity=4, price=243.55}
+2018-08-11 12:05:41,195  INFO SpareJdbcDao:35 - method readByName start with name: Engine
+2018-08-11 12:05:41,195  INFO SpareJdbcDao:35 - method readByName start with name: 
+2018-08-11 12:05:41,195  WARN SpareJdbcDao:47 - method readByName throw InvalidSearchingString Exception with message: "Invalid spare's name: "
+2018-08-11 12:05:41,195  INFO SpareJdbcDao:165 - method delete start with entityId 0
+2018-08-11 12:05:41,195  INFO SpareJdbcDao:177 - method delete return result: false
+2018-08-11 12:05:41,210  INFO SpareJdbcDao:35 - method readByName start with name: Engine
+2018-08-11 12:05:41,226  INFO SpareJdbcDao:60 - method madeSpare start with resultSet: com.mysql.cj.jdbc.result.ResultSetImpl@1f3f4916
+2018-08-11 12:05:41,226  INFO SpareJdbcDao:72 - method madeSpare return spare Spare{detailId=1, name='Engine', description='Engine for small coffee machine: Viena, Trevi...', quantity=4, price=243.55}
+2018-08-11 12:05:41,226  INFO SpareJdbcDao:55 - method readByName return spare: Spare{detailId=1, name='Engine', description='Engine for small coffee machine: Viena, Trevi...', quantity=4, price=243.55}
+2018-08-11 12:07:37,250  INFO SpareJdbcDao:78 - method create start with spare: Spare{detailId=1, name='Engine', description='Engine for small coffee machine: Viena, Trevi...', quantity=4, price=243.55}
+2018-08-11 12:07:37,250  INFO SpareJdbcDao:99 - method setInsertedId start with no parameters
+2018-08-11 12:07:37,265  INFO SpareJdbcDao:108 - method setInsertedId return spareId: 0
+2018-08-11 12:07:37,265  INFO SpareJdbcDao:94 - method create return result of creation: true
+2018-08-11 12:07:37,265  INFO SpareJdbcDao:78 - method create start with spare: null
+2018-08-11 12:07:37,265  INFO SpareJdbcDao:121 - method read start with entityID: 0
+2018-08-11 12:07:37,843 ERROR SpareJdbcDao:132 - method read throw IdInvalid Exception with message: "Invalid spare's ID : "0
+2018-08-11 12:07:37,859  INFO SpareJdbcDao:121 - method read start with entityID: 1
+2018-08-11 12:07:37,890  INFO SpareJdbcDao:60 - method madeSpare start with resultSet: com.mysql.cj.jdbc.result.ResultSetImpl@19d37183
+2018-08-11 12:07:37,890  INFO SpareJdbcDao:72 - method madeSpare return spare Spare{detailId=1, name='Engine', description='Engine for small coffee machine: Viena, Trevi...', quantity=4, price=243.55}
+2018-08-11 12:07:37,890  INFO SpareJdbcDao:140 - method read return spare: Spare{detailId=1, name='Engine', description='Engine for small coffee machine: Viena, Trevi...', quantity=4, price=243.55}
+2018-08-11 12:07:37,890  INFO SpareJdbcDao:35 - method readByName start with name: Engine
+2018-08-11 12:07:37,906  INFO SpareJdbcDao:35 - method readByName start with name: 
+2018-08-11 12:07:37,906  WARN SpareJdbcDao:47 - method readByName throw InvalidSearchingString Exception with message: "Invalid spare's name: "
+2018-08-11 12:07:37,906  INFO SpareJdbcDao:165 - method delete start with entityId 0
+2018-08-11 12:07:37,906  INFO SpareJdbcDao:177 - method delete return result: false
+2018-08-11 12:07:37,922  INFO SpareJdbcDao:35 - method readByName start with name: Engine
+2018-08-11 12:07:37,937  INFO SpareJdbcDao:60 - method madeSpare start with resultSet: com.mysql.cj.jdbc.result.ResultSetImpl@4b44655e
+2018-08-11 12:07:37,937  INFO SpareJdbcDao:72 - method madeSpare return spare Spare{detailId=1, name='Engine', description='Engine for small coffee machine: Viena, Trevi...', quantity=4, price=243.55}
+2018-08-11 12:07:37,937  INFO SpareJdbcDao:55 - method readByName return spare: Spare{detailId=1, name='Engine', description='Engine for small coffee machine: Viena, Trevi...', quantity=4, price=243.55}
+2018-08-11 12:08:54,862  INFO SpareJdbcDao:35 - method readByName start with name: Engine
+2018-08-11 12:08:54,877  WARN SpareJdbcDao:47 - method readByName throw InvalidSearchingString Exception with message: "Invalid spare's name: Engine"
+2018-08-11 12:09:44,103  INFO SpareJdbcDao:78 - method create start with spare: Spare{detailId=1, name='Engine', description='Engine for small coffee machine: Viena, Trevi...', quantity=4, price=243.55}
+2018-08-11 12:09:44,119  INFO SpareJdbcDao:99 - method setInsertedId start with no parameters
+2018-08-11 12:09:44,119  INFO SpareJdbcDao:108 - method setInsertedId return spareId: 0
+2018-08-11 12:09:44,119  INFO SpareJdbcDao:94 - method create return result of creation: true
+2018-08-11 12:09:44,119  INFO SpareJdbcDao:78 - method create start with spare: null
+2018-08-11 12:09:44,134  INFO SpareJdbcDao:121 - method read start with entityID: 0
+2018-08-11 12:09:44,732 ERROR SpareJdbcDao:132 - method read throw IdInvalid Exception with message: "Invalid spare's ID : "0
+2018-08-11 12:09:44,747  INFO SpareJdbcDao:121 - method read start with entityID: 1
+2018-08-11 12:09:44,747  INFO SpareJdbcDao:60 - method madeSpare start with resultSet: com.mysql.cj.jdbc.result.ResultSetImpl@51e5fc98
+2018-08-11 12:09:44,747  INFO SpareJdbcDao:72 - method madeSpare return spare Spare{detailId=1, name='Engine', description='Engine for small coffee machine: Viena, Trevi...', quantity=4, price=243.55}
+2018-08-11 12:09:44,747  INFO SpareJdbcDao:140 - method read return spare: Spare{detailId=1, name='Engine', description='Engine for small coffee machine: Viena, Trevi...', quantity=4, price=243.55}
+2018-08-11 12:09:44,763  INFO SpareJdbcDao:35 - method readByName start with name: Engine
+2018-08-11 12:09:44,763  INFO SpareJdbcDao:35 - method readByName start with name: 
+2018-08-11 12:09:44,763  WARN SpareJdbcDao:47 - method readByName throw InvalidSearchingString Exception with message: "Invalid spare's name: "
+2018-08-11 12:09:44,779  INFO SpareJdbcDao:165 - method delete start with entityId 0
+2018-08-11 12:09:44,779  INFO SpareJdbcDao:177 - method delete return result: false
+2018-08-11 12:09:44,779  INFO SpareJdbcDao:35 - method readByName start with name: Engine
+2018-08-11 12:09:44,794  INFO SpareJdbcDao:60 - method madeSpare start with resultSet: com.mysql.cj.jdbc.result.ResultSetImpl@1f3f4916
+2018-08-11 12:09:44,794  INFO SpareJdbcDao:72 - method madeSpare return spare Spare{detailId=1, name='Engine', description='Engine for small coffee machine: Viena, Trevi...', quantity=4, price=243.55}
+2018-08-11 12:09:44,794  INFO SpareJdbcDao:55 - method readByName return spare: Spare{detailId=1, name='Engine', description='Engine for small coffee machine: Viena, Trevi...', quantity=4, price=243.55}

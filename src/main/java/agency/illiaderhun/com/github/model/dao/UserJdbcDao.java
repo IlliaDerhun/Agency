@@ -30,7 +30,7 @@ public class UserJdbcDao implements UserDao<User, Integer> {
     private DataSource dataSource;
 
     @NotNull
-    Properties properties;
+    private Properties properties;
 
     public UserJdbcDao(DataSource dataSource, Properties properties){
         this.dataSource = dataSource;
@@ -84,8 +84,7 @@ public class UserJdbcDao implements UserDao<User, Integer> {
             user.setUserId(setInsertedId());
             result = true;
         } catch (SQLException e) {
-            LOGGER.error("has got some problem with creation");
-            LOGGER.error(e);
+            LOGGER.warn("has got some problem with creation " + e);
             e.printStackTrace();
         }
 
