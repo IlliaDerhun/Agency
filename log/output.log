@@ -1,4 +1,40 @@
-2018-08-08 20:50:29,720 ERROR UserJdbcDao:50 - nonexistent user email null
-2018-08-08 20:50:29,767 ERROR UserJdbcDao:130 - nonexistent userId : 1
-2018-08-08 20:50:56,912 ERROR UserJdbcDao:50 - nonexistent user email null
-2018-08-08 20:50:56,959 ERROR UserJdbcDao:130 - nonexistent userId : 1
+2018-08-11 09:23:06,964 ERROR UserJdbcDao:52 - nonexistent user email null
+2018-08-11 09:23:06,979 ERROR UserJdbcDao:132 - nonexistent userId : 1
+2018-08-11 09:42:41,553 ERROR UserJdbcDao:95 - has got some problem with creation
+2018-08-11 09:42:41,569 ERROR UserJdbcDao:96 - java.sql.SQLIntegrityConstraintViolationException: Duplicate entry 'alex.petrov@gmail.com' for key 'e_mail_UNIQUE'
+2018-08-11 09:49:59,449 ERROR UserJdbcDao:67 - nonexistent user email null
+2018-08-11 09:49:59,465 ERROR UserJdbcDao:147 - nonexistent userId : 1
+2018-08-11 09:58:25,496 ERROR UserJdbcDao:59 - nonexistent user email null
+2018-08-11 09:58:25,588 ERROR UserJdbcDao:139 - nonexistent userId : 1
+2018-08-11 10:02:33,629  INFO UserJdbcDao:51 - readByEmail start with: email: null
+2018-08-11 10:02:33,629 ERROR UserJdbcDao:60 - nonexistent user email null
+2018-08-11 10:02:33,629 ERROR UserJdbcDao:140 - nonexistent userId : 1
+2018-08-11 10:02:33,645  INFO UserJdbcDao:51 - readByEmail start with: email: alex.petrov@gmail.com
+2018-08-11 10:02:33,661  INFO UserJdbcDao:68 - readByEmail end & return: User{userId=1, firstName='Александр', lastName='Петров', eMail='alex.petrov@gmail.com', phone='+38(095)45-55-782', catchword='8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', roleId=1}
+2018-08-11 10:13:56,938  INFO UserJdbcDao:51 - readByEmail start with: email: null
+2018-08-11 10:13:56,938 ERROR UserJdbcDao:60 - nonexistent user email null
+2018-08-11 10:13:56,954 ERROR UserJdbcDao:140 - nonexistent userId : 1
+2018-08-11 10:13:56,985  INFO UserJdbcDao:51 - readByEmail start with: email: alex.petrov@gmail.com
+2018-08-11 10:13:57,001  INFO UserJdbcDao:68 - readByEmail end & return: User{userId=1, firstName='Александр', lastName='Петров', eMail='alex.petrov@gmail.com', phone='+38(095)45-55-782', catchword='8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', roleId=1}
+2018-08-11 10:24:39,198  INFO UserJdbcDao:78 - method create start with user: null
+2018-08-11 10:24:39,698  INFO UserJdbcDao:118 - method setStatement start with parameters: statement: com.mysql.cj.jdbc.ClientPreparedStatement: INSERT INTO agency_test.user(first_name, last_name, e_mail, phone, catchword, role_id) VALUES(** NOT SPECIFIED **, ** NOT SPECIFIED **, ** NOT SPECIFIED **, ** NOT SPECIFIED **, ** NOT SPECIFIED **, ** NOT SPECIFIED **);. And user: null
+2018-08-11 10:24:39,713  INFO UserJdbcDao:137 - method read start with entityId: 1
+2018-08-11 10:24:39,776  INFO UserJdbcDao:166 - method madeUser start with resultSet: com.mysql.cj.jdbc.result.ResultSetImpl@2b6856dd
+2018-08-11 10:24:39,792  INFO UserJdbcDao:183 - method madeUser return user: User{userId=1, firstName='Александр', lastName='Петров', eMail='alex.petrov@gmail.com', phone='+38(095)45-55-782', catchword='8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', roleId=1}
+2018-08-11 10:24:39,792  INFO UserJdbcDao:154 - method read return user: User{userId=1, firstName='Александр', lastName='Петров', eMail='alex.petrov@gmail.com', phone='+38(095)45-55-782', catchword='8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', roleId=1}
+2018-08-11 10:24:39,792  INFO UserJdbcDao:214 - method delete start with entityId0
+2018-08-11 10:24:39,792  INFO UserJdbcDao:226 - method delete return result: false
+2018-08-11 10:24:39,838  INFO UserJdbcDao:78 - method create start with user: User{userId=1, firstName='Александр', lastName='Петров', eMail='alex.petrov@gmail.com', phone='+38(095)45-55-782', catchword='8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', roleId=1}
+2018-08-11 10:24:39,838  INFO UserJdbcDao:118 - method setStatement start with parameters: statement: statement. And user: User{userId=1, firstName='Александр', lastName='Петров', eMail='alex.petrov@gmail.com', phone='+38(095)45-55-782', catchword='8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', roleId=1}
+2018-08-11 10:24:39,854  INFO UserJdbcDao:125 - method setStatement end with parameters: statement: statement. And user: User{userId=1, firstName='Александр', lastName='Петров', eMail='alex.petrov@gmail.com', phone='+38(095)45-55-782', catchword='8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', roleId=1}
+2018-08-11 10:24:39,918  INFO UserJdbcDao:104 - setInsertedId start with no parameters
+2018-08-11 10:24:39,918  INFO UserJdbcDao:113 - setInsertedId return userId: 0
+2018-08-11 10:24:39,922  INFO UserJdbcDao:92 - method create return user: User{userId=0, firstName='Александр', lastName='Петров', eMail='alex.petrov@gmail.com', phone='+38(095)45-55-782', catchword='8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', roleId=1}
+2018-08-11 10:24:39,934  INFO UserJdbcDao:49 - readByEmail start with: email: null
+2018-08-11 10:24:39,934 ERROR UserJdbcDao:58 - nonexistent user email null
+2018-08-11 10:24:39,958  INFO UserJdbcDao:137 - method read start with entityId: 1
+2018-08-11 10:24:39,970 ERROR UserJdbcDao:146 - nonexistent userId : 1
+2018-08-11 10:24:39,982  INFO UserJdbcDao:49 - readByEmail start with: email: alex.petrov@gmail.com
+2018-08-11 10:24:39,998  INFO UserJdbcDao:166 - method madeUser start with resultSet: com.mysql.cj.jdbc.result.ResultSetImpl@527e5409
+2018-08-11 10:24:39,998  INFO UserJdbcDao:183 - method madeUser return user: User{userId=1, firstName='Александр', lastName='Петров', eMail='alex.petrov@gmail.com', phone='+38(095)45-55-782', catchword='8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', roleId=1}
+2018-08-11 10:24:39,998  INFO UserJdbcDao:66 - readByEmail end & return: User{userId=1, firstName='Александр', lastName='Петров', eMail='alex.petrov@gmail.com', phone='+38(095)45-55-782', catchword='8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', roleId=1}

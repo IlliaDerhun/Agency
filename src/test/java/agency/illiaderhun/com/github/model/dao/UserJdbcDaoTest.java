@@ -1,5 +1,6 @@
 package agency.illiaderhun.com.github.model.dao;
 
+import agency.illiaderhun.com.github.model.QueriesManager;
 import agency.illiaderhun.com.github.model.daoFactory.UserDaoFactory;
 import agency.illiaderhun.com.github.model.daoInterface.UserDao;
 import agency.illiaderhun.com.github.model.entities.User;
@@ -62,18 +63,18 @@ public class UserJdbcDaoTest {
     }
 
     @Test
-    public void readByValidEmail() throws InvalidSearchingString{
+    public void readByValidEmailReturnValidEntity() throws InvalidSearchingString{
         assertEquals(user, userDao.readByEmail("alex.petrov@gmail.com"));
     }
 
     @Test(expected = InvalidSearchingString.class)
-    public void couldntReadByInvalidEmail() throws InvalidSearchingString{
-        new UserJdbcDao(dataSource).readByEmail(null);
+    public void couldntReadByInvalidEmailThroeException() throws InvalidSearchingString{
+        new UserJdbcDao(dataSource, QueriesManager.getProperties("user")).readByEmail(null);
     }
 
     @Test
-    public void create() {
-        new UserJdbcDao(dataSource).create(user);
+    public void createValidUserReturnTrue() {
+        new UserJdbcDao(dataSource, QueriesManager.getProperties("user")).create(user);
     }
 
     @Test(expected = NullPointerException.class)
@@ -82,17 +83,17 @@ public class UserJdbcDaoTest {
     }
 
     @Test
-    public void readByValidId() throws IdInvalid {
+    public void readByValidIdReturnValidEntity() throws IdInvalid {
         assertEquals(user, userDao.read(1));
     }
 
     @Test(expected = IdInvalid.class)
-    public void readByInvalidId() throws IdInvalid {
-        assertEquals(user, new UserJdbcDao(dataSource).read(1));
+    public void readByInvalidIdThrowException() throws IdInvalid {
+        assertEquals(user, new UserJdbcDao(dataSource, QueriesManager.getProperties("user")).read(1));
     }
 
     @Test
-    public void deleteNoExistEntity() {
-        assertFalse(new UserJdbcDao(dataSource).delete(0));
+    public void deleteNoExistEntityReturnFalse() {
+        assertFalse(new UserJdbcDao(dataSource, QueriesManager.getProperties("user")).delete(0));
     }
 }

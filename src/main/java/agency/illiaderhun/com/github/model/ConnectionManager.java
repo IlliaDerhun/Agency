@@ -14,7 +14,7 @@ public class ConnectionManager {
     private static Connection connection = null;
     private static SJDataSource dataSource = null;
 
-    public static Connection getConnection(String d){
+    public static Connection getConnection(){
         try {
             dataSource = (SJDataSource) (new InitialContext().lookup("db"));
             connection = dataSource.getConnection();

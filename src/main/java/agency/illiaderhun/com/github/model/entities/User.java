@@ -15,7 +15,7 @@ import java.util.Objects;
  * @version 1.0
  */
 
-@Table(name = "user")
+@Table(name = "queries/user")
 public class User {
 
     @Column(name = "user_id")

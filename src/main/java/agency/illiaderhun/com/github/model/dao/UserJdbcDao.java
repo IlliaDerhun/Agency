@@ -12,6 +12,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Properties;
 
 /**
  * UserJdbcDao works with User's entities
@@ -28,8 +29,12 @@ public class UserJdbcDao implements UserDao<User, Integer> {
     @NotNull
     private DataSource dataSource;
 
-    public UserJdbcDao(DataSource dataSource){
+    @NotNull
+    Properties properties;
+
+    public UserJdbcDao(DataSource dataSource, Properties properties){
         this.dataSource = dataSource;
+        this.properties = properties;
     }
 
     /**
@@ -41,9 +46,10 @@ public class UserJdbcDao implements UserDao<User, Integer> {
      */
     @Override
     public User readByEmail(String eMail) throws InvalidSearchingString {
+        LOGGER.info("readByEmail start with: email: " + eMail);
         User theUser = null;
         try (Connection connection = dataSource.getConnection();
-             PreparedStatement statement = connection.prepareStatement(SqlUser.SELECT_BY_EMAIL.QUERY)){
+             PreparedStatement statement = connection.prepareStatement(properties.getProperty("selectByEmail"))){
             statement.setString(1, eMail);
             ResultSet resultSet = statement.executeQuery();
             if (resultSet != null && resultSet.next()){
@@ -57,7 +63,7 @@ public class UserJdbcDao implements UserDao<User, Integer> {
             LOGGER.error("-> " + e);
             e.printStackTrace();
         }
-
+        LOGGER.info("readByEmail end & return: " + theUser);
         return theUser;
     }
 
@@ -69,9 +75,10 @@ public class UserJdbcDao implements UserDao<User, Integer> {
      */
     @Override
     public boolean create(User user) {
+        LOGGER.info("method create start with user: " + user);
         boolean result = false;
         try (Connection connection = dataSource.getConnection();
-             PreparedStatement statement = connection.prepareStatement(SqlUser.INSERT.QUERY)){
+             PreparedStatement statement = connection.prepareStatement(properties.getProperty("insert"))){
             setStatement(statement, user);
             statement.executeUpdate();
             user.setUserId(setInsertedId());
@@ -81,6 +88,8 @@ public class UserJdbcDao implements UserDao<User, Integer> {
             LOGGER.error(e);
             e.printStackTrace();
         }
+
+        LOGGER.info("method create return user: " + user);
         return result;
     }
 
@@ -92,24 +101,28 @@ public class UserJdbcDao implements UserDao<User, Integer> {
      * @throws SQLException in case some problem with statement
      */
     private int setInsertedId() throws SQLException {
+        LOGGER.info("setInsertedId start with no parameters");
+        int userId = 0;
         try (Connection connection = dataSource.getConnection();
-             PreparedStatement statement = connection.prepareStatement(SqlUser.READ_INSERTED_ID.QUERY)){
+             PreparedStatement statement = connection.prepareStatement(properties.getProperty("readInsertedId"))){
             ResultSet resultSet = statement.executeQuery();
             if (resultSet != null && resultSet.next()){
-                return resultSet.getInt("user_id");
+                userId = resultSet.getInt("user_id");
             }
         }
-
-        return 0;
+        LOGGER.info("setInsertedId return userId: " + userId);
+        return userId;
     }
 
     private void setStatement(PreparedStatement statement, User user) throws SQLException {
+        LOGGER.info("method setStatement start with parameters: statement: " + statement + ". And user: " + user);
         statement.setString(1, user.getFirstName());
         statement.setString(2, user.getLastName());
         statement.setString(3, user.geteMail());
         statement.setString(4, user.getPhone());
         statement.setString(5, user.getCatchword());
         statement.setInt(6, user.getRoleId());
+        LOGGER.info("method setStatement end with parameters: statement: " + statement + ". And user: " + user);
     }
 
     /**
@@ -121,9 +134,10 @@ public class UserJdbcDao implements UserDao<User, Integer> {
      */
     @Override
     public User read(Integer entityId) throws IdInvalid {
+        LOGGER.info("method read start with entityId: " + entityId);
         User theUser = null;
         try (Connection connection = dataSource.getConnection();
-             PreparedStatement statement = connection.prepareStatement(SqlUser.SELECT.QUERY)){
+             PreparedStatement statement = connection.prepareStatement(properties.getProperty("select"))){
             statement.setInt(1, entityId);
             ResultSet resultSet = statement.executeQuery();
             if (resultSet != null && resultSet.next()){
@@ -137,7 +151,7 @@ public class UserJdbcDao implements UserDao<User, Integer> {
             LOGGER.error("-> " + e);
             e.printStackTrace();
         }
-
+        LOGGER.info("method read return user: " + theUser);
         return theUser;
     }
 
@@ -149,6 +163,7 @@ public class UserJdbcDao implements UserDao<User, Integer> {
      * @throws SQLException in case some problem with resultSet
      */
     private User madeUser(ResultSet resultSet) throws SQLException {
+        LOGGER.info("method madeUser start with resultSet: " + resultSet);
         User theUser;
 
         Integer userId = resultSet.getInt("user_id");
@@ -165,7 +180,7 @@ public class UserJdbcDao implements UserDao<User, Integer> {
                 .phone(phone)
                 .catchword(catchword)
                 .build();
-
+        LOGGER.info("method madeUser return user: " + theUser);
         return theUser;
     }
 
@@ -177,9 +192,10 @@ public class UserJdbcDao implements UserDao<User, Integer> {
      */
     @Override
     public boolean update(User user) {
+        LOGGER.info("method update start with user: " + user);
         boolean result = false;
         try (Connection connection = dataSource.getConnection();
-             PreparedStatement statement = connection.prepareStatement(SqlUser.UPDATE.QUERY)){
+             PreparedStatement statement = connection.prepareStatement(properties.getProperty("update"))){
             setStatement(statement, user);
             statement.setInt(7, user.getUserId());
 
@@ -189,14 +205,16 @@ public class UserJdbcDao implements UserDao<User, Integer> {
             LOGGER.error(e);
             e.printStackTrace();
         }
+        LOGGER.info("method update return result: " + result);
         return result;
     }
 
     @Override
     public boolean delete(Integer entityId) {
+        LOGGER.info("method delete start with entityId" + entityId);
         boolean result = false;
         try (Connection connection = dataSource.getConnection();
-             PreparedStatement statement = connection.prepareStatement(SqlUser.DELETE.QUERY)){
+             PreparedStatement statement = connection.prepareStatement(properties.getProperty("delete"))){
             statement.setInt(1, entityId);
 
             result = statement.executeUpdate() == 1;
@@ -205,35 +223,7 @@ public class UserJdbcDao implements UserDao<User, Integer> {
             LOGGER.error(e);
             e.printStackTrace();
         }
+        LOGGER.info("method delete return result: " + result);
         return result;
-    }
-
-    enum SqlUser{
-
-        INSERT("INSERT INTO agency_test.user(first_name, last_name, e_mail, phone, catchword, role_id)" +
-                " VALUES(?, ?, ?, ?, ?, ?);"),
-        SELECT("SELECT *" +
-                " FROM agency_test.user" +
-                " WHERE user_id = ?;"),
-        UPDATE("UPDATE agency_test.user SET" +
-                " first_name = ?," +
-                " last_name = ?," +
-                " e_mail = ?," +
-                " phone = ?," +
-                " catchword = ?,"+
-                " role_id = ?" +
-                " WHERE user_id = ?;"),
-        DELETE("DELETE FROM agency_test.user WHERE user_id = ?;"),
-
-        SELECT_BY_EMAIL("SELECT *" +
-                " FROM agency_test.user" +
-                " WHERE e_mail = ?;"),
-
-        READ_INSERTED_ID("SELECT max(user_id) AS user_id FROM agency_test.user;");
-
-        String QUERY;
-        SqlUser(String QUERY){
-            this.QUERY = QUERY;
-        }
     }
 }
