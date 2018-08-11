@@ -59,8 +59,7 @@ public class UserJdbcDao implements UserDao<User, Integer> {
                 throw new InvalidSearchingString("Invalid user's email");
             }
         } catch (SQLException e) {
-            LOGGER.error("-> Some problem with reading");
-            LOGGER.error("-> " + e);
+            LOGGER.error("method readByEmail caught SQLException " + e);
             e.printStackTrace();
         }
         LOGGER.info("readByEmail end & return: " + theUser);
@@ -84,7 +83,7 @@ public class UserJdbcDao implements UserDao<User, Integer> {
             user.setUserId(setInsertedId());
             result = true;
         } catch (SQLException e) {
-            LOGGER.warn("has got some problem with creation " + e);
+            LOGGER.warn("method create caught SQLException " + e);
             e.printStackTrace();
         }
 
@@ -146,8 +145,7 @@ public class UserJdbcDao implements UserDao<User, Integer> {
                 throw new IdInvalid("Invalid user's ID : " + entityId);
             }
         } catch (SQLException e) {
-            LOGGER.error("-> Some problem with reading");
-            LOGGER.error("-> " + e);
+            LOGGER.error("method read caught SQLException " + e);
             e.printStackTrace();
         }
         LOGGER.info("method read return user: " + theUser);
@@ -158,7 +156,7 @@ public class UserJdbcDao implements UserDao<User, Integer> {
      * Create new {@link User} with all parameters from DB
      *
      * @param resultSet with parameters for creating from DB
-     * @return valid User
+     * @return valid {@link User}
      * @throws SQLException in case some problem with resultSet
      */
     private User madeUser(ResultSet resultSet) throws SQLException {
@@ -200,8 +198,7 @@ public class UserJdbcDao implements UserDao<User, Integer> {
 
             result = statement.executeUpdate() == 1;
         } catch (SQLException e) {
-            LOGGER.error("Some problem with updating");
-            LOGGER.error(e);
+            LOGGER.error("method update caught SQLException " + e);
             e.printStackTrace();
         }
         LOGGER.info("method update return result: " + result);
@@ -218,8 +215,7 @@ public class UserJdbcDao implements UserDao<User, Integer> {
 
             result = statement.executeUpdate() == 1;
         } catch (SQLException e) {
-            LOGGER.error("Some problem with user deleting by userId" + entityId);
-            LOGGER.error(e);
+            LOGGER.error("method delete caught SQLException" + e);
             e.printStackTrace();
         }
         LOGGER.info("method delete return result: " + result);

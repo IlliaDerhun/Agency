@@ -1,9 +1,6 @@
 package agency.illiaderhun.com.github.model.entities;
 
-import agency.illiaderhun.com.github.annotations.AutoGeneration;
-import agency.illiaderhun.com.github.annotations.Column;
-import agency.illiaderhun.com.github.annotations.Table;
-import agency.illiaderhun.com.github.annotations.TypeOfGeneration;
+import agency.illiaderhun.com.github.annotations.*;
 import com.sun.istack.internal.NotNull;
 
 import java.util.Objects;
@@ -39,6 +36,8 @@ public class User {
     private String catchword;
 
     @Column(name = "role_id")
+    @JoinTable(name = "role", joinsColums = @JoinColumn(name = "user_id"),
+            inverseJoinColumn = @JoinColumn(name = "role_id"))
     private int roleId;
 
     public static class Builder{

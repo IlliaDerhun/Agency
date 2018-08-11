@@ -15,6 +15,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Properties;
 
+/**
+ * SpareJdbcDao works with Spare's entities
+ * can do all CRUD operations and readByName
+ *
+ * @author Illia Derhun
+ * @version 1.0
+ */
 public class SpareJdbcDao implements SpareDao<Spare, Integer> {
 
     private static final Logger LOGGER = Logger.getLogger(SpareJdbcDao.class.getSimpleName());
@@ -30,6 +37,13 @@ public class SpareJdbcDao implements SpareDao<Spare, Integer> {
         this.properties = properties;
     }
 
+    /**
+     * Select spare by name
+     *
+     * @param name spare's name for searching
+     * @return valid entity if it exist
+     * @exception InvalidSearchingString if name doesn't exist
+     */
     @Override
     public Spare readByName(String name) throws InvalidSearchingString {
         LOGGER.info("method readByName start with name: " + name);
@@ -49,13 +63,20 @@ public class SpareJdbcDao implements SpareDao<Spare, Integer> {
             }
 
         } catch (SQLException e) {
-            LOGGER.warn("method readByName catch SQLException " + e);
+            LOGGER.warn("method readByName caught SQLException " + e);
             e.printStackTrace();
         }
         LOGGER.info("method readByName return spare: " + theSpare);
         return theSpare;
     }
 
+    /**
+     * Create new {@link Spare} with all parameters from DB
+     *
+     * @param resultSet with parameters for creating from DB
+     * @return valid {@link Spare}
+     * @throws SQLException in case some problem with resultSet
+     */
     private Spare madeSpare(ResultSet resultSet) throws SQLException{
         LOGGER.info("method madeSpare start with resultSet: " + resultSet);
         Integer spareId = resultSet.getInt("detail_id");
@@ -73,6 +94,12 @@ public class SpareJdbcDao implements SpareDao<Spare, Integer> {
         return theSpare;
     }
 
+    /**
+     * Create spare in database.
+     *
+     * @param spare for creating.
+     * @return false if Spare already exist. True if creation is success.
+     */
     @Override
     public boolean create(Spare spare) {
         LOGGER.info("method create start with spare: " + spare);
@@ -88,13 +115,20 @@ public class SpareJdbcDao implements SpareDao<Spare, Integer> {
             result = true;
 
         } catch (SQLException e) {
-            LOGGER.warn("method create catch SQLException " + e);
+            LOGGER.warn("method create caught SQLException " + e);
             e.printStackTrace();
         }
         LOGGER.info("method create return result of creation: " + result);
         return result;
     }
 
+    /**
+     * After spare has been created
+     * this method select inserted and auto.generated detailId
+     *
+     * @return new spare's inserted and auto.generated id
+     * @throws SQLException in case some problem with statement
+     */
     private int setInsertedId() throws SQLException {
         LOGGER.info("method setInsertedId start with no parameters");
         int spareId = 0;
@@ -116,24 +150,32 @@ public class SpareJdbcDao implements SpareDao<Spare, Integer> {
         statement.setBigDecimal(4, spare.getPrice());
     }
 
+    /**
+     * Select spare by spareId.
+     *
+     * @param detailId for select.
+     * @return return valid entity if it exist.
+     * @exception IdInvalid in case nothing exist by this detailId
+     */
     @Override
-    public Spare read(Integer entityId) throws IdInvalid {
-        LOGGER.info("method read start with entityID: " + entityId);
+    public Spare read(Integer detailId) throws IdInvalid {
+        LOGGER.info("method read start with entityID: " + detailId);
         Spare theSpare = null;
 
         try (Connection connection = dataSource.getConnection();
              PreparedStatement statement = connection.prepareStatement(properties.getProperty("select"))){
-            statement.setInt(1, entityId);
+            statement.setInt(1, detailId);
 
             ResultSet resultSet = statement.executeQuery();
             if (resultSet != null && resultSet.next()){
                 theSpare = madeSpare(resultSet);
             } else {
-                LOGGER.error("method read throw IdInvalid Exception with message: \"Invalid spare's ID : \"" + entityId);
-                throw new IdInvalid("Invalid spare's ID : " + entityId);
+                LOGGER.error("method read throw IdInvalid Exception with message: \"Invalid spare's ID : \"" + detailId);
+                throw new IdInvalid("Invalid spare's ID : " + detailId);
             }
 
         } catch (SQLException e) {
+            LOGGER.warn("method read caught SQLException " + e);
             e.printStackTrace();
         }
 
@@ -141,6 +183,12 @@ public class SpareJdbcDao implements SpareDao<Spare, Integer> {
         return theSpare;
     }
 
+    /**
+     * Update spare by detailId
+     *
+     * @param spare with new info for updating
+     * @return true if spare has been updated else false
+     */
     @Override
     public boolean update(Spare spare) {
         LOGGER.info("method update start with spare: " + spare);
@@ -153,7 +201,7 @@ public class SpareJdbcDao implements SpareDao<Spare, Integer> {
             result = statement.executeUpdate() == 1;
 
         } catch (SQLException e) {
-            LOGGER.warn("method update catch SQLException " + e);
+            LOGGER.warn("method update caught SQLException " + e);
             e.printStackTrace();
         }
         LOGGER.info("method update return spare: " + spare);
@@ -171,7 +219,7 @@ public class SpareJdbcDao implements SpareDao<Spare, Integer> {
             result = statement.executeUpdate() == 1;
 
         } catch (SQLException e) {
-            LOGGER.warn("method delete catch SQLException " + e);
+            LOGGER.warn("method delete caught SQLException " + e);
             e.printStackTrace();
         }
         LOGGER.info("method delete return result: " + result);
