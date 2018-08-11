@@ -1,0 +1,297 @@
+package agency.illiaderhun.com.github.model.dao;
+
+import agency.illiaderhun.com.github.model.daoInterface.RepairOrderDao;
+import agency.illiaderhun.com.github.model.entities.RepairOrder;
+import agency.illiaderhun.com.github.model.exeptions.IdInvalid;
+import com.sun.istack.internal.NotNull;
+import org.apache.log4j.Logger;
+
+import javax.sql.DataSource;
+import java.math.BigDecimal;
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.Properties;
+
+public class RepairOrderJdbcDao implements RepairOrderDao<RepairOrder, Integer> {
+
+    private static final Logger LOGGER = Logger.getLogger(RepairOrderJdbcDao.class.getSimpleName());
+
+    @NotNull
+    private DataSource dataSource;
+
+    @NotNull
+    private Properties properties;
+
+    public RepairOrderJdbcDao(DataSource dataSource, Properties properties) {
+        this.dataSource = dataSource;
+        this.properties = properties;
+    }
+
+    /**
+     * Select RepairOrder by customerId
+     *
+     * @param customerId for select all customer's orders.
+     * @return return all valid orders if it exist.
+     * @exception IdInvalid in case method couldn't find anything by customerId
+     */
+    @Override
+    public ArrayList<RepairOrder> readByCustomerId(Integer customerId) throws IdInvalid {
+        LOGGER.info("method readByCustomerId start with customerId: " + customerId);
+        ArrayList<RepairOrder> theRepairOrders = new ArrayList<>();
+
+        try (Connection connection = dataSource.getConnection();
+             PreparedStatement statement = connection.prepareStatement(properties.getProperty("selectByCustomerId"))){
+            statement.setInt(1, customerId);
+            ResultSet resultSet = statement.executeQuery();
+
+            if (resultSet != null && resultSet.next()){
+                theRepairOrders.add(madeOrder(resultSet));
+                while (resultSet.next()){
+                    theRepairOrders.add(madeOrder(resultSet));
+                }
+            } else {
+                LOGGER.warn("method readByCustomerId throw IdInvalid Exception \"Invalid customer id: \"" + customerId);
+                throw new IdInvalid("Invalid customer id: " + customerId);
+            }
+        } catch (SQLException e) {
+            LOGGER.info("method readByCustomerId caught SQLException " + e);
+            e.printStackTrace();
+        }
+
+        LOGGER.info("method readByCustomerId return all customer's orders" + theRepairOrders);
+        return theRepairOrders;
+    }
+
+    /**
+     * Select RepairOrder by managerId
+     *
+     * @param managerId for select all managers's orders.
+     * @return return all valid orders if it exist.
+     * @exception IdInvalid in case method couldn't find anything by managerId
+     */
+    @Override
+    public ArrayList<RepairOrder> readByManagerId(Integer managerId) throws IdInvalid {
+        LOGGER.info("method readByManagerId start with managerId: " + managerId);
+        ArrayList<RepairOrder> theRepairOrders = new ArrayList<>();
+
+        try (Connection connection = dataSource.getConnection();
+             PreparedStatement statement = connection.prepareStatement(properties.getProperty("selectByManagerId"))){
+            statement.setInt(1, managerId);
+            ResultSet resultSet = statement.executeQuery();
+
+            if (resultSet != null && resultSet.next()){
+                theRepairOrders.add(madeOrder(resultSet));
+                while (resultSet.next()){
+                    theRepairOrders.add(madeOrder(resultSet));
+                }
+            } else {
+                LOGGER.warn("method readByManagerId throw IdInvalid Exception \"Invalid manager id: \"" + managerId);
+                throw new IdInvalid("Invalid manager id: " + managerId);
+            }
+        } catch (SQLException e) {
+            LOGGER.info("method readByManagerId caught SQLException " + e);
+            e.printStackTrace();
+        }
+
+        LOGGER.info("method readByManagerId return all manager's orders" + theRepairOrders);
+        return theRepairOrders;
+    }
+
+    /**
+     * Select RepairOrder by masterId
+     *
+     * @param masterId for select all master's orders.
+     * @return return all valid orders if it exist.
+     * @exception IdInvalid in case method couldn't find anything by masterId
+     */
+    @Override
+    public ArrayList<RepairOrder> readByMasterId(Integer masterId) throws IdInvalid {
+        LOGGER.info("method readByMasterId start with masterId: " + masterId);
+        ArrayList<RepairOrder> theRepairOrders = new ArrayList<>();
+
+        try (Connection connection = dataSource.getConnection();
+             PreparedStatement statement = connection.prepareStatement(properties.getProperty("selectByMasterId"))){
+            statement.setInt(1, masterId);
+            ResultSet resultSet = statement.executeQuery();
+
+            if (resultSet != null && resultSet.next()){
+                theRepairOrders.add(madeOrder(resultSet));
+                while (resultSet.next()){
+                    theRepairOrders.add(madeOrder(resultSet));
+                }
+            } else {
+                LOGGER.warn("method readByMasterId throw IdInvalid Exception \"Invalid manager id: \"" + masterId);
+                throw new IdInvalid("Invalid master id: " + masterId);
+            }
+        } catch (SQLException e) {
+            LOGGER.info("method readByMasterId caught SQLException " + e);
+            e.printStackTrace();
+        }
+
+        LOGGER.info("method readByMasterId return all master's orders" + theRepairOrders);
+        return theRepairOrders;
+    }
+
+    /**
+     * Create Repair order in database.
+     *
+     * @param repairOrder for creating.
+     * @return false if Order already exist. True if creation is success.
+     */
+    @Override
+    public boolean create(RepairOrder repairOrder) {
+        LOGGER.info("method create start with order: " + repairOrder);
+        boolean result = false;
+
+        try (Connection connection = dataSource.getConnection();
+             PreparedStatement statement = connection.prepareStatement(properties.getProperty("insert"))){
+
+            setStatement(statement, repairOrder);
+            statement.executeUpdate();
+
+            repairOrder.setOrderId(setInsertedId());
+
+            result = true;
+        } catch (SQLException e) {
+            LOGGER.warn("method create caught SQLException " + e);
+            e.printStackTrace();
+        }
+
+        LOGGER.info("method create return result: " + result);
+        return result;
+    }
+
+    private int setInsertedId() throws SQLException {
+        LOGGER.info("method setInsertedId start with no parameters");
+        int orderId = 0;
+
+        try (Connection connection = dataSource.getConnection();
+             PreparedStatement statement = connection.prepareStatement(properties.getProperty("readInsertedId"))){
+            ResultSet resultSet = statement.executeQuery();
+            if (resultSet != null && resultSet.next()){
+                orderId = resultSet.getInt("order_id");
+            }
+        }
+
+        LOGGER.info("method setInsertedId return orderId: " + orderId);
+        return orderId;
+    }
+
+    private void setStatement(PreparedStatement statement, RepairOrder repairOrder) throws SQLException {
+        LOGGER.info("method setStatement start with statement: " + statement + " and repairOrder " + repairOrder);
+        statement.setString(1, repairOrder.getDeviceName());
+        statement.setString(2, repairOrder.getDescription());
+        statement.setInt(3, repairOrder.getCustomerId());
+        statement.setInt(4, repairOrder.getManagerId());
+        statement.setInt(5, repairOrder.getMasterId());
+        statement.setBigDecimal(6, repairOrder.getPrice());
+        LOGGER.info("method setStatement new statement: " + statement);
+        LOGGER.info("method setStatement done");
+    }
+
+    /**
+     * Select Repair order by orderId
+     *
+     * @param repairOrderId for select all user's orders.
+     * @return return valid order if it exist.
+     * @exception IdInvalid in case method couldn't find anything by repairOrderId
+     */
+    @Override
+    public RepairOrder read(Integer repairOrderId) throws IdInvalid {
+        LOGGER.info("method read start with repairOrderId: " + repairOrderId);
+        RepairOrder theOrder = null;
+        try (Connection connection = dataSource.getConnection();
+             PreparedStatement statement = connection.prepareStatement(properties.getProperty("select"))){
+            statement.setInt(1, repairOrderId);
+
+            ResultSet resultSet = statement.executeQuery();
+
+            if (resultSet != null && resultSet.next()){
+                theOrder = madeOrder(resultSet);
+            } else {
+                LOGGER.warn("method read throw IdInvalid Exception with message: \"Invalid repairOrderId\"" + repairOrderId);
+                throw new IdInvalid("Invalid repairOrderId");
+            }
+        } catch (SQLException e) {
+            LOGGER.warn("method read caught SQLException " + e);
+            e.printStackTrace();
+        }
+
+        LOGGER.info("method read return: " + theOrder);
+        return theOrder;
+    }
+
+    /**
+     * Create new {@link RepairOrder} with all parameters from DB
+     *
+     * @param resultSet with parameters for creating from DB
+     * @return valid {@link RepairOrder}
+     * @throws SQLException in case some problem with resultSet
+     */
+    private RepairOrder madeOrder(ResultSet resultSet) throws SQLException {
+        LOGGER.info("method madeOrder start with resultSet: " + resultSet);
+        Integer orderId = resultSet.getInt("order_id");
+        String deviceName = resultSet.getString("device_name");
+        String description = resultSet.getString("description");
+        Integer customerId = resultSet.getInt("customer_id");
+        Integer managerId = resultSet.getInt("manager_id");
+        Integer masterId = resultSet.getInt("master_id");
+        Date date = resultSet.getDate("date");
+        BigDecimal price = resultSet.getBigDecimal("order_price");
+
+        return new RepairOrder.Builder(deviceName, customerId)
+                .orderId(orderId)
+                .description(description)
+                .managerId(managerId)
+                .masterId(masterId)
+                .date(date)
+                .price(price)
+                .build();
+    }
+
+    /**
+     * Update all order's fields
+     * except date and orderId
+     *
+     * @param repairOrder for updating
+     * @return true if order has updated
+     */
+    @Override
+    public boolean update(RepairOrder repairOrder) {
+        LOGGER.info("method update start with order: " + repairOrder);
+        boolean result = false;
+        try (Connection connection = dataSource.getConnection();
+             PreparedStatement statement = connection.prepareStatement(properties.getProperty("update"))){
+
+            setStatement(statement, repairOrder);
+
+            statement.setInt(7, repairOrder.getOrderId());
+
+            result = statement.executeUpdate() == 1;
+        } catch (SQLException e) {
+            LOGGER.info("method update caught SQLException");
+            e.printStackTrace();
+        }
+
+        LOGGER.info("method update return result " + result);
+        return result;
+    }
+
+    @Override
+    public boolean delete(Integer repairOrderId) {
+        LOGGER.info("method delete start with repairOrderId: " + repairOrderId);
+        boolean result = false;
+        try (Connection connection = dataSource.getConnection();
+             PreparedStatement statement = connection.prepareStatement(properties.getProperty("delete"))){
+            statement.setInt(1, repairOrderId);
+
+            result = statement.executeUpdate() == 1;
+        } catch (SQLException e) {
+            LOGGER.warn("method delete caught SQLException " + e);
+            e.printStackTrace();
+        }
+
+        LOGGER.info("method delete return result: " + result);
+        return result;
+    }
+}

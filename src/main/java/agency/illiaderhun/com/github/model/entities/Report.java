@@ -45,8 +45,8 @@ public class Report {
 
         // Optional fields
         private int reportId;
-        private String replacedPart;
-        private String theWorkDone;
+        private String replacedPart = "default parts";
+        private String theWorkDone = "some work has been done";
         private Date date;
 
         public Builder(String breakingDescription, int orderId){
