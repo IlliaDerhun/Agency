@@ -100,11 +100,6 @@ public class RepairOrderJdbcDaoTest {
         new RepairOrderJdbcDao(dataSource, properties).readByMasterId(1);
     }
 
-    @Test
-    public void createRepairOrderByValidEntityReturnTrue() {
-        assertTrue(new RepairOrderJdbcDao(dataSource, properties).create(repairOrder));
-    }
-
     @Test(expected = NullPointerException.class)
     public void createRepairOrderByInValidEntityThrowException() {
         new RepairOrderJdbcDao(dataSource, properties).create(null);

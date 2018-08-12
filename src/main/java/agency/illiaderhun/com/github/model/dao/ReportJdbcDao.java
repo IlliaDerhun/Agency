@@ -111,12 +111,16 @@ public class ReportJdbcDao implements ReportDao<Report, Integer> {
             statement.executeUpdate();
 
             report.setReportId(setInsertedId());
+            report.setDate(read(report.getReportId()).getDate());
 
             result = true;
 
         } catch (SQLException e) {
             LOGGER.warn("method create caught SLQException " + e);
             e.printStackTrace();
+        } catch (IdInvalid idInvalid) {
+            LOGGER.warn("method create caught IdInvalid");
+            idInvalid.printStackTrace();
         }
 
         LOGGER.info("method create return result: " + result);

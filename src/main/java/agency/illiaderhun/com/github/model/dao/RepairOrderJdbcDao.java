@@ -12,6 +12,13 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.Properties;
 
+/**
+ * RepairOrderJdbcDao works with Repair's entities
+ * can do all CRUD operations and readBy - Customer/Manager/Master - Id
+ *
+ * @author Illia Derhun
+ * @version 1.0
+ */
 public class RepairOrderJdbcDao implements RepairOrderDao<RepairOrder, Integer> {
 
     private static final Logger LOGGER = Logger.getLogger(RepairOrderJdbcDao.class.getSimpleName());
@@ -150,11 +157,15 @@ public class RepairOrderJdbcDao implements RepairOrderDao<RepairOrder, Integer> 
             statement.executeUpdate();
 
             repairOrder.setOrderId(setInsertedId());
+            repairOrder.setDate(read(repairOrder.getOrderId()).getDate());
 
             result = true;
         } catch (SQLException e) {
             LOGGER.warn("method create caught SQLException " + e);
             e.printStackTrace();
+        } catch (IdInvalid idInvalid) {
+            LOGGER.warn("method create caught IdInvalid Exception");
+            idInvalid.printStackTrace();
         }
 
         LOGGER.info("method create return result: " + result);

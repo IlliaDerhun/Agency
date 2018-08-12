@@ -75,11 +75,6 @@ public class ReportJdbcDaoTest {
         new ReportJdbcDao(dataSource, properties).readByOrderId(87);
     }
 
-    @Test
-    public void createValidEntityReturnTrue() {
-        assertTrue(new ReportJdbcDao(dataSource, properties).create(report));
-    }
-
     @Test(expected = NullPointerException.class)
     public void createInValidEntityThrowException() {
         new ReportJdbcDao(dataSource, properties).create(null);
