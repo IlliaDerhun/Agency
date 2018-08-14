@@ -1,5 +1,6 @@
 package agency.illiaderhun.com.github.model.dao;
 
+import agency.illiaderhun.com.github.model.ConnectionManager;
 import agency.illiaderhun.com.github.model.QueriesManager;
 import agency.illiaderhun.com.github.model.daoFactory.UserDaoFactory;
 import agency.illiaderhun.com.github.model.daoInterface.UserDao;
@@ -38,7 +39,7 @@ public class UserJdbcDaoTest {
 
     private User user;
 
-    private UserDao<User, Integer> userDao = UserDaoFactory.getUser("mysql");
+    private UserDao<User, Integer> userDao = new UserJdbcDao(ConnectionManager.testConnection(), QueriesManager.getProperties("user"));
 
     @Before
     public void setUp() throws Exception {

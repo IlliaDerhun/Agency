@@ -48,6 +48,7 @@ public class UserJdbcDao implements UserDao<User, Integer> {
     public User readByEmail(String eMail) throws InvalidSearchingString {
         LOGGER.info("readByEmail start with: email: " + eMail);
         User theUser = null;
+        LOGGER.info("readByEmail query: " + properties.getProperty("selectByEmail"));
         try (Connection connection = dataSource.getConnection();
              PreparedStatement statement = connection.prepareStatement(properties.getProperty("selectByEmail"))){
             statement.setString(1, eMail);

@@ -51,6 +51,10 @@ public class RepairOrder {
     @Column(name = "price")
     private BigDecimal price;
 
+    private String managerName;
+    private String masterName;
+    private String customerName;
+
     public static class Builder{
 
         // Required fields
@@ -187,6 +191,30 @@ public class RepairOrder {
 
     public void setPrice(double price) {
         this.price = BigDecimal.valueOf(price).setScale(2, RoundingMode.HALF_EVEN);
+    }
+
+    public String getManagerName() {
+        return managerName;
+    }
+
+    public void setManagerName(String managerName) {
+        this.managerName = managerName;
+    }
+
+    public String getMasterName() {
+        return masterName;
+    }
+
+    public void setMasterName(String masterName) {
+        this.masterName = masterName;
+    }
+
+    public String getCustomerName() {
+        return customerName;
+    }
+
+    public void setCustomerName(String customerName) {
+        this.customerName = customerName;
     }
 
     @Override

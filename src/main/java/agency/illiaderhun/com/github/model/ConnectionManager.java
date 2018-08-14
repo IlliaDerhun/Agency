@@ -12,7 +12,8 @@ import java.sql.SQLException;
 public class ConnectionManager {
 
     private static Connection connection = null;
-    private static SJDataSource dataSource = null;
+    private static DataSource dataSource = null;
+//    private static SJDataSource dataSource = null;
 
     public static Connection getConnection(){
         try {
@@ -26,7 +27,21 @@ public class ConnectionManager {
         return connection;
     }
 
-    public static SJDataSource modelConnection(){
+    public static DataSource modelConnection(){
+        try {
+
+//            dataSource = (SJDataSource) (new InitialContext().lookup("db"));
+            Context context = (Context) new InitialContext().lookup("java:comp/env");
+            dataSource = (DataSource) context.lookup("jdbc/dbpool");
+
+
+        } catch (NamingException e) {
+            e.printStackTrace();
+        }
+        return dataSource;
+    }
+
+    public static DataSource testConnection(){
         try {
 
             dataSource = (SJDataSource) (new InitialContext().lookup("db"));

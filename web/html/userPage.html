@@ -1,0 +1,65 @@
+<link href="css/userPage.css" rel="stylesheet">
+<div class="userInfo">
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th><fmt:message key="label.name"/></th>
+                <th><fmt:message key="label.surname"/></th>
+                <th><fmt:message key="label.phone"/></th>
+                <th><fmt:message key="label.email"/></th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>${sessionScope.firstName}</td>
+                    <td>${sessionScope.lastName}</td>
+                    <td>${sessionScope.phone}</td>
+                    <td>${sessionScope.email}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="userOrders">
+    <h4>Your orders</h4>
+    <div class="table-responsive">
+        <table class="table table-striped table-hover">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th><fmt:message key="label.deviceName"/></th>
+                <th><fmt:message key="label.description"/></th>
+                <th><fmt:message key="label.manager"/></th>
+                <th><fmt:message key="label.date"/></th>
+                <th><fmt:message key="label.price"/></th>
+            </tr>
+            </thead>
+            <tbody>
+                <c:forEach var="tempOrder" items="${repairOrders}">
+                    <tr>
+                        <td>${tempOrder.orderId}</td>
+                        <td>${tempOrder.deviceName}</td>
+                        <td>${tempOrder.description}</td>
+                        <td>${tempOrder.managerName}</td>
+                        <td>${tempOrder.date}</td>
+                        <td>${tempOrder.price}</td>
+                    </tr>
+                </c:forEach>
+                <tr>
+                    <td></td>
+                    <td><input type="text" name="deviceName"/></td>
+                    <td><input type="text" name="description"/></td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        <c:url var="addLink" value="ControllerDispatcherServlet">
+                            <c:param name="command" value="ADD_ORDER"/>
+                        </c:url>
+                        <a href="${addLink}"><fmt:message key="label.add"/></a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

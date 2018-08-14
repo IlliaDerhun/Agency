@@ -1,25 +1,36 @@
 package agency.illiaderhun.com.github.model;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import org.apache.log4j.Logger;
+
+import java.io.*;
 import java.util.Properties;
 
 public class QueriesManager {
 
+    private static final Logger LOGGER = Logger.getLogger(QueriesManager.class.getSimpleName());
+
     public static Properties getProperties(String forWhom){
+        LOGGER.info("getProperties start find property for " + forWhom);
+
+        String pathToProperties = "queries/"+ forWhom + "/queries.properties";
+
+        ClassLoader loader = Thread.currentThread().getContextClassLoader();
 
         Properties properties = new Properties();
 
-        StringBuffer pathToProperties = new StringBuffer("src/main/resources/queries/" + forWhom + "/queries.properties");
-
-        try (FileInputStream fileInputStream = new FileInputStream(String.valueOf(pathToProperties))){
-            properties.load(fileInputStream);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
+        try(InputStream resourceStream = loader.getResourceAsStream(pathToProperties)) {
+            properties.load(resourceStream);
+            LOGGER.info("Property has been loaded");
+        } catch (FileNotFoundException ex){
+            LOGGER.info("Property caught FileNotFoundException");
+            ex.printStackTrace();
+        }
+        catch (IOException e) {
+            LOGGER.info("Property caught IOException");
             e.printStackTrace();
         }
+
+        LOGGER.info("Property return properties " + properties);
         return properties;
     }
 }

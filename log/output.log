@@ -1,302 +1,253 @@
-2018-08-12 11:34:17,581  INFO FeedbackJdbcDao:96 - method create start with: Feedback{commentId=1, comment='Быстро сделали. Варит кофе хорошо, пена тоже есть', reportId=2, date=2018-07-19}
-2018-08-12 11:34:17,586  INFO FeedbackJdbcDao:122 - method setInsertedId start with no parameters
-2018-08-12 11:34:17,587  INFO FeedbackJdbcDao:133 - method setInsertedId return orderId: 0
-2018-08-12 11:34:17,588  INFO FeedbackJdbcDao:151 - method read start with entityId 0
-2018-08-12 11:34:17,588  WARN FeedbackJdbcDao:163 - method read throw IdInvalid Exception with message: "Invalid feedback" 0
-2018-08-12 11:34:17,589  WARN FeedbackJdbcDao:113 - method create caught IdInvalid Exception
-2018-08-12 11:34:17,591  INFO FeedbackJdbcDao:117 - method create return result false
-2018-08-12 11:37:11,729  INFO FeedbackJdbcDao:96 - method create start with: Feedback{commentId=1, comment='Быстро сделали. Варит кофе хорошо, пена тоже есть', reportId=2, date=2018-07-19}
-2018-08-12 11:37:11,734  INFO FeedbackJdbcDao:122 - method setInsertedId start with no parameters
-2018-08-12 11:37:11,735  INFO FeedbackJdbcDao:133 - method setInsertedId return orderId: 0
-2018-08-12 11:37:11,735  INFO FeedbackJdbcDao:151 - method read start with entityId 0
-2018-08-12 11:37:11,736  WARN FeedbackJdbcDao:163 - method read throw IdInvalid Exception with message: "Invalid feedback" 0
-2018-08-12 11:37:11,736  WARN FeedbackJdbcDao:113 - method create caught IdInvalid Exception
-2018-08-12 11:37:11,739  INFO FeedbackJdbcDao:117 - method create return result false
-2018-08-12 11:39:12,531  INFO FeedbackJdbcDao:96 - method create start with: Feedback{commentId=1, comment='Быстро сделали. Варит кофе хорошо, пена тоже есть', reportId=2, date=2018-07-19}
-2018-08-12 11:39:13,590  WARN FeedbackJdbcDao:110 - method create caught SLQException
-2018-08-12 11:39:13,592  INFO FeedbackJdbcDao:117 - method create return result false
-2018-08-12 11:39:46,421  INFO FeedbackJdbcDao:96 - method create start with: Feedback{commentId=1, comment='Быстро сделали. Варит кофе хорошо, пена тоже есть', reportId=128, date=2018-07-19}
-2018-08-12 11:39:47,069  INFO FeedbackJdbcDao:122 - method setInsertedId start with no parameters
-2018-08-12 11:39:47,128  INFO FeedbackJdbcDao:133 - method setInsertedId return orderId: 30
-2018-08-12 11:39:47,128  INFO FeedbackJdbcDao:151 - method read start with entityId 30
-2018-08-12 11:39:47,139  INFO FeedbackJdbcDao:171 - method read return feedback Feedback{commentId=30, comment='Быстро сделали. Варит кофе хорошо, пена тоже есть', reportId=128, date=2018-08-12}
-2018-08-12 11:39:47,140  INFO FeedbackJdbcDao:117 - method create return result true
-2018-08-12 11:43:05,017  INFO RepairOrderJdbcDao:46 - method readByCustomerId start with customerId: 2
-2018-08-12 11:43:05,040  WARN RepairOrderJdbcDao:60 - method readByCustomerId throw IdInvalid Exception "Invalid customer id: "2
-2018-08-12 11:43:05,046  INFO RepairOrderJdbcDao:293 - method delete start with repairOrderId: 0
-2018-08-12 11:43:05,047  INFO RepairOrderJdbcDao:305 - method delete return result: false
-2018-08-12 11:43:05,055  INFO RepairOrderJdbcDao:116 - method readByMasterId start with masterId: 1
-2018-08-12 11:43:05,056  WARN RepairOrderJdbcDao:130 - method readByMasterId throw IdInvalid Exception "Invalid manager id: "1
-2018-08-12 11:43:05,069  INFO RepairOrderJdbcDao:46 - method readByCustomerId start with customerId: 1
-2018-08-12 11:43:06,405  INFO RepairOrderJdbcDao:243 - method madeOrder start with resultSet: com.mysql.cj.jdbc.result.ResultSetImpl@3745e5c6
-2018-08-12 11:43:06,408  INFO RepairOrderJdbcDao:243 - method madeOrder start with resultSet: com.mysql.cj.jdbc.result.ResultSetImpl@3745e5c6
-2018-08-12 11:43:06,408  INFO RepairOrderJdbcDao:243 - method madeOrder start with resultSet: com.mysql.cj.jdbc.result.ResultSetImpl@3745e5c6
-2018-08-12 11:43:06,452  INFO RepairOrderJdbcDao:68 - method readByCustomerId return all customer's orders[RepairOrder{orderId=1, deviceName='Viena CoffeeMachine', description='Перестала варить кофе. Не делает пену.', customerId=1, managerId=2, masterId=3, date=2018-07-18, price=243.55}, RepairOrder{orderId=42, deviceName='Rolex', description='Doesnt show time', customerId=1, managerId=2, masterId=3, date=2018-08-06, price=432.99}, RepairOrder{orderId=87, deviceName='some device', description='some description', customerId=1, managerId=2, masterId=3, date=2018-08-07, price=123.45}]
-2018-08-12 11:43:06,457  INFO RepairOrderJdbcDao:81 - method readByManagerId start with managerId: 3
-2018-08-12 11:43:06,457  WARN RepairOrderJdbcDao:95 - method readByManagerId throw IdInvalid Exception "Invalid manager id: "3
-2018-08-12 11:43:06,465  INFO RepairOrderJdbcDao:116 - method readByMasterId start with masterId: 3
-2018-08-12 11:43:06,476  INFO RepairOrderJdbcDao:243 - method madeOrder start with resultSet: com.mysql.cj.jdbc.result.ResultSetImpl@4387b79e
-2018-08-12 11:43:06,477  INFO RepairOrderJdbcDao:243 - method madeOrder start with resultSet: com.mysql.cj.jdbc.result.ResultSetImpl@4387b79e
-2018-08-12 11:43:06,480  INFO RepairOrderJdbcDao:243 - method madeOrder start with resultSet: com.mysql.cj.jdbc.result.ResultSetImpl@4387b79e
-2018-08-12 11:43:06,481  INFO RepairOrderJdbcDao:138 - method readByMasterId return all master's orders[RepairOrder{orderId=1, deviceName='Viena CoffeeMachine', description='Перестала варить кофе. Не делает пену.', customerId=1, managerId=2, masterId=3, date=2018-07-18, price=243.55}, RepairOrder{orderId=42, deviceName='Rolex', description='Doesnt show time', customerId=1, managerId=2, masterId=3, date=2018-08-06, price=432.99}, RepairOrder{orderId=87, deviceName='some device', description='some description', customerId=1, managerId=2, masterId=3, date=2018-08-07, price=123.45}]
-2018-08-12 11:43:06,485  INFO RepairOrderJdbcDao:212 - method read start with repairOrderId: 0
-2018-08-12 11:43:06,486  WARN RepairOrderJdbcDao:223 - method read throw IdInvalid Exception with message: "Invalid repairOrderId"0
-2018-08-12 11:43:06,491  INFO RepairOrderJdbcDao:212 - method read start with repairOrderId: 87
-2018-08-12 11:43:06,502  INFO RepairOrderJdbcDao:243 - method madeOrder start with resultSet: com.mysql.cj.jdbc.result.ResultSetImpl@10db82ae
-2018-08-12 11:43:06,503  INFO RepairOrderJdbcDao:231 - method read return: RepairOrder{orderId=87, deviceName='some device', description='some description', customerId=1, managerId=2, masterId=3, date=2018-08-07, price=123.45}
-2018-08-12 11:43:06,507  INFO RepairOrderJdbcDao:81 - method readByManagerId start with managerId: 2
-2018-08-12 11:43:06,520  INFO RepairOrderJdbcDao:243 - method madeOrder start with resultSet: com.mysql.cj.jdbc.result.ResultSetImpl@402e37bc
-2018-08-12 11:43:06,521  INFO RepairOrderJdbcDao:243 - method madeOrder start with resultSet: com.mysql.cj.jdbc.result.ResultSetImpl@402e37bc
-2018-08-12 11:43:06,521  INFO RepairOrderJdbcDao:243 - method madeOrder start with resultSet: com.mysql.cj.jdbc.result.ResultSetImpl@402e37bc
-2018-08-12 11:43:06,523  INFO RepairOrderJdbcDao:103 - method readByManagerId return all manager's orders[RepairOrder{orderId=1, deviceName='Viena CoffeeMachine', description='Перестала варить кофе. Не делает пену.', customerId=1, managerId=2, masterId=3, date=2018-07-18, price=243.55}, RepairOrder{orderId=42, deviceName='Rolex', description='Doesnt show time', customerId=1, managerId=2, masterId=3, date=2018-08-06, price=432.99}, RepairOrder{orderId=87, deviceName='some device', description='some description', customerId=1, managerId=2, masterId=3, date=2018-08-07, price=123.45}]
-2018-08-12 11:43:06,528  INFO RepairOrderJdbcDao:150 - method create start with order: null
-2018-08-12 11:43:06,528  INFO RepairOrderJdbcDao:192 - method setStatement start with statement: statement and repairOrder null
-2018-08-12 11:43:06,534  INFO RepairOrderJdbcDao:150 - method create start with order: RepairOrder{orderId=87, deviceName='some device', description='some description', customerId=1, managerId=2, masterId=3, date=2018-08-07, price=123.45}
-2018-08-12 11:43:06,535  INFO RepairOrderJdbcDao:192 - method setStatement start with statement: statement and repairOrder RepairOrder{orderId=87, deviceName='some device', description='some description', customerId=1, managerId=2, masterId=3, date=2018-08-07, price=123.45}
-2018-08-12 11:43:06,537  INFO RepairOrderJdbcDao:199 - method setStatement new statement: statement
-2018-08-12 11:43:06,537  INFO RepairOrderJdbcDao:200 - method setStatement done
-2018-08-12 11:43:06,538  INFO RepairOrderJdbcDao:176 - method setInsertedId start with no parameters
-2018-08-12 11:43:06,538  INFO RepairOrderJdbcDao:187 - method setInsertedId return orderId: 0
-2018-08-12 11:43:06,539  INFO RepairOrderJdbcDao:212 - method read start with repairOrderId: 0
-2018-08-12 11:43:06,539  WARN RepairOrderJdbcDao:223 - method read throw IdInvalid Exception with message: "Invalid repairOrderId"0
-2018-08-12 11:43:06,540  WARN RepairOrderJdbcDao:167 - method create caught IdInvalid Exception
-2018-08-12 11:43:06,543  INFO RepairOrderJdbcDao:171 - method create return result: false
-2018-08-12 11:47:01,590  INFO FeedbackJdbcDao:96 - method create start with: Feedback{commentId=1, comment='Быстро сделали. Варит кофе хорошо, пена тоже есть', reportId=128, date=2018-07-19}
-2018-08-12 11:47:01,594  INFO FeedbackJdbcDao:122 - method setInsertedId start with no parameters
-2018-08-12 11:47:01,595  INFO FeedbackJdbcDao:133 - method setInsertedId return orderId: 0
-2018-08-12 11:47:01,596  INFO FeedbackJdbcDao:151 - method read start with entityId 0
-2018-08-12 11:47:01,596  WARN FeedbackJdbcDao:163 - method read throw IdInvalid Exception with message: "Invalid feedback" 0
-2018-08-12 11:47:01,597  WARN FeedbackJdbcDao:113 - method create caught IdInvalid Exception
-2018-08-12 11:47:01,599  INFO FeedbackJdbcDao:117 - method create return result false
-2018-08-12 11:47:34,000  INFO FeedbackJdbcDao:96 - method create start with: Feedback{commentId=1, comment='Быстро сделали. Варит кофе хорошо, пена тоже есть', reportId=128, date=2018-07-19}
-2018-08-12 11:47:34,006  INFO FeedbackJdbcDao:122 - method setInsertedId start with no parameters
-2018-08-12 11:47:34,006  INFO FeedbackJdbcDao:133 - method setInsertedId return orderId: 0
-2018-08-12 11:47:34,006  INFO FeedbackJdbcDao:151 - method read start with entityId 0
-2018-08-12 11:47:34,007  WARN FeedbackJdbcDao:163 - method read throw IdInvalid Exception with message: "Invalid feedback" 0
-2018-08-12 11:47:34,007  WARN FeedbackJdbcDao:113 - method create caught IdInvalid Exception
-2018-08-12 11:47:34,009  INFO FeedbackJdbcDao:117 - method create return result false
-2018-08-12 11:54:16,362  INFO FeedbackJdbcDao:96 - method create start with: Feedback{commentId=1, comment='Быстро сделали. Варит кофе хорошо, пена тоже есть', reportId=128, date=2018-07-19}
-2018-08-12 11:54:16,368  INFO FeedbackJdbcDao:122 - method setInsertedId start with no parameters
-2018-08-12 11:54:16,368  INFO FeedbackJdbcDao:133 - method setInsertedId return orderId: 0
-2018-08-12 11:54:16,369  INFO FeedbackJdbcDao:151 - method read start with entityId 0
-2018-08-12 11:54:16,369  WARN FeedbackJdbcDao:163 - method read throw IdInvalid Exception with message: "Invalid feedback" 0
-2018-08-12 11:54:16,370  WARN FeedbackJdbcDao:113 - method create caught IdInvalid Exception
-2018-08-12 11:54:16,372  INFO FeedbackJdbcDao:117 - method create return result false
-2018-08-12 11:55:20,143  INFO ReportJdbcDao:44 - method readByOrderId start with orderId: 87
-2018-08-12 11:55:20,153  WARN ReportJdbcDao:55 - method readByOrderId throw IdInvalid Exception message: "Invalid order's id": 87
-2018-08-12 11:55:20,160  INFO ReportJdbcDao:168 - method read start with entityId: 128
-2018-08-12 11:55:21,186  INFO ReportJdbcDao:76 - method madeReport start with resultSet: com.mysql.cj.jdbc.result.ResultSetImpl@2b6856dd
-2018-08-12 11:55:21,189  INFO ReportJdbcDao:92 - method madeReport return report: Report{reportId=128, replacedPart='2', breakingDescription='Some description', theWorkDone='Some work done', orderId=87, date=2018-08-07}
-2018-08-12 11:55:21,191  INFO ReportJdbcDao:188 - method read return report: Report{reportId=128, replacedPart='2', breakingDescription='Some description', theWorkDone='Some work done', orderId=87, date=2018-08-07}
-2018-08-12 11:55:21,195  INFO ReportJdbcDao:222 - method delete start with reportId: 128
-2018-08-12 11:55:21,196  INFO ReportJdbcDao:233 - method delete return result: false
-2018-08-12 11:55:21,203  INFO ReportJdbcDao:104 - method create start with report: null
-2018-08-12 11:55:21,211  INFO ReportJdbcDao:44 - method readByOrderId start with orderId: 87
-2018-08-12 11:55:21,240  INFO ReportJdbcDao:76 - method madeReport start with resultSet: com.mysql.cj.jdbc.result.ResultSetImpl@78047b92
-2018-08-12 11:55:21,241  INFO ReportJdbcDao:92 - method madeReport return report: Report{reportId=128, replacedPart='2', breakingDescription='Some description', theWorkDone='Some work done', orderId=87, date=2018-08-07}
-2018-08-12 11:55:21,242  INFO ReportJdbcDao:64 - method readByOrderId return report: Report{reportId=128, replacedPart='2', breakingDescription='Some description', theWorkDone='Some work done', orderId=87, date=2018-08-07}
-2018-08-12 11:55:21,245  INFO ReportJdbcDao:168 - method read start with entityId: 0
-2018-08-12 11:55:21,251  WARN ReportJdbcDao:180 - method read throw IdInvalid Exception message: "Invalid entityId": 0
-2018-08-12 11:55:21,257  INFO ReportJdbcDao:104 - method create start with report: Report{reportId=128, replacedPart='2', breakingDescription='Some description', theWorkDone='Some work done', orderId=87, date=2018-08-07}
-2018-08-12 11:55:21,259  INFO ReportJdbcDao:138 - method setInsertedId start with no parameters
-2018-08-12 11:55:21,260  INFO ReportJdbcDao:148 - method setInsertedId return reportId: 0
-2018-08-12 11:55:21,260  INFO ReportJdbcDao:168 - method read start with entityId: 0
-2018-08-12 11:55:21,261  WARN ReportJdbcDao:180 - method read throw IdInvalid Exception message: "Invalid entityId": 0
-2018-08-12 11:55:21,261  WARN ReportJdbcDao:122 - method create caught IdInvalid
-2018-08-12 11:55:21,263  INFO ReportJdbcDao:126 - method create return result: false
-2018-08-12 11:55:44,432  INFO FeedbackJdbcDao:151 - method read start with entityId 0
-2018-08-12 11:55:44,794  WARN FeedbackJdbcDao:163 - method read throw IdInvalid Exception with message: "Invalid feedback" 0
-2018-08-12 11:55:44,798  INFO FeedbackJdbcDao:96 - method create start with: null
-2018-08-12 11:55:44,802  INFO FeedbackJdbcDao:204 - method delete start with feedbackId: 0
-2018-08-12 11:55:44,802  INFO FeedbackJdbcDao:216 - method delete return result: false
-2018-08-12 11:55:44,808  INFO FeedbackJdbcDao:45 - method readByReportId start with reportId: 2
-2018-08-12 11:55:44,818  INFO FeedbackJdbcDao:64 - method readByReportId return: Feedback{commentId=1, comment='Быстро сделали. Варит кофе хорошо, пена тоже есть', reportId=2, date=2018-07-19}
-2018-08-12 11:55:44,829  INFO FeedbackJdbcDao:151 - method read start with entityId 1
-2018-08-12 11:55:44,837  INFO FeedbackJdbcDao:171 - method read return feedback Feedback{commentId=1, comment='Быстро сделали. Варит кофе хорошо, пена тоже есть', reportId=2, date=2018-07-19}
-2018-08-12 11:55:44,844  INFO FeedbackJdbcDao:45 - method readByReportId start with reportId: 0
-2018-08-12 11:55:44,845  WARN FeedbackJdbcDao:57 - method readByReportId throw IdInvalidException with message: "Invalid reportId: "0
-2018-08-12 11:55:44,926  INFO RepairOrderJdbcDao:46 - method readByCustomerId start with customerId: 2
-2018-08-12 11:55:44,926  WARN RepairOrderJdbcDao:60 - method readByCustomerId throw IdInvalid Exception "Invalid customer id: "2
-2018-08-12 11:55:44,930  INFO RepairOrderJdbcDao:293 - method delete start with repairOrderId: 0
-2018-08-12 11:55:44,931  INFO RepairOrderJdbcDao:305 - method delete return result: false
-2018-08-12 11:55:44,933  INFO RepairOrderJdbcDao:116 - method readByMasterId start with masterId: 1
-2018-08-12 11:55:44,935  WARN RepairOrderJdbcDao:130 - method readByMasterId throw IdInvalid Exception "Invalid manager id: "1
-2018-08-12 11:55:44,940  INFO RepairOrderJdbcDao:46 - method readByCustomerId start with customerId: 1
-2018-08-12 11:55:44,947  INFO RepairOrderJdbcDao:243 - method madeOrder start with resultSet: com.mysql.cj.jdbc.result.ResultSetImpl@31d7b7bf
-2018-08-12 11:55:44,948  INFO RepairOrderJdbcDao:243 - method madeOrder start with resultSet: com.mysql.cj.jdbc.result.ResultSetImpl@31d7b7bf
-2018-08-12 11:55:44,949  INFO RepairOrderJdbcDao:243 - method madeOrder start with resultSet: com.mysql.cj.jdbc.result.ResultSetImpl@31d7b7bf
-2018-08-12 11:55:44,949  INFO RepairOrderJdbcDao:68 - method readByCustomerId return all customer's orders[RepairOrder{orderId=1, deviceName='Viena CoffeeMachine', description='Перестала варить кофе. Не делает пену.', customerId=1, managerId=2, masterId=3, date=2018-07-18, price=243.55}, RepairOrder{orderId=42, deviceName='Rolex', description='Doesnt show time', customerId=1, managerId=2, masterId=3, date=2018-08-06, price=432.99}, RepairOrder{orderId=87, deviceName='some device', description='some description', customerId=1, managerId=2, masterId=3, date=2018-08-07, price=123.45}]
-2018-08-12 11:55:44,952  INFO RepairOrderJdbcDao:81 - method readByManagerId start with managerId: 3
-2018-08-12 11:55:44,953  WARN RepairOrderJdbcDao:95 - method readByManagerId throw IdInvalid Exception "Invalid manager id: "3
-2018-08-12 11:55:44,957  INFO RepairOrderJdbcDao:116 - method readByMasterId start with masterId: 3
-2018-08-12 11:55:44,965  INFO RepairOrderJdbcDao:243 - method madeOrder start with resultSet: com.mysql.cj.jdbc.result.ResultSetImpl@1817d444
-2018-08-12 11:55:44,966  INFO RepairOrderJdbcDao:243 - method madeOrder start with resultSet: com.mysql.cj.jdbc.result.ResultSetImpl@1817d444
-2018-08-12 11:55:44,967  INFO RepairOrderJdbcDao:243 - method madeOrder start with resultSet: com.mysql.cj.jdbc.result.ResultSetImpl@1817d444
-2018-08-12 11:55:44,967  INFO RepairOrderJdbcDao:138 - method readByMasterId return all master's orders[RepairOrder{orderId=1, deviceName='Viena CoffeeMachine', description='Перестала варить кофе. Не делает пену.', customerId=1, managerId=2, masterId=3, date=2018-07-18, price=243.55}, RepairOrder{orderId=42, deviceName='Rolex', description='Doesnt show time', customerId=1, managerId=2, masterId=3, date=2018-08-06, price=432.99}, RepairOrder{orderId=87, deviceName='some device', description='some description', customerId=1, managerId=2, masterId=3, date=2018-08-07, price=123.45}]
-2018-08-12 11:55:44,971  INFO RepairOrderJdbcDao:212 - method read start with repairOrderId: 0
-2018-08-12 11:55:44,972  WARN RepairOrderJdbcDao:223 - method read throw IdInvalid Exception with message: "Invalid repairOrderId"0
-2018-08-12 11:55:44,979  INFO RepairOrderJdbcDao:212 - method read start with repairOrderId: 87
-2018-08-12 11:55:44,987  INFO RepairOrderJdbcDao:243 - method madeOrder start with resultSet: com.mysql.cj.jdbc.result.ResultSetImpl@15c43bd9
-2018-08-12 11:55:44,988  INFO RepairOrderJdbcDao:231 - method read return: RepairOrder{orderId=87, deviceName='some device', description='some description', customerId=1, managerId=2, masterId=3, date=2018-08-07, price=123.45}
-2018-08-12 11:55:44,992  INFO RepairOrderJdbcDao:81 - method readByManagerId start with managerId: 2
-2018-08-12 11:55:44,997  INFO RepairOrderJdbcDao:243 - method madeOrder start with resultSet: com.mysql.cj.jdbc.result.ResultSetImpl@3daa422a
-2018-08-12 11:55:44,998  INFO RepairOrderJdbcDao:243 - method madeOrder start with resultSet: com.mysql.cj.jdbc.result.ResultSetImpl@3daa422a
-2018-08-12 11:55:44,999  INFO RepairOrderJdbcDao:243 - method madeOrder start with resultSet: com.mysql.cj.jdbc.result.ResultSetImpl@3daa422a
-2018-08-12 11:55:45,000  INFO RepairOrderJdbcDao:103 - method readByManagerId return all manager's orders[RepairOrder{orderId=1, deviceName='Viena CoffeeMachine', description='Перестала варить кофе. Не делает пену.', customerId=1, managerId=2, masterId=3, date=2018-07-18, price=243.55}, RepairOrder{orderId=42, deviceName='Rolex', description='Doesnt show time', customerId=1, managerId=2, masterId=3, date=2018-08-06, price=432.99}, RepairOrder{orderId=87, deviceName='some device', description='some description', customerId=1, managerId=2, masterId=3, date=2018-08-07, price=123.45}]
-2018-08-12 11:55:45,010  INFO RepairOrderJdbcDao:150 - method create start with order: null
-2018-08-12 11:55:45,011  INFO RepairOrderJdbcDao:192 - method setStatement start with statement: statement and repairOrder null
-2018-08-12 11:55:45,028  INFO ReportJdbcDao:44 - method readByOrderId start with orderId: 87
-2018-08-12 11:55:45,031  WARN ReportJdbcDao:55 - method readByOrderId throw IdInvalid Exception message: "Invalid order's id": 87
-2018-08-12 11:55:45,038  INFO ReportJdbcDao:168 - method read start with entityId: 128
-2018-08-12 11:55:45,049  INFO ReportJdbcDao:76 - method madeReport start with resultSet: com.mysql.cj.jdbc.result.ResultSetImpl@498d318c
-2018-08-12 11:55:45,049  INFO ReportJdbcDao:92 - method madeReport return report: Report{reportId=128, replacedPart='2', breakingDescription='Some description', theWorkDone='Some work done', orderId=87, date=2018-08-07}
-2018-08-12 11:55:45,050  INFO ReportJdbcDao:188 - method read return report: Report{reportId=128, replacedPart='2', breakingDescription='Some description', theWorkDone='Some work done', orderId=87, date=2018-08-07}
-2018-08-12 11:55:45,054  INFO ReportJdbcDao:222 - method delete start with reportId: 128
-2018-08-12 11:55:45,055  INFO ReportJdbcDao:233 - method delete return result: false
-2018-08-12 11:55:45,058  INFO ReportJdbcDao:104 - method create start with report: null
-2018-08-12 11:55:45,067  INFO ReportJdbcDao:44 - method readByOrderId start with orderId: 87
-2018-08-12 11:55:45,080  INFO ReportJdbcDao:76 - method madeReport start with resultSet: com.mysql.cj.jdbc.result.ResultSetImpl@42e99e4a
-2018-08-12 11:55:45,081  INFO ReportJdbcDao:92 - method madeReport return report: Report{reportId=128, replacedPart='2', breakingDescription='Some description', theWorkDone='Some work done', orderId=87, date=2018-08-07}
-2018-08-12 11:55:45,083  INFO ReportJdbcDao:64 - method readByOrderId return report: Report{reportId=128, replacedPart='2', breakingDescription='Some description', theWorkDone='Some work done', orderId=87, date=2018-08-07}
-2018-08-12 11:55:45,087  INFO ReportJdbcDao:168 - method read start with entityId: 0
-2018-08-12 11:55:45,098  WARN ReportJdbcDao:180 - method read throw IdInvalid Exception message: "Invalid entityId": 0
-2018-08-12 11:55:45,394  INFO SpareJdbcDao:105 - method create start with spare: Spare{detailId=1, name='Engine', description='Engine for small coffee machine: Viena, Trevi...', quantity=4, price=243.55}
-2018-08-12 11:55:45,395  INFO SpareJdbcDao:133 - method setInsertedId start with no parameters
-2018-08-12 11:55:45,396  INFO SpareJdbcDao:142 - method setInsertedId return spareId: 0
-2018-08-12 11:55:45,397  INFO SpareJdbcDao:121 - method create return result of creation: true
-2018-08-12 11:55:45,401  INFO SpareJdbcDao:105 - method create start with spare: null
-2018-08-12 11:55:45,406  INFO SpareJdbcDao:162 - method read start with entityID: 0
-2018-08-12 11:55:45,418 ERROR SpareJdbcDao:173 - method read throw IdInvalid Exception with message: "Invalid spare's ID : "0
-2018-08-12 11:55:45,423  INFO SpareJdbcDao:162 - method read start with entityID: 1
-2018-08-12 11:55:45,432  INFO SpareJdbcDao:81 - method madeSpare start with resultSet: com.mysql.cj.jdbc.result.ResultSetImpl@6572421
-2018-08-12 11:55:45,433  INFO SpareJdbcDao:93 - method madeSpare return spare Spare{detailId=1, name='Engine', description='Engine for small coffee machine: Viena, Trevi...', quantity=4, price=243.55}
-2018-08-12 11:55:45,434  INFO SpareJdbcDao:182 - method read return spare: Spare{detailId=1, name='Engine', description='Engine for small coffee machine: Viena, Trevi...', quantity=4, price=243.55}
-2018-08-12 11:55:45,439  INFO SpareJdbcDao:49 - method readByName start with name: Engine
-2018-08-12 11:55:45,444  INFO SpareJdbcDao:49 - method readByName start with name: 
-2018-08-12 11:55:45,445  WARN SpareJdbcDao:61 - method readByName throw InvalidSearchingString Exception with message: "Invalid spare's name: "
-2018-08-12 11:55:45,452  INFO SpareJdbcDao:213 - method delete start with entityId 0
-2018-08-12 11:55:45,453  INFO SpareJdbcDao:225 - method delete return result: false
-2018-08-12 11:55:45,459  INFO SpareJdbcDao:49 - method readByName start with name: Engine
-2018-08-12 11:55:45,467  INFO SpareJdbcDao:81 - method madeSpare start with resultSet: com.mysql.cj.jdbc.result.ResultSetImpl@399f45b1
-2018-08-12 11:55:45,468  INFO SpareJdbcDao:93 - method madeSpare return spare Spare{detailId=1, name='Engine', description='Engine for small coffee machine: Viena, Trevi...', quantity=4, price=243.55}
-2018-08-12 11:55:45,469  INFO SpareJdbcDao:69 - method readByName return spare: Spare{detailId=1, name='Engine', description='Engine for small coffee machine: Viena, Trevi...', quantity=4, price=243.55}
-2018-08-12 11:55:45,669  INFO UserJdbcDao:77 - method create start with user: null
-2018-08-12 11:55:45,677  INFO UserJdbcDao:116 - method setStatement start with parameters: statement: com.mysql.cj.jdbc.ClientPreparedStatement: INSERT INTO agency_test.user(first_name, last_name, e_mail, phone, catchword, role_id) VALUES(** NOT SPECIFIED **, ** NOT SPECIFIED **, ** NOT SPECIFIED **, ** NOT SPECIFIED **, ** NOT SPECIFIED **, ** NOT SPECIFIED **);. And user: null
-2018-08-12 11:55:45,683  INFO UserJdbcDao:135 - method read start with entityId: 1
-2018-08-12 11:55:45,691  INFO UserJdbcDao:163 - method madeUser start with resultSet: com.mysql.cj.jdbc.result.ResultSetImpl@77fbd92c
-2018-08-12 11:55:45,692  INFO UserJdbcDao:180 - method madeUser return user: User{userId=1, firstName='Александр', lastName='Петров', eMail='alex.petrov@gmail.com', phone='+38(095)45-55-782', catchword='8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', roleId=1}
-2018-08-12 11:55:45,693  INFO UserJdbcDao:151 - method read return user: User{userId=1, firstName='Александр', lastName='Петров', eMail='alex.petrov@gmail.com', phone='+38(095)45-55-782', catchword='8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', roleId=1}
-2018-08-12 11:55:45,700  INFO UserJdbcDao:210 - method delete start with entityId0
-2018-08-12 11:55:45,701  INFO UserJdbcDao:221 - method delete return result: false
-2018-08-12 11:55:45,705  INFO UserJdbcDao:77 - method create start with user: User{userId=1, firstName='Александр', lastName='Петров', eMail='alex.petrov@gmail.com', phone='+38(095)45-55-782', catchword='8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', roleId=1}
-2018-08-12 11:55:45,706  INFO UserJdbcDao:116 - method setStatement start with parameters: statement: statement. And user: User{userId=1, firstName='Александр', lastName='Петров', eMail='alex.petrov@gmail.com', phone='+38(095)45-55-782', catchword='8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', roleId=1}
-2018-08-12 11:55:45,706  INFO UserJdbcDao:123 - method setStatement end with parameters: statement: statement. And user: User{userId=1, firstName='Александр', lastName='Петров', eMail='alex.petrov@gmail.com', phone='+38(095)45-55-782', catchword='8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', roleId=1}
-2018-08-12 11:55:45,707  INFO UserJdbcDao:102 - setInsertedId start with no parameters
-2018-08-12 11:55:45,707  INFO UserJdbcDao:111 - setInsertedId return userId: 0
-2018-08-12 11:55:45,707  INFO UserJdbcDao:90 - method create return user: User{userId=0, firstName='Александр', lastName='Петров', eMail='alex.petrov@gmail.com', phone='+38(095)45-55-782', catchword='8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', roleId=1}
-2018-08-12 11:55:45,711  INFO UserJdbcDao:49 - readByEmail start with: email: null
-2018-08-12 11:55:45,714 ERROR UserJdbcDao:58 - nonexistent user email null
-2018-08-12 11:55:45,721  INFO UserJdbcDao:135 - method read start with entityId: 1
-2018-08-12 11:55:45,722 ERROR UserJdbcDao:144 - nonexistent userId : 1
-2018-08-12 11:55:45,733  INFO UserJdbcDao:49 - readByEmail start with: email: alex.petrov@gmail.com
-2018-08-12 11:55:45,744  INFO UserJdbcDao:163 - method madeUser start with resultSet: com.mysql.cj.jdbc.result.ResultSetImpl@49e53c76
-2018-08-12 11:55:45,745  INFO UserJdbcDao:180 - method madeUser return user: User{userId=1, firstName='Александр', lastName='Петров', eMail='alex.petrov@gmail.com', phone='+38(095)45-55-782', catchword='8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', roleId=1}
-2018-08-12 11:55:45,747  INFO UserJdbcDao:65 - readByEmail end & return: User{userId=1, firstName='Александр', lastName='Петров', eMail='alex.petrov@gmail.com', phone='+38(095)45-55-782', catchword='8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', roleId=1}
-2018-08-12 11:56:18,037  INFO FeedbackJdbcDao:151 - method read start with entityId 0
-2018-08-12 11:56:18,660  WARN FeedbackJdbcDao:163 - method read throw IdInvalid Exception with message: "Invalid feedback" 0
-2018-08-12 11:56:18,671  INFO FeedbackJdbcDao:96 - method create start with: null
-2018-08-12 11:56:18,680  INFO FeedbackJdbcDao:204 - method delete start with feedbackId: 0
-2018-08-12 11:56:18,683  INFO FeedbackJdbcDao:216 - method delete return result: false
-2018-08-12 11:56:18,707  INFO FeedbackJdbcDao:45 - method readByReportId start with reportId: 2
-2018-08-12 11:56:18,720  INFO FeedbackJdbcDao:64 - method readByReportId return: Feedback{commentId=1, comment='Быстро сделали. Варит кофе хорошо, пена тоже есть', reportId=2, date=2018-07-19}
-2018-08-12 11:56:18,725  INFO FeedbackJdbcDao:151 - method read start with entityId 1
-2018-08-12 11:56:18,736  INFO FeedbackJdbcDao:171 - method read return feedback Feedback{commentId=1, comment='Быстро сделали. Варит кофе хорошо, пена тоже есть', reportId=2, date=2018-07-19}
-2018-08-12 11:56:18,746  INFO FeedbackJdbcDao:45 - method readByReportId start with reportId: 0
-2018-08-12 11:56:18,747  WARN FeedbackJdbcDao:57 - method readByReportId throw IdInvalidException with message: "Invalid reportId: "0
-2018-08-12 11:56:18,840  INFO RepairOrderJdbcDao:46 - method readByCustomerId start with customerId: 2
-2018-08-12 11:56:18,841  WARN RepairOrderJdbcDao:60 - method readByCustomerId throw IdInvalid Exception "Invalid customer id: "2
-2018-08-12 11:56:18,848  INFO RepairOrderJdbcDao:293 - method delete start with repairOrderId: 0
-2018-08-12 11:56:18,849  INFO RepairOrderJdbcDao:305 - method delete return result: false
-2018-08-12 11:56:18,864  INFO RepairOrderJdbcDao:116 - method readByMasterId start with masterId: 1
-2018-08-12 11:56:18,867  WARN RepairOrderJdbcDao:130 - method readByMasterId throw IdInvalid Exception "Invalid manager id: "1
-2018-08-12 11:56:18,878  INFO RepairOrderJdbcDao:46 - method readByCustomerId start with customerId: 1
-2018-08-12 11:56:18,889  INFO RepairOrderJdbcDao:243 - method madeOrder start with resultSet: com.mysql.cj.jdbc.result.ResultSetImpl@67a20f67
-2018-08-12 11:56:18,891  INFO RepairOrderJdbcDao:243 - method madeOrder start with resultSet: com.mysql.cj.jdbc.result.ResultSetImpl@67a20f67
-2018-08-12 11:56:18,892  INFO RepairOrderJdbcDao:243 - method madeOrder start with resultSet: com.mysql.cj.jdbc.result.ResultSetImpl@67a20f67
-2018-08-12 11:56:18,894  INFO RepairOrderJdbcDao:68 - method readByCustomerId return all customer's orders[RepairOrder{orderId=1, deviceName='Viena CoffeeMachine', description='Перестала варить кофе. Не делает пену.', customerId=1, managerId=2, masterId=3, date=2018-07-18, price=243.55}, RepairOrder{orderId=42, deviceName='Rolex', description='Doesnt show time', customerId=1, managerId=2, masterId=3, date=2018-08-06, price=432.99}, RepairOrder{orderId=87, deviceName='some device', description='some description', customerId=1, managerId=2, masterId=3, date=2018-08-07, price=123.45}]
-2018-08-12 11:56:18,898  INFO RepairOrderJdbcDao:81 - method readByManagerId start with managerId: 3
-2018-08-12 11:56:18,899  WARN RepairOrderJdbcDao:95 - method readByManagerId throw IdInvalid Exception "Invalid manager id: "3
-2018-08-12 11:56:18,905  INFO RepairOrderJdbcDao:116 - method readByMasterId start with masterId: 3
-2018-08-12 11:56:18,913  INFO RepairOrderJdbcDao:243 - method madeOrder start with resultSet: com.mysql.cj.jdbc.result.ResultSetImpl@63355449
-2018-08-12 11:56:18,914  INFO RepairOrderJdbcDao:243 - method madeOrder start with resultSet: com.mysql.cj.jdbc.result.ResultSetImpl@63355449
-2018-08-12 11:56:18,916  INFO RepairOrderJdbcDao:243 - method madeOrder start with resultSet: com.mysql.cj.jdbc.result.ResultSetImpl@63355449
-2018-08-12 11:56:18,918  INFO RepairOrderJdbcDao:138 - method readByMasterId return all master's orders[RepairOrder{orderId=1, deviceName='Viena CoffeeMachine', description='Перестала варить кофе. Не делает пену.', customerId=1, managerId=2, masterId=3, date=2018-07-18, price=243.55}, RepairOrder{orderId=42, deviceName='Rolex', description='Doesnt show time', customerId=1, managerId=2, masterId=3, date=2018-08-06, price=432.99}, RepairOrder{orderId=87, deviceName='some device', description='some description', customerId=1, managerId=2, masterId=3, date=2018-08-07, price=123.45}]
-2018-08-12 11:56:18,923  INFO RepairOrderJdbcDao:212 - method read start with repairOrderId: 0
-2018-08-12 11:56:18,924  WARN RepairOrderJdbcDao:223 - method read throw IdInvalid Exception with message: "Invalid repairOrderId"0
-2018-08-12 11:56:18,934  INFO RepairOrderJdbcDao:212 - method read start with repairOrderId: 87
-2018-08-12 11:56:18,948  INFO RepairOrderJdbcDao:243 - method madeOrder start with resultSet: com.mysql.cj.jdbc.result.ResultSetImpl@5c30a9b0
-2018-08-12 11:56:18,949  INFO RepairOrderJdbcDao:231 - method read return: RepairOrder{orderId=87, deviceName='some device', description='some description', customerId=1, managerId=2, masterId=3, date=2018-08-07, price=123.45}
-2018-08-12 11:56:18,954  INFO RepairOrderJdbcDao:81 - method readByManagerId start with managerId: 2
-2018-08-12 11:56:18,964  INFO RepairOrderJdbcDao:243 - method madeOrder start with resultSet: com.mysql.cj.jdbc.result.ResultSetImpl@50a638b5
-2018-08-12 11:56:18,964  INFO RepairOrderJdbcDao:243 - method madeOrder start with resultSet: com.mysql.cj.jdbc.result.ResultSetImpl@50a638b5
-2018-08-12 11:56:18,965  INFO RepairOrderJdbcDao:243 - method madeOrder start with resultSet: com.mysql.cj.jdbc.result.ResultSetImpl@50a638b5
-2018-08-12 11:56:18,966  INFO RepairOrderJdbcDao:103 - method readByManagerId return all manager's orders[RepairOrder{orderId=1, deviceName='Viena CoffeeMachine', description='Перестала варить кофе. Не делает пену.', customerId=1, managerId=2, masterId=3, date=2018-07-18, price=243.55}, RepairOrder{orderId=42, deviceName='Rolex', description='Doesnt show time', customerId=1, managerId=2, masterId=3, date=2018-08-06, price=432.99}, RepairOrder{orderId=87, deviceName='some device', description='some description', customerId=1, managerId=2, masterId=3, date=2018-08-07, price=123.45}]
-2018-08-12 11:56:18,974  INFO RepairOrderJdbcDao:150 - method create start with order: null
-2018-08-12 11:56:18,975  INFO RepairOrderJdbcDao:192 - method setStatement start with statement: statement and repairOrder null
-2018-08-12 11:56:19,009  INFO ReportJdbcDao:44 - method readByOrderId start with orderId: 87
-2018-08-12 11:56:19,010  WARN ReportJdbcDao:55 - method readByOrderId throw IdInvalid Exception message: "Invalid order's id": 87
-2018-08-12 11:56:19,017  INFO ReportJdbcDao:168 - method read start with entityId: 128
-2018-08-12 11:56:19,027  INFO ReportJdbcDao:76 - method madeReport start with resultSet: com.mysql.cj.jdbc.result.ResultSetImpl@3835c46
-2018-08-12 11:56:19,028  INFO ReportJdbcDao:92 - method madeReport return report: Report{reportId=128, replacedPart='2', breakingDescription='Some description', theWorkDone='Some work done', orderId=87, date=2018-08-07}
-2018-08-12 11:56:19,029  INFO ReportJdbcDao:188 - method read return report: Report{reportId=128, replacedPart='2', breakingDescription='Some description', theWorkDone='Some work done', orderId=87, date=2018-08-07}
-2018-08-12 11:56:19,033  INFO ReportJdbcDao:222 - method delete start with reportId: 128
-2018-08-12 11:56:19,034  INFO ReportJdbcDao:233 - method delete return result: false
-2018-08-12 11:56:19,039  INFO ReportJdbcDao:104 - method create start with report: null
-2018-08-12 11:56:19,044  INFO ReportJdbcDao:44 - method readByOrderId start with orderId: 87
-2018-08-12 11:56:19,054  INFO ReportJdbcDao:76 - method madeReport start with resultSet: com.mysql.cj.jdbc.result.ResultSetImpl@43195e57
-2018-08-12 11:56:19,055  INFO ReportJdbcDao:92 - method madeReport return report: Report{reportId=128, replacedPart='2', breakingDescription='Some description', theWorkDone='Some work done', orderId=87, date=2018-08-07}
-2018-08-12 11:56:19,056  INFO ReportJdbcDao:64 - method readByOrderId return report: Report{reportId=128, replacedPart='2', breakingDescription='Some description', theWorkDone='Some work done', orderId=87, date=2018-08-07}
-2018-08-12 11:56:19,061  INFO ReportJdbcDao:168 - method read start with entityId: 0
-2018-08-12 11:56:19,076  WARN ReportJdbcDao:180 - method read throw IdInvalid Exception message: "Invalid entityId": 0
-2018-08-12 11:56:19,096  INFO SpareJdbcDao:105 - method create start with spare: Spare{detailId=1, name='Engine', description='Engine for small coffee machine: Viena, Trevi...', quantity=4, price=243.55}
-2018-08-12 11:56:19,097  INFO SpareJdbcDao:133 - method setInsertedId start with no parameters
-2018-08-12 11:56:19,097  INFO SpareJdbcDao:142 - method setInsertedId return spareId: 0
-2018-08-12 11:56:19,099  INFO SpareJdbcDao:121 - method create return result of creation: true
-2018-08-12 11:56:19,107  INFO SpareJdbcDao:105 - method create start with spare: null
-2018-08-12 11:56:19,112  INFO SpareJdbcDao:162 - method read start with entityID: 0
-2018-08-12 11:56:19,127 ERROR SpareJdbcDao:173 - method read throw IdInvalid Exception with message: "Invalid spare's ID : "0
-2018-08-12 11:56:19,132  INFO SpareJdbcDao:162 - method read start with entityID: 1
-2018-08-12 11:56:19,146  INFO SpareJdbcDao:81 - method madeSpare start with resultSet: com.mysql.cj.jdbc.result.ResultSetImpl@6b927fb
-2018-08-12 11:56:19,146  INFO SpareJdbcDao:93 - method madeSpare return spare Spare{detailId=1, name='Engine', description='Engine for small coffee machine: Viena, Trevi...', quantity=4, price=243.55}
-2018-08-12 11:56:19,147  INFO SpareJdbcDao:182 - method read return spare: Spare{detailId=1, name='Engine', description='Engine for small coffee machine: Viena, Trevi...', quantity=4, price=243.55}
-2018-08-12 11:56:19,151  INFO SpareJdbcDao:49 - method readByName start with name: Engine
-2018-08-12 11:56:19,156  INFO SpareJdbcDao:49 - method readByName start with name: 
-2018-08-12 11:56:19,156  WARN SpareJdbcDao:61 - method readByName throw InvalidSearchingString Exception with message: "Invalid spare's name: "
-2018-08-12 11:56:19,161  INFO SpareJdbcDao:213 - method delete start with entityId 0
-2018-08-12 11:56:19,161  INFO SpareJdbcDao:225 - method delete return result: false
-2018-08-12 11:56:19,166  INFO SpareJdbcDao:49 - method readByName start with name: Engine
-2018-08-12 11:56:19,174  INFO SpareJdbcDao:81 - method madeSpare start with resultSet: com.mysql.cj.jdbc.result.ResultSetImpl@6572421
-2018-08-12 11:56:19,175  INFO SpareJdbcDao:93 - method madeSpare return spare Spare{detailId=1, name='Engine', description='Engine for small coffee machine: Viena, Trevi...', quantity=4, price=243.55}
-2018-08-12 11:56:19,176  INFO SpareJdbcDao:69 - method readByName return spare: Spare{detailId=1, name='Engine', description='Engine for small coffee machine: Viena, Trevi...', quantity=4, price=243.55}
-2018-08-12 11:56:19,204  INFO UserJdbcDao:77 - method create start with user: null
-2018-08-12 11:56:19,212  INFO UserJdbcDao:116 - method setStatement start with parameters: statement: com.mysql.cj.jdbc.ClientPreparedStatement: INSERT INTO agency_test.user(first_name, last_name, e_mail, phone, catchword, role_id) VALUES(** NOT SPECIFIED **, ** NOT SPECIFIED **, ** NOT SPECIFIED **, ** NOT SPECIFIED **, ** NOT SPECIFIED **, ** NOT SPECIFIED **);. And user: null
-2018-08-12 11:56:19,217  INFO UserJdbcDao:135 - method read start with entityId: 1
-2018-08-12 11:56:19,228  INFO UserJdbcDao:163 - method madeUser start with resultSet: com.mysql.cj.jdbc.result.ResultSetImpl@77847718
-2018-08-12 11:56:19,229  INFO UserJdbcDao:180 - method madeUser return user: User{userId=1, firstName='Александр', lastName='Петров', eMail='alex.petrov@gmail.com', phone='+38(095)45-55-782', catchword='8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', roleId=1}
-2018-08-12 11:56:19,231  INFO UserJdbcDao:151 - method read return user: User{userId=1, firstName='Александр', lastName='Петров', eMail='alex.petrov@gmail.com', phone='+38(095)45-55-782', catchword='8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', roleId=1}
-2018-08-12 11:56:19,235  INFO UserJdbcDao:210 - method delete start with entityId0
-2018-08-12 11:56:19,238  INFO UserJdbcDao:221 - method delete return result: false
-2018-08-12 11:56:19,243  INFO UserJdbcDao:77 - method create start with user: User{userId=1, firstName='Александр', lastName='Петров', eMail='alex.petrov@gmail.com', phone='+38(095)45-55-782', catchword='8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', roleId=1}
-2018-08-12 11:56:19,243  INFO UserJdbcDao:116 - method setStatement start with parameters: statement: statement. And user: User{userId=1, firstName='Александр', lastName='Петров', eMail='alex.petrov@gmail.com', phone='+38(095)45-55-782', catchword='8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', roleId=1}
-2018-08-12 11:56:19,244  INFO UserJdbcDao:123 - method setStatement end with parameters: statement: statement. And user: User{userId=1, firstName='Александр', lastName='Петров', eMail='alex.petrov@gmail.com', phone='+38(095)45-55-782', catchword='8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', roleId=1}
-2018-08-12 11:56:19,244  INFO UserJdbcDao:102 - setInsertedId start with no parameters
-2018-08-12 11:56:19,245  INFO UserJdbcDao:111 - setInsertedId return userId: 0
-2018-08-12 11:56:19,245  INFO UserJdbcDao:90 - method create return user: User{userId=0, firstName='Александр', lastName='Петров', eMail='alex.petrov@gmail.com', phone='+38(095)45-55-782', catchword='8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', roleId=1}
-2018-08-12 11:56:19,248  INFO UserJdbcDao:49 - readByEmail start with: email: null
-2018-08-12 11:56:19,249 ERROR UserJdbcDao:58 - nonexistent user email null
-2018-08-12 11:56:19,252  INFO UserJdbcDao:135 - method read start with entityId: 1
-2018-08-12 11:56:19,253 ERROR UserJdbcDao:144 - nonexistent userId : 1
-2018-08-12 11:56:19,257  INFO UserJdbcDao:49 - readByEmail start with: email: alex.petrov@gmail.com
-2018-08-12 11:56:19,270  INFO UserJdbcDao:163 - method madeUser start with resultSet: com.mysql.cj.jdbc.result.ResultSetImpl@747ddf94
-2018-08-12 11:56:19,271  INFO UserJdbcDao:180 - method madeUser return user: User{userId=1, firstName='Александр', lastName='Петров', eMail='alex.petrov@gmail.com', phone='+38(095)45-55-782', catchword='8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', roleId=1}
-2018-08-12 11:56:19,272  INFO UserJdbcDao:65 - readByEmail end & return: User{userId=1, firstName='Александр', lastName='Петров', eMail='alex.petrov@gmail.com', phone='+38(095)45-55-782', catchword='8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', roleId=1}
+2018-08-14 12:17:02,874  INFO UserJdbcDao:77 - method create start with user: null
+2018-08-14 12:17:03,733  INFO UserJdbcDao:116 - method setStatement start with parameters: statement: com.mysql.cj.jdbc.ClientPreparedStatement: INSERT INTO agency_test.user(first_name, last_name, e_mail, phone, catchword, role_id) VALUES(** NOT SPECIFIED **, ** NOT SPECIFIED **, ** NOT SPECIFIED **, ** NOT SPECIFIED **, ** NOT SPECIFIED **, ** NOT SPECIFIED **);. And user: null
+2018-08-14 12:17:03,733  INFO UserJdbcDao:135 - method read start with entityId: 1
+2018-08-14 12:17:03,749  INFO UserJdbcDao:163 - method madeUser start with resultSet: com.mysql.cj.jdbc.result.ResultSetImpl@2b6856dd
+2018-08-14 12:17:03,749  INFO UserJdbcDao:180 - method madeUser return user: User{userId=1, firstName='Александр', lastName='Петров', eMail='alex.petrov@gmail.com', phone='+38(095)45-55-782', catchword='8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', roleId=1}
+2018-08-14 12:17:03,749  INFO UserJdbcDao:151 - method read return user: User{userId=1, firstName='Александр', lastName='Петров', eMail='alex.petrov@gmail.com', phone='+38(095)45-55-782', catchword='8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', roleId=1}
+2018-08-14 12:17:03,749  INFO UserJdbcDao:210 - method delete start with entityId0
+2018-08-14 12:17:03,764  INFO UserJdbcDao:221 - method delete return result: false
+2018-08-14 12:17:03,764  INFO UserJdbcDao:77 - method create start with user: User{userId=1, firstName='Александр', lastName='Петров', eMail='alex.petrov@gmail.com', phone='+38(095)45-55-782', catchword='8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', roleId=1}
+2018-08-14 12:17:03,764  INFO UserJdbcDao:116 - method setStatement start with parameters: statement: statement. And user: User{userId=1, firstName='Александр', lastName='Петров', eMail='alex.petrov@gmail.com', phone='+38(095)45-55-782', catchword='8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', roleId=1}
+2018-08-14 12:17:03,764  INFO UserJdbcDao:123 - method setStatement end with parameters: statement: statement. And user: User{userId=1, firstName='Александр', lastName='Петров', eMail='alex.petrov@gmail.com', phone='+38(095)45-55-782', catchword='8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', roleId=1}
+2018-08-14 12:17:03,764  INFO UserJdbcDao:102 - setInsertedId start with no parameters
+2018-08-14 12:17:03,764  INFO UserJdbcDao:111 - setInsertedId return userId: 0
+2018-08-14 12:17:03,764  INFO UserJdbcDao:90 - method create return user: User{userId=0, firstName='Александр', lastName='Петров', eMail='alex.petrov@gmail.com', phone='+38(095)45-55-782', catchword='8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', roleId=1}
+2018-08-14 12:17:03,780  INFO UserJdbcDao:49 - readByEmail start with: email: null
+2018-08-14 12:17:03,780 ERROR UserJdbcDao:58 - nonexistent user email null
+2018-08-14 12:17:03,780  INFO UserJdbcDao:135 - method read start with entityId: 1
+2018-08-14 12:17:03,780 ERROR UserJdbcDao:144 - nonexistent userId : 1
+2018-08-14 12:17:03,780  INFO UserJdbcDao:49 - readByEmail start with: email: alex.petrov@gmail.com
+2018-08-14 12:17:03,796  INFO UserJdbcDao:163 - method madeUser start with resultSet: com.mysql.cj.jdbc.result.ResultSetImpl@527e5409
+2018-08-14 12:17:03,796  INFO UserJdbcDao:180 - method madeUser return user: User{userId=1, firstName='Александр', lastName='Петров', eMail='alex.petrov@gmail.com', phone='+38(095)45-55-782', catchword='8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', roleId=1}
+2018-08-14 12:17:03,796  INFO UserJdbcDao:65 - readByEmail end & return: User{userId=1, firstName='Александр', lastName='Петров', eMail='alex.petrov@gmail.com', phone='+38(095)45-55-782', catchword='8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', roleId=1}
+2018-08-14 12:42:12,189  INFO QueriesManager:15 - getProperties start find property for user
+2018-08-14 12:42:12,221  INFO QueriesManager:22 - Property has been loaded
+2018-08-14 12:42:12,221  INFO QueriesManager:31 - Property return properties {select=SELECT * FROM agency_test.user WHERE user_id = ?;, selectByEmail=SELECT * FROM agency_test.user WHERE e_mail = ?;, readInsertedId=SELECT max(user_id) AS user_id FROM agency_test.user;, insert=INSERT INTO agency_test.user(first_name, last_name, e_mail, phone, catchword, role_id) VALUES(?, ?, ?, ?, ?, ?);, delete=DELETE FROM agency_test.user WHERE user_id = ?;, update=UPDATE agency_test.user SET first_name = ?, last_name = ?, e_mail = ?, phone = ?, catchword = ?, role_id = ? WHERE user_id = ?;}
+2018-08-14 12:42:12,767  INFO UserJdbcDao:78 - method create start with user: null
+2018-08-14 12:42:13,642  INFO UserJdbcDao:117 - method setStatement start with parameters: statement: com.mysql.cj.jdbc.ClientPreparedStatement: INSERT INTO agency_test.user(first_name, last_name, e_mail, phone, catchword, role_id) VALUES(** NOT SPECIFIED **, ** NOT SPECIFIED **, ** NOT SPECIFIED **, ** NOT SPECIFIED **, ** NOT SPECIFIED **, ** NOT SPECIFIED **);. And user: null
+2018-08-14 12:42:13,642  INFO QueriesManager:15 - getProperties start find property for user
+2018-08-14 12:42:13,642  INFO QueriesManager:22 - Property has been loaded
+2018-08-14 12:42:13,642  INFO QueriesManager:31 - Property return properties {select=SELECT * FROM agency_test.user WHERE user_id = ?;, selectByEmail=SELECT * FROM agency_test.user WHERE e_mail = ?;, readInsertedId=SELECT max(user_id) AS user_id FROM agency_test.user;, insert=INSERT INTO agency_test.user(first_name, last_name, e_mail, phone, catchword, role_id) VALUES(?, ?, ?, ?, ?, ?);, delete=DELETE FROM agency_test.user WHERE user_id = ?;, update=UPDATE agency_test.user SET first_name = ?, last_name = ?, e_mail = ?, phone = ?, catchword = ?, role_id = ? WHERE user_id = ?;}
+2018-08-14 12:42:13,642  INFO UserJdbcDao:136 - method read start with entityId: 1
+2018-08-14 12:42:13,673  INFO UserJdbcDao:164 - method madeUser start with resultSet: com.mysql.cj.jdbc.result.ResultSetImpl@2b6856dd
+2018-08-14 12:42:13,673  INFO UserJdbcDao:181 - method madeUser return user: User{userId=1, firstName='Александр', lastName='Петров', eMail='alex.petrov@gmail.com', phone='+38(095)45-55-782', catchword='8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', roleId=1}
+2018-08-14 12:42:13,673  INFO UserJdbcDao:152 - method read return user: User{userId=1, firstName='Александр', lastName='Петров', eMail='alex.petrov@gmail.com', phone='+38(095)45-55-782', catchword='8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', roleId=1}
+2018-08-14 12:42:13,689  INFO QueriesManager:15 - getProperties start find property for user
+2018-08-14 12:42:13,689  INFO QueriesManager:22 - Property has been loaded
+2018-08-14 12:42:13,689  INFO QueriesManager:31 - Property return properties {select=SELECT * FROM agency_test.user WHERE user_id = ?;, selectByEmail=SELECT * FROM agency_test.user WHERE e_mail = ?;, readInsertedId=SELECT max(user_id) AS user_id FROM agency_test.user;, insert=INSERT INTO agency_test.user(first_name, last_name, e_mail, phone, catchword, role_id) VALUES(?, ?, ?, ?, ?, ?);, delete=DELETE FROM agency_test.user WHERE user_id = ?;, update=UPDATE agency_test.user SET first_name = ?, last_name = ?, e_mail = ?, phone = ?, catchword = ?, role_id = ? WHERE user_id = ?;}
+2018-08-14 12:42:13,689  INFO QueriesManager:15 - getProperties start find property for user
+2018-08-14 12:42:13,689  INFO QueriesManager:22 - Property has been loaded
+2018-08-14 12:42:13,689  INFO QueriesManager:31 - Property return properties {select=SELECT * FROM agency_test.user WHERE user_id = ?;, selectByEmail=SELECT * FROM agency_test.user WHERE e_mail = ?;, readInsertedId=SELECT max(user_id) AS user_id FROM agency_test.user;, insert=INSERT INTO agency_test.user(first_name, last_name, e_mail, phone, catchword, role_id) VALUES(?, ?, ?, ?, ?, ?);, delete=DELETE FROM agency_test.user WHERE user_id = ?;, update=UPDATE agency_test.user SET first_name = ?, last_name = ?, e_mail = ?, phone = ?, catchword = ?, role_id = ? WHERE user_id = ?;}
+2018-08-14 12:42:13,689  INFO UserJdbcDao:211 - method delete start with entityId0
+2018-08-14 12:42:13,705  INFO UserJdbcDao:222 - method delete return result: false
+2018-08-14 12:42:13,705  INFO QueriesManager:15 - getProperties start find property for user
+2018-08-14 12:42:13,705  INFO QueriesManager:22 - Property has been loaded
+2018-08-14 12:42:13,705  INFO QueriesManager:31 - Property return properties {select=SELECT * FROM agency_test.user WHERE user_id = ?;, selectByEmail=SELECT * FROM agency_test.user WHERE e_mail = ?;, readInsertedId=SELECT max(user_id) AS user_id FROM agency_test.user;, insert=INSERT INTO agency_test.user(first_name, last_name, e_mail, phone, catchword, role_id) VALUES(?, ?, ?, ?, ?, ?);, delete=DELETE FROM agency_test.user WHERE user_id = ?;, update=UPDATE agency_test.user SET first_name = ?, last_name = ?, e_mail = ?, phone = ?, catchword = ?, role_id = ? WHERE user_id = ?;}
+2018-08-14 12:42:13,705  INFO QueriesManager:15 - getProperties start find property for user
+2018-08-14 12:42:13,705  INFO QueriesManager:22 - Property has been loaded
+2018-08-14 12:42:13,705  INFO QueriesManager:31 - Property return properties {select=SELECT * FROM agency_test.user WHERE user_id = ?;, selectByEmail=SELECT * FROM agency_test.user WHERE e_mail = ?;, readInsertedId=SELECT max(user_id) AS user_id FROM agency_test.user;, insert=INSERT INTO agency_test.user(first_name, last_name, e_mail, phone, catchword, role_id) VALUES(?, ?, ?, ?, ?, ?);, delete=DELETE FROM agency_test.user WHERE user_id = ?;, update=UPDATE agency_test.user SET first_name = ?, last_name = ?, e_mail = ?, phone = ?, catchword = ?, role_id = ? WHERE user_id = ?;}
+2018-08-14 12:42:13,705  INFO UserJdbcDao:78 - method create start with user: User{userId=1, firstName='Александр', lastName='Петров', eMail='alex.petrov@gmail.com', phone='+38(095)45-55-782', catchword='8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', roleId=1}
+2018-08-14 12:42:13,705  INFO UserJdbcDao:117 - method setStatement start with parameters: statement: statement. And user: User{userId=1, firstName='Александр', lastName='Петров', eMail='alex.petrov@gmail.com', phone='+38(095)45-55-782', catchword='8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', roleId=1}
+2018-08-14 12:42:13,720  INFO UserJdbcDao:124 - method setStatement end with parameters: statement: statement. And user: User{userId=1, firstName='Александр', lastName='Петров', eMail='alex.petrov@gmail.com', phone='+38(095)45-55-782', catchword='8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', roleId=1}
+2018-08-14 12:42:13,720  INFO UserJdbcDao:103 - setInsertedId start with no parameters
+2018-08-14 12:42:13,720  INFO UserJdbcDao:112 - setInsertedId return userId: 0
+2018-08-14 12:42:13,720  INFO UserJdbcDao:91 - method create return user: User{userId=0, firstName='Александр', lastName='Петров', eMail='alex.petrov@gmail.com', phone='+38(095)45-55-782', catchword='8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', roleId=1}
+2018-08-14 12:42:13,736  INFO QueriesManager:15 - getProperties start find property for user
+2018-08-14 12:42:13,736  INFO QueriesManager:22 - Property has been loaded
+2018-08-14 12:42:13,736  INFO QueriesManager:31 - Property return properties {select=SELECT * FROM agency_test.user WHERE user_id = ?;, selectByEmail=SELECT * FROM agency_test.user WHERE e_mail = ?;, readInsertedId=SELECT max(user_id) AS user_id FROM agency_test.user;, insert=INSERT INTO agency_test.user(first_name, last_name, e_mail, phone, catchword, role_id) VALUES(?, ?, ?, ?, ?, ?);, delete=DELETE FROM agency_test.user WHERE user_id = ?;, update=UPDATE agency_test.user SET first_name = ?, last_name = ?, e_mail = ?, phone = ?, catchword = ?, role_id = ? WHERE user_id = ?;}
+2018-08-14 12:42:13,751  INFO QueriesManager:15 - getProperties start find property for user
+2018-08-14 12:42:13,751  INFO QueriesManager:22 - Property has been loaded
+2018-08-14 12:42:13,751  INFO QueriesManager:31 - Property return properties {select=SELECT * FROM agency_test.user WHERE user_id = ?;, selectByEmail=SELECT * FROM agency_test.user WHERE e_mail = ?;, readInsertedId=SELECT max(user_id) AS user_id FROM agency_test.user;, insert=INSERT INTO agency_test.user(first_name, last_name, e_mail, phone, catchword, role_id) VALUES(?, ?, ?, ?, ?, ?);, delete=DELETE FROM agency_test.user WHERE user_id = ?;, update=UPDATE agency_test.user SET first_name = ?, last_name = ?, e_mail = ?, phone = ?, catchword = ?, role_id = ? WHERE user_id = ?;}
+2018-08-14 12:42:13,751  INFO UserJdbcDao:49 - readByEmail start with: email: null
+2018-08-14 12:42:13,751  INFO UserJdbcDao:51 - readByEmail query: SELECT * FROM agency_test.user WHERE e_mail = ?;
+2018-08-14 12:42:13,751 ERROR UserJdbcDao:59 - nonexistent user email null
+2018-08-14 12:42:13,751  INFO QueriesManager:15 - getProperties start find property for user
+2018-08-14 12:42:13,751  INFO QueriesManager:22 - Property has been loaded
+2018-08-14 12:42:13,751  INFO QueriesManager:31 - Property return properties {select=SELECT * FROM agency_test.user WHERE user_id = ?;, selectByEmail=SELECT * FROM agency_test.user WHERE e_mail = ?;, readInsertedId=SELECT max(user_id) AS user_id FROM agency_test.user;, insert=INSERT INTO agency_test.user(first_name, last_name, e_mail, phone, catchword, role_id) VALUES(?, ?, ?, ?, ?, ?);, delete=DELETE FROM agency_test.user WHERE user_id = ?;, update=UPDATE agency_test.user SET first_name = ?, last_name = ?, e_mail = ?, phone = ?, catchword = ?, role_id = ? WHERE user_id = ?;}
+2018-08-14 12:42:13,751  INFO QueriesManager:15 - getProperties start find property for user
+2018-08-14 12:42:13,751  INFO QueriesManager:22 - Property has been loaded
+2018-08-14 12:42:13,751  INFO QueriesManager:31 - Property return properties {select=SELECT * FROM agency_test.user WHERE user_id = ?;, selectByEmail=SELECT * FROM agency_test.user WHERE e_mail = ?;, readInsertedId=SELECT max(user_id) AS user_id FROM agency_test.user;, insert=INSERT INTO agency_test.user(first_name, last_name, e_mail, phone, catchword, role_id) VALUES(?, ?, ?, ?, ?, ?);, delete=DELETE FROM agency_test.user WHERE user_id = ?;, update=UPDATE agency_test.user SET first_name = ?, last_name = ?, e_mail = ?, phone = ?, catchword = ?, role_id = ? WHERE user_id = ?;}
+2018-08-14 12:42:13,751  INFO UserJdbcDao:136 - method read start with entityId: 1
+2018-08-14 12:42:13,751 ERROR UserJdbcDao:145 - nonexistent userId : 1
+2018-08-14 12:42:13,751  INFO QueriesManager:15 - getProperties start find property for user
+2018-08-14 12:42:13,767  INFO QueriesManager:22 - Property has been loaded
+2018-08-14 12:42:13,767  INFO QueriesManager:31 - Property return properties {select=SELECT * FROM agency_test.user WHERE user_id = ?;, selectByEmail=SELECT * FROM agency_test.user WHERE e_mail = ?;, readInsertedId=SELECT max(user_id) AS user_id FROM agency_test.user;, insert=INSERT INTO agency_test.user(first_name, last_name, e_mail, phone, catchword, role_id) VALUES(?, ?, ?, ?, ?, ?);, delete=DELETE FROM agency_test.user WHERE user_id = ?;, update=UPDATE agency_test.user SET first_name = ?, last_name = ?, e_mail = ?, phone = ?, catchword = ?, role_id = ? WHERE user_id = ?;}
+2018-08-14 12:42:13,783  INFO UserJdbcDao:49 - readByEmail start with: email: alex.petrov@gmail.com
+2018-08-14 12:42:13,783  INFO UserJdbcDao:51 - readByEmail query: SELECT * FROM agency_test.user WHERE e_mail = ?;
+2018-08-14 12:42:13,798  INFO UserJdbcDao:164 - method madeUser start with resultSet: com.mysql.cj.jdbc.result.ResultSetImpl@527e5409
+2018-08-14 12:42:13,798  INFO UserJdbcDao:181 - method madeUser return user: User{userId=1, firstName='Александр', lastName='Петров', eMail='alex.petrov@gmail.com', phone='+38(095)45-55-782', catchword='8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', roleId=1}
+2018-08-14 12:42:13,798  INFO UserJdbcDao:66 - readByEmail end & return: User{userId=1, firstName='Александр', lastName='Петров', eMail='alex.petrov@gmail.com', phone='+38(095)45-55-782', catchword='8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', roleId=1}
+2018-08-14 13:11:41,757  INFO QueriesManager:13 - getProperties start find property for user
+2018-08-14 13:11:41,757  INFO QueriesManager:20 - Property has been loaded
+2018-08-14 13:11:41,757  INFO QueriesManager:29 - Property return properties {select=SELECT * FROM agency_test.user WHERE user_id = ?;, selectByEmail=SELECT * FROM agency_test.user WHERE e_mail = ?;, readInsertedId=SELECT max(user_id) AS user_id FROM agency_test.user;, insert=INSERT INTO agency_test.user(first_name, last_name, e_mail, phone, catchword, role_id) VALUES(?, ?, ?, ?, ?, ?);, delete=DELETE FROM agency_test.user WHERE user_id = ?;, update=UPDATE agency_test.user SET first_name = ?, last_name = ?, e_mail = ?, phone = ?, catchword = ?, role_id = ? WHERE user_id = ?;}
+2018-08-14 13:11:42,148  INFO UserJdbcDao:78 - method create start with user: null
+2018-08-14 13:11:42,695  INFO UserJdbcDao:117 - method setStatement start with parameters: statement: com.mysql.cj.jdbc.ClientPreparedStatement: INSERT INTO agency_test.user(first_name, last_name, e_mail, phone, catchword, role_id) VALUES(** NOT SPECIFIED **, ** NOT SPECIFIED **, ** NOT SPECIFIED **, ** NOT SPECIFIED **, ** NOT SPECIFIED **, ** NOT SPECIFIED **);. And user: null
+2018-08-14 13:11:42,695  INFO QueriesManager:13 - getProperties start find property for user
+2018-08-14 13:11:42,695  INFO QueriesManager:20 - Property has been loaded
+2018-08-14 13:11:42,695  INFO QueriesManager:29 - Property return properties {select=SELECT * FROM agency_test.user WHERE user_id = ?;, selectByEmail=SELECT * FROM agency_test.user WHERE e_mail = ?;, readInsertedId=SELECT max(user_id) AS user_id FROM agency_test.user;, insert=INSERT INTO agency_test.user(first_name, last_name, e_mail, phone, catchword, role_id) VALUES(?, ?, ?, ?, ?, ?);, delete=DELETE FROM agency_test.user WHERE user_id = ?;, update=UPDATE agency_test.user SET first_name = ?, last_name = ?, e_mail = ?, phone = ?, catchword = ?, role_id = ? WHERE user_id = ?;}
+2018-08-14 13:11:42,711  INFO UserJdbcDao:136 - method read start with entityId: 1
+2018-08-14 13:11:42,742  INFO UserJdbcDao:164 - method madeUser start with resultSet: com.mysql.cj.jdbc.result.ResultSetImpl@2b6856dd
+2018-08-14 13:11:42,742  INFO UserJdbcDao:181 - method madeUser return user: User{userId=1, firstName='Александр', lastName='Петров', eMail='alex.petrov@gmail.com', phone='+38(095)45-55-782', catchword='8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', roleId=1}
+2018-08-14 13:11:42,742  INFO UserJdbcDao:152 - method read return user: User{userId=1, firstName='Александр', lastName='Петров', eMail='alex.petrov@gmail.com', phone='+38(095)45-55-782', catchword='8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', roleId=1}
+2018-08-14 13:11:42,742  INFO QueriesManager:13 - getProperties start find property for user
+2018-08-14 13:11:42,742  INFO QueriesManager:20 - Property has been loaded
+2018-08-14 13:11:42,742  INFO QueriesManager:29 - Property return properties {select=SELECT * FROM agency_test.user WHERE user_id = ?;, selectByEmail=SELECT * FROM agency_test.user WHERE e_mail = ?;, readInsertedId=SELECT max(user_id) AS user_id FROM agency_test.user;, insert=INSERT INTO agency_test.user(first_name, last_name, e_mail, phone, catchword, role_id) VALUES(?, ?, ?, ?, ?, ?);, delete=DELETE FROM agency_test.user WHERE user_id = ?;, update=UPDATE agency_test.user SET first_name = ?, last_name = ?, e_mail = ?, phone = ?, catchword = ?, role_id = ? WHERE user_id = ?;}
+2018-08-14 13:11:42,742  INFO QueriesManager:13 - getProperties start find property for user
+2018-08-14 13:11:42,757  INFO QueriesManager:20 - Property has been loaded
+2018-08-14 13:11:42,757  INFO QueriesManager:29 - Property return properties {select=SELECT * FROM agency_test.user WHERE user_id = ?;, selectByEmail=SELECT * FROM agency_test.user WHERE e_mail = ?;, readInsertedId=SELECT max(user_id) AS user_id FROM agency_test.user;, insert=INSERT INTO agency_test.user(first_name, last_name, e_mail, phone, catchword, role_id) VALUES(?, ?, ?, ?, ?, ?);, delete=DELETE FROM agency_test.user WHERE user_id = ?;, update=UPDATE agency_test.user SET first_name = ?, last_name = ?, e_mail = ?, phone = ?, catchword = ?, role_id = ? WHERE user_id = ?;}
+2018-08-14 13:11:42,757  INFO UserJdbcDao:211 - method delete start with entityId0
+2018-08-14 13:11:42,757  INFO UserJdbcDao:222 - method delete return result: false
+2018-08-14 13:11:42,757  INFO QueriesManager:13 - getProperties start find property for user
+2018-08-14 13:11:42,757  INFO QueriesManager:20 - Property has been loaded
+2018-08-14 13:11:42,757  INFO QueriesManager:29 - Property return properties {select=SELECT * FROM agency_test.user WHERE user_id = ?;, selectByEmail=SELECT * FROM agency_test.user WHERE e_mail = ?;, readInsertedId=SELECT max(user_id) AS user_id FROM agency_test.user;, insert=INSERT INTO agency_test.user(first_name, last_name, e_mail, phone, catchword, role_id) VALUES(?, ?, ?, ?, ?, ?);, delete=DELETE FROM agency_test.user WHERE user_id = ?;, update=UPDATE agency_test.user SET first_name = ?, last_name = ?, e_mail = ?, phone = ?, catchword = ?, role_id = ? WHERE user_id = ?;}
+2018-08-14 13:11:42,773  INFO QueriesManager:13 - getProperties start find property for user
+2018-08-14 13:11:42,773  INFO QueriesManager:20 - Property has been loaded
+2018-08-14 13:11:42,773  INFO QueriesManager:29 - Property return properties {select=SELECT * FROM agency_test.user WHERE user_id = ?;, selectByEmail=SELECT * FROM agency_test.user WHERE e_mail = ?;, readInsertedId=SELECT max(user_id) AS user_id FROM agency_test.user;, insert=INSERT INTO agency_test.user(first_name, last_name, e_mail, phone, catchword, role_id) VALUES(?, ?, ?, ?, ?, ?);, delete=DELETE FROM agency_test.user WHERE user_id = ?;, update=UPDATE agency_test.user SET first_name = ?, last_name = ?, e_mail = ?, phone = ?, catchword = ?, role_id = ? WHERE user_id = ?;}
+2018-08-14 13:11:42,773  INFO UserJdbcDao:78 - method create start with user: User{userId=1, firstName='Александр', lastName='Петров', eMail='alex.petrov@gmail.com', phone='+38(095)45-55-782', catchword='8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', roleId=1}
+2018-08-14 13:11:42,773  INFO UserJdbcDao:117 - method setStatement start with parameters: statement: statement. And user: User{userId=1, firstName='Александр', lastName='Петров', eMail='alex.petrov@gmail.com', phone='+38(095)45-55-782', catchword='8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', roleId=1}
+2018-08-14 13:11:42,773  INFO UserJdbcDao:124 - method setStatement end with parameters: statement: statement. And user: User{userId=1, firstName='Александр', lastName='Петров', eMail='alex.petrov@gmail.com', phone='+38(095)45-55-782', catchword='8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', roleId=1}
+2018-08-14 13:11:42,773  INFO UserJdbcDao:103 - setInsertedId start with no parameters
+2018-08-14 13:11:42,773  INFO UserJdbcDao:112 - setInsertedId return userId: 0
+2018-08-14 13:11:42,773  INFO UserJdbcDao:91 - method create return user: User{userId=0, firstName='Александр', lastName='Петров', eMail='alex.petrov@gmail.com', phone='+38(095)45-55-782', catchword='8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', roleId=1}
+2018-08-14 13:11:42,773  INFO QueriesManager:13 - getProperties start find property for user
+2018-08-14 13:11:42,789  INFO QueriesManager:20 - Property has been loaded
+2018-08-14 13:11:42,789  INFO QueriesManager:29 - Property return properties {select=SELECT * FROM agency_test.user WHERE user_id = ?;, selectByEmail=SELECT * FROM agency_test.user WHERE e_mail = ?;, readInsertedId=SELECT max(user_id) AS user_id FROM agency_test.user;, insert=INSERT INTO agency_test.user(first_name, last_name, e_mail, phone, catchword, role_id) VALUES(?, ?, ?, ?, ?, ?);, delete=DELETE FROM agency_test.user WHERE user_id = ?;, update=UPDATE agency_test.user SET first_name = ?, last_name = ?, e_mail = ?, phone = ?, catchword = ?, role_id = ? WHERE user_id = ?;}
+2018-08-14 13:11:42,789  INFO QueriesManager:13 - getProperties start find property for user
+2018-08-14 13:11:42,789  INFO QueriesManager:20 - Property has been loaded
+2018-08-14 13:11:42,789  INFO QueriesManager:29 - Property return properties {select=SELECT * FROM agency_test.user WHERE user_id = ?;, selectByEmail=SELECT * FROM agency_test.user WHERE e_mail = ?;, readInsertedId=SELECT max(user_id) AS user_id FROM agency_test.user;, insert=INSERT INTO agency_test.user(first_name, last_name, e_mail, phone, catchword, role_id) VALUES(?, ?, ?, ?, ?, ?);, delete=DELETE FROM agency_test.user WHERE user_id = ?;, update=UPDATE agency_test.user SET first_name = ?, last_name = ?, e_mail = ?, phone = ?, catchword = ?, role_id = ? WHERE user_id = ?;}
+2018-08-14 13:11:42,789  INFO UserJdbcDao:49 - readByEmail start with: email: null
+2018-08-14 13:11:42,789  INFO UserJdbcDao:51 - readByEmail query: SELECT * FROM agency_test.user WHERE e_mail = ?;
+2018-08-14 13:11:42,789 ERROR UserJdbcDao:59 - nonexistent user email null
+2018-08-14 13:11:42,789  INFO QueriesManager:13 - getProperties start find property for user
+2018-08-14 13:11:42,789  INFO QueriesManager:20 - Property has been loaded
+2018-08-14 13:11:42,789  INFO QueriesManager:29 - Property return properties {select=SELECT * FROM agency_test.user WHERE user_id = ?;, selectByEmail=SELECT * FROM agency_test.user WHERE e_mail = ?;, readInsertedId=SELECT max(user_id) AS user_id FROM agency_test.user;, insert=INSERT INTO agency_test.user(first_name, last_name, e_mail, phone, catchword, role_id) VALUES(?, ?, ?, ?, ?, ?);, delete=DELETE FROM agency_test.user WHERE user_id = ?;, update=UPDATE agency_test.user SET first_name = ?, last_name = ?, e_mail = ?, phone = ?, catchword = ?, role_id = ? WHERE user_id = ?;}
+2018-08-14 13:11:42,789  INFO QueriesManager:13 - getProperties start find property for user
+2018-08-14 13:11:42,789  INFO QueriesManager:20 - Property has been loaded
+2018-08-14 13:11:42,789  INFO QueriesManager:29 - Property return properties {select=SELECT * FROM agency_test.user WHERE user_id = ?;, selectByEmail=SELECT * FROM agency_test.user WHERE e_mail = ?;, readInsertedId=SELECT max(user_id) AS user_id FROM agency_test.user;, insert=INSERT INTO agency_test.user(first_name, last_name, e_mail, phone, catchword, role_id) VALUES(?, ?, ?, ?, ?, ?);, delete=DELETE FROM agency_test.user WHERE user_id = ?;, update=UPDATE agency_test.user SET first_name = ?, last_name = ?, e_mail = ?, phone = ?, catchword = ?, role_id = ? WHERE user_id = ?;}
+2018-08-14 13:11:42,789  INFO UserJdbcDao:136 - method read start with entityId: 1
+2018-08-14 13:11:42,789 ERROR UserJdbcDao:145 - nonexistent userId : 1
+2018-08-14 13:11:42,804  INFO QueriesManager:13 - getProperties start find property for user
+2018-08-14 13:11:42,804  INFO QueriesManager:20 - Property has been loaded
+2018-08-14 13:11:42,804  INFO QueriesManager:29 - Property return properties {select=SELECT * FROM agency_test.user WHERE user_id = ?;, selectByEmail=SELECT * FROM agency_test.user WHERE e_mail = ?;, readInsertedId=SELECT max(user_id) AS user_id FROM agency_test.user;, insert=INSERT INTO agency_test.user(first_name, last_name, e_mail, phone, catchword, role_id) VALUES(?, ?, ?, ?, ?, ?);, delete=DELETE FROM agency_test.user WHERE user_id = ?;, update=UPDATE agency_test.user SET first_name = ?, last_name = ?, e_mail = ?, phone = ?, catchword = ?, role_id = ? WHERE user_id = ?;}
+2018-08-14 13:11:42,804  INFO UserJdbcDao:49 - readByEmail start with: email: alex.petrov@gmail.com
+2018-08-14 13:11:42,804  INFO UserJdbcDao:51 - readByEmail query: SELECT * FROM agency_test.user WHERE e_mail = ?;
+2018-08-14 13:11:42,820  INFO UserJdbcDao:164 - method madeUser start with resultSet: com.mysql.cj.jdbc.result.ResultSetImpl@527e5409
+2018-08-14 13:11:42,820  INFO UserJdbcDao:181 - method madeUser return user: User{userId=1, firstName='Александр', lastName='Петров', eMail='alex.petrov@gmail.com', phone='+38(095)45-55-782', catchword='8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', roleId=1}
+2018-08-14 13:11:42,820  INFO UserJdbcDao:66 - readByEmail end & return: User{userId=1, firstName='Александр', lastName='Петров', eMail='alex.petrov@gmail.com', phone='+38(095)45-55-782', catchword='8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', roleId=1}
+2018-08-14 13:13:06,140  INFO QueriesManager:13 - getProperties start find property for user
+2018-08-14 13:13:06,140  INFO QueriesManager:20 - Property has been loaded
+2018-08-14 13:13:06,140  INFO QueriesManager:29 - Property return properties {select=SELECT * FROM agency_test.user WHERE user_id = ?;, selectByEmail=SELECT * FROM agency_test.user WHERE e_mail = ?;, readInsertedId=SELECT max(user_id) AS user_id FROM agency_test.user;, insert=INSERT INTO agency_test.user(first_name, last_name, e_mail, phone, catchword, role_id) VALUES(?, ?, ?, ?, ?, ?);, delete=DELETE FROM agency_test.user WHERE user_id = ?;, update=UPDATE agency_test.user SET first_name = ?, last_name = ?, e_mail = ?, phone = ?, catchword = ?, role_id = ? WHERE user_id = ?;}
+2018-08-14 13:13:06,546  INFO UserJdbcDao:78 - method create start with user: null
+2018-08-14 13:13:07,078  INFO UserJdbcDao:117 - method setStatement start with parameters: statement: com.mysql.cj.jdbc.ClientPreparedStatement: INSERT INTO agency_test.user(first_name, last_name, e_mail, phone, catchword, role_id) VALUES(** NOT SPECIFIED **, ** NOT SPECIFIED **, ** NOT SPECIFIED **, ** NOT SPECIFIED **, ** NOT SPECIFIED **, ** NOT SPECIFIED **);. And user: null
+2018-08-14 13:13:07,078  INFO QueriesManager:13 - getProperties start find property for user
+2018-08-14 13:13:07,078  INFO QueriesManager:20 - Property has been loaded
+2018-08-14 13:13:07,078  INFO QueriesManager:29 - Property return properties {select=SELECT * FROM agency_test.user WHERE user_id = ?;, selectByEmail=SELECT * FROM agency_test.user WHERE e_mail = ?;, readInsertedId=SELECT max(user_id) AS user_id FROM agency_test.user;, insert=INSERT INTO agency_test.user(first_name, last_name, e_mail, phone, catchword, role_id) VALUES(?, ?, ?, ?, ?, ?);, delete=DELETE FROM agency_test.user WHERE user_id = ?;, update=UPDATE agency_test.user SET first_name = ?, last_name = ?, e_mail = ?, phone = ?, catchword = ?, role_id = ? WHERE user_id = ?;}
+2018-08-14 13:13:07,078  INFO UserJdbcDao:136 - method read start with entityId: 1
+2018-08-14 13:13:07,109  INFO UserJdbcDao:164 - method madeUser start with resultSet: com.mysql.cj.jdbc.result.ResultSetImpl@2b6856dd
+2018-08-14 13:13:07,109  INFO UserJdbcDao:181 - method madeUser return user: User{userId=1, firstName='Александр', lastName='Петров', eMail='alex.petrov@gmail.com', phone='+38(095)45-55-782', catchword='8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', roleId=1}
+2018-08-14 13:13:07,109  INFO UserJdbcDao:152 - method read return user: User{userId=1, firstName='Александр', lastName='Петров', eMail='alex.petrov@gmail.com', phone='+38(095)45-55-782', catchword='8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', roleId=1}
+2018-08-14 13:13:07,109  INFO QueriesManager:13 - getProperties start find property for user
+2018-08-14 13:13:07,109  INFO QueriesManager:20 - Property has been loaded
+2018-08-14 13:13:07,109  INFO QueriesManager:29 - Property return properties {select=SELECT * FROM agency_test.user WHERE user_id = ?;, selectByEmail=SELECT * FROM agency_test.user WHERE e_mail = ?;, readInsertedId=SELECT max(user_id) AS user_id FROM agency_test.user;, insert=INSERT INTO agency_test.user(first_name, last_name, e_mail, phone, catchword, role_id) VALUES(?, ?, ?, ?, ?, ?);, delete=DELETE FROM agency_test.user WHERE user_id = ?;, update=UPDATE agency_test.user SET first_name = ?, last_name = ?, e_mail = ?, phone = ?, catchword = ?, role_id = ? WHERE user_id = ?;}
+2018-08-14 13:13:07,125  INFO QueriesManager:13 - getProperties start find property for user
+2018-08-14 13:13:07,125  INFO QueriesManager:20 - Property has been loaded
+2018-08-14 13:13:07,125  INFO QueriesManager:29 - Property return properties {select=SELECT * FROM agency_test.user WHERE user_id = ?;, selectByEmail=SELECT * FROM agency_test.user WHERE e_mail = ?;, readInsertedId=SELECT max(user_id) AS user_id FROM agency_test.user;, insert=INSERT INTO agency_test.user(first_name, last_name, e_mail, phone, catchword, role_id) VALUES(?, ?, ?, ?, ?, ?);, delete=DELETE FROM agency_test.user WHERE user_id = ?;, update=UPDATE agency_test.user SET first_name = ?, last_name = ?, e_mail = ?, phone = ?, catchword = ?, role_id = ? WHERE user_id = ?;}
+2018-08-14 13:13:07,125  INFO UserJdbcDao:211 - method delete start with entityId0
+2018-08-14 13:13:07,125  INFO UserJdbcDao:222 - method delete return result: false
+2018-08-14 13:13:07,125  INFO QueriesManager:13 - getProperties start find property for user
+2018-08-14 13:13:07,125  INFO QueriesManager:20 - Property has been loaded
+2018-08-14 13:13:07,125  INFO QueriesManager:29 - Property return properties {select=SELECT * FROM agency_test.user WHERE user_id = ?;, selectByEmail=SELECT * FROM agency_test.user WHERE e_mail = ?;, readInsertedId=SELECT max(user_id) AS user_id FROM agency_test.user;, insert=INSERT INTO agency_test.user(first_name, last_name, e_mail, phone, catchword, role_id) VALUES(?, ?, ?, ?, ?, ?);, delete=DELETE FROM agency_test.user WHERE user_id = ?;, update=UPDATE agency_test.user SET first_name = ?, last_name = ?, e_mail = ?, phone = ?, catchword = ?, role_id = ? WHERE user_id = ?;}
+2018-08-14 13:13:07,125  INFO QueriesManager:13 - getProperties start find property for user
+2018-08-14 13:13:07,140  INFO QueriesManager:20 - Property has been loaded
+2018-08-14 13:13:07,140  INFO QueriesManager:29 - Property return properties {select=SELECT * FROM agency_test.user WHERE user_id = ?;, selectByEmail=SELECT * FROM agency_test.user WHERE e_mail = ?;, readInsertedId=SELECT max(user_id) AS user_id FROM agency_test.user;, insert=INSERT INTO agency_test.user(first_name, last_name, e_mail, phone, catchword, role_id) VALUES(?, ?, ?, ?, ?, ?);, delete=DELETE FROM agency_test.user WHERE user_id = ?;, update=UPDATE agency_test.user SET first_name = ?, last_name = ?, e_mail = ?, phone = ?, catchword = ?, role_id = ? WHERE user_id = ?;}
+2018-08-14 13:13:07,140  INFO UserJdbcDao:78 - method create start with user: User{userId=1, firstName='Александр', lastName='Петров', eMail='alex.petrov@gmail.com', phone='+38(095)45-55-782', catchword='8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', roleId=1}
+2018-08-14 13:13:07,140  INFO UserJdbcDao:117 - method setStatement start with parameters: statement: statement. And user: User{userId=1, firstName='Александр', lastName='Петров', eMail='alex.petrov@gmail.com', phone='+38(095)45-55-782', catchword='8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', roleId=1}
+2018-08-14 13:13:07,140  INFO UserJdbcDao:124 - method setStatement end with parameters: statement: statement. And user: User{userId=1, firstName='Александр', lastName='Петров', eMail='alex.petrov@gmail.com', phone='+38(095)45-55-782', catchword='8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', roleId=1}
+2018-08-14 13:13:07,140  INFO UserJdbcDao:103 - setInsertedId start with no parameters
+2018-08-14 13:13:07,140  INFO UserJdbcDao:112 - setInsertedId return userId: 0
+2018-08-14 13:13:07,140  INFO UserJdbcDao:91 - method create return user: User{userId=0, firstName='Александр', lastName='Петров', eMail='alex.petrov@gmail.com', phone='+38(095)45-55-782', catchword='8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', roleId=1}
+2018-08-14 13:13:07,140  INFO QueriesManager:13 - getProperties start find property for user
+2018-08-14 13:13:07,140  INFO QueriesManager:20 - Property has been loaded
+2018-08-14 13:13:07,140  INFO QueriesManager:29 - Property return properties {select=SELECT * FROM agency_test.user WHERE user_id = ?;, selectByEmail=SELECT * FROM agency_test.user WHERE e_mail = ?;, readInsertedId=SELECT max(user_id) AS user_id FROM agency_test.user;, insert=INSERT INTO agency_test.user(first_name, last_name, e_mail, phone, catchword, role_id) VALUES(?, ?, ?, ?, ?, ?);, delete=DELETE FROM agency_test.user WHERE user_id = ?;, update=UPDATE agency_test.user SET first_name = ?, last_name = ?, e_mail = ?, phone = ?, catchword = ?, role_id = ? WHERE user_id = ?;}
+2018-08-14 13:13:07,140  INFO QueriesManager:13 - getProperties start find property for user
+2018-08-14 13:13:07,140  INFO QueriesManager:20 - Property has been loaded
+2018-08-14 13:13:07,140  INFO QueriesManager:29 - Property return properties {select=SELECT * FROM agency_test.user WHERE user_id = ?;, selectByEmail=SELECT * FROM agency_test.user WHERE e_mail = ?;, readInsertedId=SELECT max(user_id) AS user_id FROM agency_test.user;, insert=INSERT INTO agency_test.user(first_name, last_name, e_mail, phone, catchword, role_id) VALUES(?, ?, ?, ?, ?, ?);, delete=DELETE FROM agency_test.user WHERE user_id = ?;, update=UPDATE agency_test.user SET first_name = ?, last_name = ?, e_mail = ?, phone = ?, catchword = ?, role_id = ? WHERE user_id = ?;}
+2018-08-14 13:13:07,140  INFO UserJdbcDao:49 - readByEmail start with: email: null
+2018-08-14 13:13:07,156  INFO UserJdbcDao:51 - readByEmail query: SELECT * FROM agency_test.user WHERE e_mail = ?;
+2018-08-14 13:13:07,156 ERROR UserJdbcDao:59 - nonexistent user email null
+2018-08-14 13:13:07,156  INFO QueriesManager:13 - getProperties start find property for user
+2018-08-14 13:13:07,156  INFO QueriesManager:20 - Property has been loaded
+2018-08-14 13:13:07,156  INFO QueriesManager:29 - Property return properties {select=SELECT * FROM agency_test.user WHERE user_id = ?;, selectByEmail=SELECT * FROM agency_test.user WHERE e_mail = ?;, readInsertedId=SELECT max(user_id) AS user_id FROM agency_test.user;, insert=INSERT INTO agency_test.user(first_name, last_name, e_mail, phone, catchword, role_id) VALUES(?, ?, ?, ?, ?, ?);, delete=DELETE FROM agency_test.user WHERE user_id = ?;, update=UPDATE agency_test.user SET first_name = ?, last_name = ?, e_mail = ?, phone = ?, catchword = ?, role_id = ? WHERE user_id = ?;}
+2018-08-14 13:13:07,156  INFO QueriesManager:13 - getProperties start find property for user
+2018-08-14 13:13:07,156  INFO QueriesManager:20 - Property has been loaded
+2018-08-14 13:13:07,156  INFO QueriesManager:29 - Property return properties {select=SELECT * FROM agency_test.user WHERE user_id = ?;, selectByEmail=SELECT * FROM agency_test.user WHERE e_mail = ?;, readInsertedId=SELECT max(user_id) AS user_id FROM agency_test.user;, insert=INSERT INTO agency_test.user(first_name, last_name, e_mail, phone, catchword, role_id) VALUES(?, ?, ?, ?, ?, ?);, delete=DELETE FROM agency_test.user WHERE user_id = ?;, update=UPDATE agency_test.user SET first_name = ?, last_name = ?, e_mail = ?, phone = ?, catchword = ?, role_id = ? WHERE user_id = ?;}
+2018-08-14 13:13:07,156  INFO UserJdbcDao:136 - method read start with entityId: 1
+2018-08-14 13:13:07,156 ERROR UserJdbcDao:145 - nonexistent userId : 1
+2018-08-14 13:13:07,172  INFO QueriesManager:13 - getProperties start find property for user
+2018-08-14 13:13:07,172  INFO QueriesManager:20 - Property has been loaded
+2018-08-14 13:13:07,172  INFO QueriesManager:29 - Property return properties {select=SELECT * FROM agency_test.user WHERE user_id = ?;, selectByEmail=SELECT * FROM agency_test.user WHERE e_mail = ?;, readInsertedId=SELECT max(user_id) AS user_id FROM agency_test.user;, insert=INSERT INTO agency_test.user(first_name, last_name, e_mail, phone, catchword, role_id) VALUES(?, ?, ?, ?, ?, ?);, delete=DELETE FROM agency_test.user WHERE user_id = ?;, update=UPDATE agency_test.user SET first_name = ?, last_name = ?, e_mail = ?, phone = ?, catchword = ?, role_id = ? WHERE user_id = ?;}
+2018-08-14 13:13:07,172  INFO UserJdbcDao:49 - readByEmail start with: email: alex.petrov@gmail.com
+2018-08-14 13:13:07,172  INFO UserJdbcDao:51 - readByEmail query: SELECT * FROM agency_test.user WHERE e_mail = ?;
+2018-08-14 13:13:07,187  INFO UserJdbcDao:164 - method madeUser start with resultSet: com.mysql.cj.jdbc.result.ResultSetImpl@527e5409
+2018-08-14 13:13:07,187  INFO UserJdbcDao:181 - method madeUser return user: User{userId=1, firstName='Александр', lastName='Петров', eMail='alex.petrov@gmail.com', phone='+38(095)45-55-782', catchword='8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', roleId=1}
+2018-08-14 13:13:07,187  INFO UserJdbcDao:66 - readByEmail end & return: User{userId=1, firstName='Александр', lastName='Петров', eMail='alex.petrov@gmail.com', phone='+38(095)45-55-782', catchword='8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', roleId=1}
+2018-08-14 13:18:32,687  INFO Main:17 - getProperties start find property for user
+2018-08-14 13:18:32,687  INFO Main:24 - Property has been loaded
+2018-08-14 13:18:32,687  INFO Main:33 - Property return properties {select=SELECT * FROM agency_test.user WHERE user_id = ?;, selectByEmail=SELECT * FROM agency_test.user WHERE e_mail = ?;, readInsertedId=SELECT max(user_id) AS user_id FROM agency_test.user;, insert=INSERT INTO agency_test.user(first_name, last_name, e_mail, phone, catchword, role_id) VALUES(?, ?, ?, ?, ?, ?);, delete=DELETE FROM agency_test.user WHERE user_id = ?;, update=UPDATE agency_test.user SET first_name = ?, last_name = ?, e_mail = ?, phone = ?, catchword = ?, role_id = ? WHERE user_id = ?;}
+2018-08-14 13:28:08,245  INFO QueriesManager:13 - getProperties start find property for user
+2018-08-14 13:28:08,245  INFO QueriesManager:23 - Property has been loaded
+2018-08-14 13:28:08,245  INFO QueriesManager:33 - Property return properties {select=SELECT * FROM agency_test.user WHERE user_id = ?;, selectByEmail=SELECT * FROM agency_test.user WHERE e_mail = ?;, readInsertedId=SELECT max(user_id) AS user_id FROM agency_test.user;, insert=INSERT INTO agency_test.user(first_name, last_name, e_mail, phone, catchword, role_id) VALUES(?, ?, ?, ?, ?, ?);, delete=DELETE FROM agency_test.user WHERE user_id = ?;, update=UPDATE agency_test.user SET first_name = ?, last_name = ?, e_mail = ?, phone = ?, catchword = ?, role_id = ? WHERE user_id = ?;}
+2018-08-14 13:28:08,651  INFO UserJdbcDao:78 - method create start with user: null
+2018-08-14 13:28:09,136  INFO UserJdbcDao:117 - method setStatement start with parameters: statement: com.mysql.cj.jdbc.ClientPreparedStatement: INSERT INTO agency_test.user(first_name, last_name, e_mail, phone, catchword, role_id) VALUES(** NOT SPECIFIED **, ** NOT SPECIFIED **, ** NOT SPECIFIED **, ** NOT SPECIFIED **, ** NOT SPECIFIED **, ** NOT SPECIFIED **);. And user: null
+2018-08-14 13:28:09,151  INFO QueriesManager:13 - getProperties start find property for user
+2018-08-14 13:28:09,151  INFO QueriesManager:23 - Property has been loaded
+2018-08-14 13:28:09,151  INFO QueriesManager:33 - Property return properties {select=SELECT * FROM agency_test.user WHERE user_id = ?;, selectByEmail=SELECT * FROM agency_test.user WHERE e_mail = ?;, readInsertedId=SELECT max(user_id) AS user_id FROM agency_test.user;, insert=INSERT INTO agency_test.user(first_name, last_name, e_mail, phone, catchword, role_id) VALUES(?, ?, ?, ?, ?, ?);, delete=DELETE FROM agency_test.user WHERE user_id = ?;, update=UPDATE agency_test.user SET first_name = ?, last_name = ?, e_mail = ?, phone = ?, catchword = ?, role_id = ? WHERE user_id = ?;}
+2018-08-14 13:28:09,151  INFO UserJdbcDao:136 - method read start with entityId: 1
+2018-08-14 13:28:09,183  INFO UserJdbcDao:164 - method madeUser start with resultSet: com.mysql.cj.jdbc.result.ResultSetImpl@6107227e
+2018-08-14 13:28:09,183  INFO UserJdbcDao:181 - method madeUser return user: User{userId=1, firstName='Александр', lastName='Петров', eMail='alex.petrov@gmail.com', phone='+38(095)45-55-782', catchword='8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', roleId=1}
+2018-08-14 13:28:09,183  INFO UserJdbcDao:152 - method read return user: User{userId=1, firstName='Александр', lastName='Петров', eMail='alex.petrov@gmail.com', phone='+38(095)45-55-782', catchword='8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', roleId=1}
+2018-08-14 13:28:09,183  INFO QueriesManager:13 - getProperties start find property for user
+2018-08-14 13:28:09,183  INFO QueriesManager:23 - Property has been loaded
+2018-08-14 13:28:09,183  INFO QueriesManager:33 - Property return properties {select=SELECT * FROM agency_test.user WHERE user_id = ?;, selectByEmail=SELECT * FROM agency_test.user WHERE e_mail = ?;, readInsertedId=SELECT max(user_id) AS user_id FROM agency_test.user;, insert=INSERT INTO agency_test.user(first_name, last_name, e_mail, phone, catchword, role_id) VALUES(?, ?, ?, ?, ?, ?);, delete=DELETE FROM agency_test.user WHERE user_id = ?;, update=UPDATE agency_test.user SET first_name = ?, last_name = ?, e_mail = ?, phone = ?, catchword = ?, role_id = ? WHERE user_id = ?;}
+2018-08-14 13:28:09,198  INFO QueriesManager:13 - getProperties start find property for user
+2018-08-14 13:28:09,198  INFO QueriesManager:23 - Property has been loaded
+2018-08-14 13:28:09,198  INFO QueriesManager:33 - Property return properties {select=SELECT * FROM agency_test.user WHERE user_id = ?;, selectByEmail=SELECT * FROM agency_test.user WHERE e_mail = ?;, readInsertedId=SELECT max(user_id) AS user_id FROM agency_test.user;, insert=INSERT INTO agency_test.user(first_name, last_name, e_mail, phone, catchword, role_id) VALUES(?, ?, ?, ?, ?, ?);, delete=DELETE FROM agency_test.user WHERE user_id = ?;, update=UPDATE agency_test.user SET first_name = ?, last_name = ?, e_mail = ?, phone = ?, catchword = ?, role_id = ? WHERE user_id = ?;}
+2018-08-14 13:28:09,198  INFO UserJdbcDao:211 - method delete start with entityId0
+2018-08-14 13:28:09,198  INFO UserJdbcDao:222 - method delete return result: false
+2018-08-14 13:28:09,214  INFO QueriesManager:13 - getProperties start find property for user
+2018-08-14 13:28:09,214  INFO QueriesManager:23 - Property has been loaded
+2018-08-14 13:28:09,214  INFO QueriesManager:33 - Property return properties {select=SELECT * FROM agency_test.user WHERE user_id = ?;, selectByEmail=SELECT * FROM agency_test.user WHERE e_mail = ?;, readInsertedId=SELECT max(user_id) AS user_id FROM agency_test.user;, insert=INSERT INTO agency_test.user(first_name, last_name, e_mail, phone, catchword, role_id) VALUES(?, ?, ?, ?, ?, ?);, delete=DELETE FROM agency_test.user WHERE user_id = ?;, update=UPDATE agency_test.user SET first_name = ?, last_name = ?, e_mail = ?, phone = ?, catchword = ?, role_id = ? WHERE user_id = ?;}
+2018-08-14 13:28:09,229  INFO QueriesManager:13 - getProperties start find property for user
+2018-08-14 13:28:09,229  INFO QueriesManager:23 - Property has been loaded
+2018-08-14 13:28:09,229  INFO QueriesManager:33 - Property return properties {select=SELECT * FROM agency_test.user WHERE user_id = ?;, selectByEmail=SELECT * FROM agency_test.user WHERE e_mail = ?;, readInsertedId=SELECT max(user_id) AS user_id FROM agency_test.user;, insert=INSERT INTO agency_test.user(first_name, last_name, e_mail, phone, catchword, role_id) VALUES(?, ?, ?, ?, ?, ?);, delete=DELETE FROM agency_test.user WHERE user_id = ?;, update=UPDATE agency_test.user SET first_name = ?, last_name = ?, e_mail = ?, phone = ?, catchword = ?, role_id = ? WHERE user_id = ?;}
+2018-08-14 13:28:09,229  INFO UserJdbcDao:78 - method create start with user: User{userId=1, firstName='Александр', lastName='Петров', eMail='alex.petrov@gmail.com', phone='+38(095)45-55-782', catchword='8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', roleId=1}
+2018-08-14 13:28:09,229  INFO UserJdbcDao:117 - method setStatement start with parameters: statement: statement. And user: User{userId=1, firstName='Александр', lastName='Петров', eMail='alex.petrov@gmail.com', phone='+38(095)45-55-782', catchword='8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', roleId=1}
+2018-08-14 13:28:09,229  INFO UserJdbcDao:124 - method setStatement end with parameters: statement: statement. And user: User{userId=1, firstName='Александр', lastName='Петров', eMail='alex.petrov@gmail.com', phone='+38(095)45-55-782', catchword='8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', roleId=1}
+2018-08-14 13:28:09,229  INFO UserJdbcDao:103 - setInsertedId start with no parameters
+2018-08-14 13:28:09,229  INFO UserJdbcDao:112 - setInsertedId return userId: 0
+2018-08-14 13:28:09,229  INFO UserJdbcDao:91 - method create return user: User{userId=0, firstName='Александр', lastName='Петров', eMail='alex.petrov@gmail.com', phone='+38(095)45-55-782', catchword='8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', roleId=1}
+2018-08-14 13:28:09,229  INFO QueriesManager:13 - getProperties start find property for user
+2018-08-14 13:28:09,229  INFO QueriesManager:23 - Property has been loaded
+2018-08-14 13:28:09,229  INFO QueriesManager:33 - Property return properties {select=SELECT * FROM agency_test.user WHERE user_id = ?;, selectByEmail=SELECT * FROM agency_test.user WHERE e_mail = ?;, readInsertedId=SELECT max(user_id) AS user_id FROM agency_test.user;, insert=INSERT INTO agency_test.user(first_name, last_name, e_mail, phone, catchword, role_id) VALUES(?, ?, ?, ?, ?, ?);, delete=DELETE FROM agency_test.user WHERE user_id = ?;, update=UPDATE agency_test.user SET first_name = ?, last_name = ?, e_mail = ?, phone = ?, catchword = ?, role_id = ? WHERE user_id = ?;}
+2018-08-14 13:28:09,245  INFO QueriesManager:13 - getProperties start find property for user
+2018-08-14 13:28:09,245  INFO QueriesManager:23 - Property has been loaded
+2018-08-14 13:28:09,245  INFO QueriesManager:33 - Property return properties {select=SELECT * FROM agency_test.user WHERE user_id = ?;, selectByEmail=SELECT * FROM agency_test.user WHERE e_mail = ?;, readInsertedId=SELECT max(user_id) AS user_id FROM agency_test.user;, insert=INSERT INTO agency_test.user(first_name, last_name, e_mail, phone, catchword, role_id) VALUES(?, ?, ?, ?, ?, ?);, delete=DELETE FROM agency_test.user WHERE user_id = ?;, update=UPDATE agency_test.user SET first_name = ?, last_name = ?, e_mail = ?, phone = ?, catchword = ?, role_id = ? WHERE user_id = ?;}
+2018-08-14 13:28:09,245  INFO UserJdbcDao:49 - readByEmail start with: email: null
+2018-08-14 13:28:09,245  INFO UserJdbcDao:51 - readByEmail query: SELECT * FROM agency_test.user WHERE e_mail = ?;
+2018-08-14 13:28:09,245 ERROR UserJdbcDao:59 - nonexistent user email null
+2018-08-14 13:28:09,261  INFO QueriesManager:13 - getProperties start find property for user
+2018-08-14 13:28:09,261  INFO QueriesManager:23 - Property has been loaded
+2018-08-14 13:28:09,261  INFO QueriesManager:33 - Property return properties {select=SELECT * FROM agency_test.user WHERE user_id = ?;, selectByEmail=SELECT * FROM agency_test.user WHERE e_mail = ?;, readInsertedId=SELECT max(user_id) AS user_id FROM agency_test.user;, insert=INSERT INTO agency_test.user(first_name, last_name, e_mail, phone, catchword, role_id) VALUES(?, ?, ?, ?, ?, ?);, delete=DELETE FROM agency_test.user WHERE user_id = ?;, update=UPDATE agency_test.user SET first_name = ?, last_name = ?, e_mail = ?, phone = ?, catchword = ?, role_id = ? WHERE user_id = ?;}
+2018-08-14 13:28:09,261  INFO QueriesManager:13 - getProperties start find property for user
+2018-08-14 13:28:09,261  INFO QueriesManager:23 - Property has been loaded
+2018-08-14 13:28:09,261  INFO QueriesManager:33 - Property return properties {select=SELECT * FROM agency_test.user WHERE user_id = ?;, selectByEmail=SELECT * FROM agency_test.user WHERE e_mail = ?;, readInsertedId=SELECT max(user_id) AS user_id FROM agency_test.user;, insert=INSERT INTO agency_test.user(first_name, last_name, e_mail, phone, catchword, role_id) VALUES(?, ?, ?, ?, ?, ?);, delete=DELETE FROM agency_test.user WHERE user_id = ?;, update=UPDATE agency_test.user SET first_name = ?, last_name = ?, e_mail = ?, phone = ?, catchword = ?, role_id = ? WHERE user_id = ?;}
+2018-08-14 13:28:09,261  INFO UserJdbcDao:136 - method read start with entityId: 1
+2018-08-14 13:28:09,261 ERROR UserJdbcDao:145 - nonexistent userId : 1
+2018-08-14 13:28:09,261  INFO QueriesManager:13 - getProperties start find property for user
+2018-08-14 13:28:09,261  INFO QueriesManager:23 - Property has been loaded
+2018-08-14 13:28:09,261  INFO QueriesManager:33 - Property return properties {select=SELECT * FROM agency_test.user WHERE user_id = ?;, selectByEmail=SELECT * FROM agency_test.user WHERE e_mail = ?;, readInsertedId=SELECT max(user_id) AS user_id FROM agency_test.user;, insert=INSERT INTO agency_test.user(first_name, last_name, e_mail, phone, catchword, role_id) VALUES(?, ?, ?, ?, ?, ?);, delete=DELETE FROM agency_test.user WHERE user_id = ?;, update=UPDATE agency_test.user SET first_name = ?, last_name = ?, e_mail = ?, phone = ?, catchword = ?, role_id = ? WHERE user_id = ?;}
+2018-08-14 13:28:09,308  INFO UserJdbcDao:49 - readByEmail start with: email: alex.petrov@gmail.com
+2018-08-14 13:28:09,308  INFO UserJdbcDao:51 - readByEmail query: SELECT * FROM agency_test.user WHERE e_mail = ?;
+2018-08-14 13:28:09,339  INFO UserJdbcDao:164 - method madeUser start with resultSet: com.mysql.cj.jdbc.result.ResultSetImpl@501edcf1
+2018-08-14 13:28:09,339  INFO UserJdbcDao:181 - method madeUser return user: User{userId=1, firstName='Александр', lastName='Петров', eMail='alex.petrov@gmail.com', phone='+38(095)45-55-782', catchword='8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', roleId=1}
+2018-08-14 13:28:09,339  INFO UserJdbcDao:66 - readByEmail end & return: User{userId=1, firstName='Александр', lastName='Петров', eMail='alex.petrov@gmail.com', phone='+38(095)45-55-782', catchword='8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', roleId=1}
