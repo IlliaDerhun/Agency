@@ -1,0 +1,20 @@
+.userInfo{
+    border: 1px solid #5c5858;
+    border-radius: 10px;
+    display:inline-block;
+    padding: 8px;
+    margin-top: 10px;
+    margin-left: 10px;
+    float: left;
+    max-width: 30%;
+}
+
+.userOrders{
+    border: 1px solid #5c5858;
+    border-radius: 10px;
+    display:inline-block;
+    width: 55%;
+    margin-top: 10px;
+    margin-left: 5%;
+    text-align: center;
+}

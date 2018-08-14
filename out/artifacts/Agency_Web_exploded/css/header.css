@@ -1,0 +1,27 @@
+ul.nav.navbar-nav.language, ul.nav.navbar-nav.login {
+    float: right;
+}
+
+
+.page-footer{
+    background-color: rgb(231, 231, 231);
+}
+
+.leftimg{
+    float: left;
+    margin: 7px 7px 7px 0;
+}
+
+h3{
+    text-align: center;
+}
+
+form{
+    margin-top: 14px;
+    display: inline-block;
+}
+
+.userPageBtn{
+    border: none;
+    background: none;
+}
