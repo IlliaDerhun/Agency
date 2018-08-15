@@ -139,6 +139,44 @@ public class RepairOrderJdbcDao implements RepairOrderDao<RepairOrder, Integer> 
         return theRepairOrders;
     }
 
+    @Override
+    public Integer findFreeManager() {
+        LOGGER.info("findFreeManager start");
+        Integer freeManagerId = 2;
+        try (Connection connection = dataSource.getConnection();
+             PreparedStatement statement = connection.prepareStatement(properties.getProperty("freeManager"))){
+            ResultSet resultSet = statement.executeQuery();
+            if (resultSet.next()){
+                freeManagerId = resultSet.getInt("manager_id");
+            }
+        } catch (SQLException e) {
+            LOGGER.error("caught SQLException " + e);
+            e.printStackTrace();
+        }
+
+        LOGGER.info("findFreeManager return freeManagerId " + freeManagerId);
+        return freeManagerId;
+    }
+
+    @Override
+    public Integer findFreeMaster() {
+        LOGGER.info("findFreeMaster start");
+        Integer freeMasterId = 3;
+        try (Connection connection = dataSource.getConnection();
+             PreparedStatement statement = connection.prepareStatement(properties.getProperty("freeMaster"))){
+            ResultSet resultSet = statement.executeQuery();
+            if (resultSet.next()){
+                freeMasterId = resultSet.getInt("master_id");
+            }
+        } catch (SQLException e) {
+            LOGGER.error("caught SQLException " + e);
+            e.printStackTrace();
+        }
+
+        LOGGER.info("findFreeMaster return " + freeMasterId);
+        return freeMasterId;
+    }
+
     /**
      * Create Repair order in database.
      *
@@ -154,6 +192,8 @@ public class RepairOrderJdbcDao implements RepairOrderDao<RepairOrder, Integer> 
              PreparedStatement statement = connection.prepareStatement(properties.getProperty("insert"))){
 
             setStatement(statement, repairOrder);
+            statement.setInt(4, findFreeManager());
+            statement.setInt(5, findFreeMaster());
             statement.executeUpdate();
 
             repairOrder.setOrderId(setInsertedId());
@@ -261,7 +301,7 @@ public class RepairOrderJdbcDao implements RepairOrderDao<RepairOrder, Integer> 
     }
 
     /**
-     * Update all order's fields
+     * Update all order's fields bu repairOrderId
      * except date and orderId
      *
      * @param repairOrder for updating

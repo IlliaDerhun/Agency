@@ -1,5 +1,6 @@
 package agency.illiaderhun.com.github.model.dao;
 
+import agency.illiaderhun.com.github.model.ConnectionManager;
 import agency.illiaderhun.com.github.model.QueriesManager;
 import agency.illiaderhun.com.github.model.daoFactory.RepairOrderDaoFactory;
 import agency.illiaderhun.com.github.model.daoInterface.RepairOrderDao;
@@ -42,7 +43,7 @@ public class RepairOrderJdbcDaoTest {
 
     private Properties properties = QueriesManager.getProperties("repairOrder");
 
-    private RepairOrderDao<RepairOrder, Integer> repairOrderDao = RepairOrderDaoFactory.getReport("mysql");
+    private RepairOrderDao<RepairOrder, Integer> repairOrderDao = new RepairOrderJdbcDao(ConnectionManager.testConnection(), QueriesManager.getProperties("repairOrder"));
 
     @Before
     public void setUp() throws Exception {

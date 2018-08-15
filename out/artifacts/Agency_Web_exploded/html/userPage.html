@@ -22,44 +22,45 @@
     </div>
 </div>
 <div class="userOrders">
-    <h4>Your orders</h4>
+    <h4><fmt:message key="label.yourOrders"/></h4>
+    <c:if test="${err.equals('regExp')}">
+        <span style="color: #ff0000"><fmt:message key="label.wrongFields"/></span>
+    </c:if>
     <div class="table-responsive">
-        <table class="table table-striped table-hover">
-            <thead>
-            <tr>
-                <th>#</th>
-                <th><fmt:message key="label.deviceName"/></th>
-                <th><fmt:message key="label.description"/></th>
-                <th><fmt:message key="label.manager"/></th>
-                <th><fmt:message key="label.date"/></th>
-                <th><fmt:message key="label.price"/></th>
-            </tr>
-            </thead>
-            <tbody>
-                <c:forEach var="tempOrder" items="${repairOrders}">
-                    <tr>
-                        <td>${tempOrder.orderId}</td>
-                        <td>${tempOrder.deviceName}</td>
-                        <td>${tempOrder.description}</td>
-                        <td>${tempOrder.managerName}</td>
-                        <td>${tempOrder.date}</td>
-                        <td>${tempOrder.price}</td>
-                    </tr>
-                </c:forEach>
+        <form action="/ControllerDispatcherServlet" method="post">
+            <input type="hidden" name="command" value="ADD_ORDER">
+            <table class="table table-striped table-hover">
+                <thead>
                 <tr>
-                    <td></td>
-                    <td><input type="text" name="deviceName"/></td>
-                    <td><input type="text" name="description"/></td>
-                    <td></td>
-                    <td></td>
-                    <td>
-                        <c:url var="addLink" value="ControllerDispatcherServlet">
-                            <c:param name="command" value="ADD_ORDER"/>
-                        </c:url>
-                        <a href="${addLink}"><fmt:message key="label.add"/></a>
-                    </td>
+                    <th>#</th>
+                    <th><fmt:message key="label.deviceName"/></th>
+                    <th><fmt:message key="label.description"/></th>
+                    <th><fmt:message key="label.manager"/></th>
+                    <th><fmt:message key="label.date"/></th>
+                    <th><fmt:message key="label.price"/></th>
                 </tr>
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    <c:forEach var="tempOrder" items="${repairOrders}">
+                        <tr>
+                            <td>${tempOrder.orderId}</td>
+                            <td>${tempOrder.deviceName}</td>
+                            <td>${tempOrder.description}</td>
+                            <td>${tempOrder.managerName}</td>
+                            <td>${tempOrder.date}</td>
+                            <td>${tempOrder.price}</td>
+                        </tr>
+                    </c:forEach>
+                    <tr>
+                        <td></td>
+                        <td><input type="text" name="deviceName" maxlength="45" required placeholder="<fmt:message key='label.deviceName'/>"/></td>
+                        <td><input type="text" name="description" maxlength="256" required placeholder="<fmt:message key='label.description'/>"/></td>
+                        <td></td>
+                        <td></td>
+                        <td><input type="submit" value="<fmt:message key='label.add'/>"/></td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
     </div>
 </div>

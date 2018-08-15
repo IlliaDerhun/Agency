@@ -54,6 +54,21 @@
         <filter-name>loginFilter</filter-name>
         <url-pattern>/ControllerDispatcherServlet</url-pattern>
     </filter-mapping>
+
+    <filter>
+        <filter-name>addOrderFilter</filter-name>
+        <filter-class>agency.illiaderhun.com.github.filters.AddOrderFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>addOrderFilter</filter-name>
+        <url-pattern>/ControllerDispatcherServlet</url-pattern>
+    </filter-mapping>
+
+    <error-page>
+        <error-code>404</error-code>
+        <location>/accessDenied.jsp</location>
+    </error-page>
 <!--
 
     <filter>

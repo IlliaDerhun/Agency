@@ -1,7 +1,8 @@
 import agency.illiaderhun.com.github.controller.LoginCommand;
-import agency.illiaderhun.com.github.controller.UserPageCommand;
+import agency.illiaderhun.com.github.controller.RepairOrderCommand;
 import agency.illiaderhun.com.github.model.entities.RepairOrder;
 import agency.illiaderhun.com.github.model.entities.User;
+import agency.illiaderhun.com.github.model.exeptions.IdInvalid;
 import org.apache.log4j.Logger;
 
 import javax.servlet.RequestDispatcher;
@@ -12,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 
 @WebServlet("/ControllerDispatcherServlet")
@@ -47,6 +49,15 @@ public class ControllerDispatcherServlet extends HttpServlet {
                     showUserPage(request, response);
                 };break;
                 case "ADD_ORDER":{
+                    addOrder(request, response);
+                };break;
+                case "DELETE_ORDER":{
+                    deleteOrder(request, response);
+                };break;
+                case "LOAD_ORDER":{
+                    loadOrder(request, response);
+                };break;
+                case "UPDATE_ORDER":{
                     showUserPage(request, response);
                 };break;
                 default:{
@@ -56,8 +67,53 @@ public class ControllerDispatcherServlet extends HttpServlet {
                 }
             }
         } catch (Exception e) {
+            LOGGER.error("caught Exception");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/accessDenied.jsp");
+            dispatcher.forward(request, response);
             throw new ServletException(e);
         }
+    }
+
+    private void loadOrder(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        LOGGER.info("loadOrder start");
+        Integer orderId = Integer.valueOf(request.getParameter("orderId"));
+        try {
+            RepairOrder repairOrder = new RepairOrderCommand().readOrderById(orderId);
+            if (repairOrder != null){
+                LOGGER.info("loadOrder found order");
+                BigDecimal db = repairOrder.getPrice();
+                int bon = db.intValue();
+                int coins = ((db.subtract(BigDecimal.valueOf(bon))).multiply(BigDecimal.valueOf(100))).intValue();
+                request.setAttribute("bons", bon);
+                request.setAttribute("coins", coins);
+                request.setAttribute("tempOrder", repairOrder);
+            }
+        } catch (IdInvalid idInvalid) {
+            LOGGER.error("caught Exception");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/accessDenied.jsp");
+            dispatcher.forward(request, response);
+            idInvalid.printStackTrace();
+        }
+
+        LOGGER.info("loadOrder send to updateOrder.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/updateOrder.jsp");
+        dispatcher.forward(request, response);
+    }
+
+    private void deleteOrder(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        Integer orderId = Integer.valueOf(request.getParameter("orderId"));
+        new RepairOrderCommand().deleteOrder(orderId);
+        showUserPage(request, response);
+    }
+
+    private void addOrder(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String deviceName = request.getParameter("deviceName");
+        String description = request.getParameter("description");
+        Integer userId = (Integer) request.getSession(true).getAttribute("userId");
+
+        new RepairOrderCommand().createNewOrder(deviceName, description, userId);
+
+        showUserPage(request, response);
     }
 
     private void showUserPage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -68,11 +124,11 @@ public class ControllerDispatcherServlet extends HttpServlet {
         ArrayList<RepairOrder> repairOrders = new ArrayList<>();
         LOGGER.info("userId for search: " + userId);
         if (userRole == 1) {
-            repairOrders = new UserPageCommand().getCustomerOrders(userId);
+            repairOrders = new RepairOrderCommand().getCustomerOrders(userId);
         } else if (userRole == 2){
-            repairOrders = new UserPageCommand().getManagerOrders(userId);
+            repairOrders = new RepairOrderCommand().getManagerOrders(userId);
         } else if (userRole == 3){
-            repairOrders = new UserPageCommand().getMasterOrders(userId);
+            repairOrders = new RepairOrderCommand().getMasterOrders(userId);
         }
 
         if (repairOrders != null) {

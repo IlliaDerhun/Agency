@@ -14,7 +14,7 @@
         <%@include file="html/userPage.html"%>
     </c:when>
     <c:when test="${sessionScope.userRole==2}">
-        manager
+        <%@include file="html/managerPage.html"%>
     </c:when>
     <c:when test="${sessionScope.userRole==3}">
         master

@@ -68,6 +68,9 @@ public class RepairOrder {
         private int masterId = 3;
         private Date date;
         private BigDecimal price = BigDecimal.ZERO;
+        private String managerName;
+        private String masterName;
+        private String customerName;
 
         public Builder(String deviceName, int cusotmerId){
             this.deviceName = deviceName;
@@ -106,6 +109,21 @@ public class RepairOrder {
 
         public Builder price(double price){
             this.price = BigDecimal.valueOf(price).setScale(2, RoundingMode.HALF_EVEN);
+            return this;
+        }
+
+        public Builder managerName(String managerName){
+            this.managerName = managerName;
+            return this;
+        }
+
+        public Builder masterName(String masterName){
+            this.masterName = masterName;
+            return this;
+        }
+
+        public Builder customerName(String customerName){
+            this.customerName = customerName;
             return this;
         }
 

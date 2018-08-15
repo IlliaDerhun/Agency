@@ -9,4 +9,6 @@ public interface RepairOrderDao<RepairOrder, Integer> extends Dao<RepairOrder, I
     ArrayList<RepairOrder> readByCustomerId(Integer customerId) throws IdInvalid;
     ArrayList<RepairOrder> readByManagerId(Integer managerId) throws IdInvalid;
     ArrayList<RepairOrder> readByMasterId(Integer masterId) throws IdInvalid;
+    Integer findFreeManager();
+    Integer findFreeMaster();
 }

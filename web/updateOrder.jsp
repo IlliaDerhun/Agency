@@ -9,18 +9,5 @@
 <fmt:setBundle basename="agency.illiaderhun.com.github.i18n"/>
 
 <%@include file="html/header.html"%>
-<c:choose>
-    <c:when test="${sessionScope.userRole==1}">
-        <%@include file="html/userPage.html"%>
-    </c:when>
-    <c:when test="${sessionScope.userRole==2}">
-        <%@include file="html/managerPage.html"%>
-    </c:when>
-    <c:when test="${sessionScope.userRole==3}">
-        master
-    </c:when>
-    <c:otherwise>
-        <%@include file="html/login.html"%>
-    </c:otherwise>
-</c:choose>
+<%@include file="html/updateOrder.html"%>
 <%@include file="html/footer.html"%>
