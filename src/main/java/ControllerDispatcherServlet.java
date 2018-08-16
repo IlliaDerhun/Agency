@@ -1,8 +1,10 @@
-import agency.illiaderhun.com.github.controller.LoginCommand;
 import agency.illiaderhun.com.github.controller.RepairOrderCommand;
+import agency.illiaderhun.com.github.controller.ReportCommand;
+import agency.illiaderhun.com.github.controller.UserCommand;
 import agency.illiaderhun.com.github.model.entities.RepairOrder;
 import agency.illiaderhun.com.github.model.entities.User;
 import agency.illiaderhun.com.github.model.exeptions.IdInvalid;
+import agency.illiaderhun.com.github.model.exeptions.InvalidSearchingString;
 import org.apache.log4j.Logger;
 
 import javax.servlet.RequestDispatcher;
@@ -58,7 +60,13 @@ public class ControllerDispatcherServlet extends HttpServlet {
                     loadOrder(request, response);
                 };break;
                 case "UPDATE_ORDER":{
-                    showUserPage(request, response);
+                    updateOrder(request, response);
+                };break;
+                case "FIX_ORDER":{
+                    fixOrder(request, response);
+                };break;
+                case "REGISTRATION":{
+                    registerNewUser(request, response);
                 };break;
                 default:{
                     LOGGER.info("default case");
@@ -74,9 +82,62 @@ public class ControllerDispatcherServlet extends HttpServlet {
         }
     }
 
+    private void registerNewUser(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        LOGGER.info("registerNewUser start");
+        String name = request.getParameter("name").trim();
+        String email = request.getParameter("email").trim();
+        String surname = request.getParameter("surname").trim();
+        String password = request.getParameter("password").trim();
+        String phone = request.getParameter("phone").trim();
+
+        UserCommand userCmd = new UserCommand();
+        User user = null;
+
+
+        user = userCmd.createNewUser(email, password, name, surname, phone);
+        if (user == null) {
+            request.setAttribute("err", "alreadyExist");
+            request.setAttribute("existEmail", email);
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/login.jsp");
+            dispatcher.forward(request, response);
+        }
+
+        setSessionForUser(user, request.getSession(true));
+        showUserPage(request, response);
+    }
+
+    private void fixOrder(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        LOGGER.info("fixOrder start");
+        String breakingDescription = request.getParameter("report");
+        LOGGER.info("orderId: " + request.getParameter("orderId"));
+        Integer orderId = Integer.valueOf(request.getParameter("orderId"));
+        LOGGER.info("report: " + breakingDescription + " orderId" + orderId);
+
+        new ReportCommand().createNewReport(breakingDescription, orderId);
+
+        showUserPage(request, response);
+    }
+
+    private void updateOrder(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        LOGGER.info("updateOrder start");
+        String deviceName = request.getParameter("deviceName");
+        String description = request.getParameter("description");
+        Integer orderId = Integer.valueOf(request.getParameter("orderId"));
+        Integer customerId = Integer.valueOf(request.getParameter("customerId"));
+        // create full price
+        Integer bons = Integer.valueOf(request.getParameter("bons").trim());
+        Integer coins = Integer.valueOf(request.getParameter("coins").trim());
+        BigDecimal price = BigDecimal.valueOf(bons).add((BigDecimal.valueOf(coins).divide(BigDecimal.valueOf(100))));
+
+        new RepairOrderCommand().updateOrder(deviceName, description, price, orderId, customerId);
+        LOGGER.info("updateOrder send to showUserPage " + deviceName + " " + description + " "  + price + " "  + customerId);
+        showUserPage(request, response);
+    }
+
     private void loadOrder(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         LOGGER.info("loadOrder start");
         Integer orderId = Integer.valueOf(request.getParameter("orderId"));
+
         try {
             RepairOrder repairOrder = new RepairOrderCommand().readOrderById(orderId);
             if (repairOrder != null){
@@ -142,7 +203,7 @@ public class ControllerDispatcherServlet extends HttpServlet {
     }
 
     /**
-     * Send to {@link LoginCommand} email and password
+     * Send to {@link agency.illiaderhun.com.github.controller.UserCommand} email and password
      * if {@link User} exist set session for it
      * else send to registration page
      *
@@ -150,7 +211,7 @@ public class ControllerDispatcherServlet extends HttpServlet {
      * @param response HttpServletResponse
      */
     private void loginUser(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        LoginCommand loginCommand = new LoginCommand();
+        UserCommand loginCommand = new UserCommand();
 
         String email = request.getParameter("email");
         String password = request.getParameter("password");

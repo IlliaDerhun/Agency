@@ -6,6 +6,7 @@ import agency.illiaderhun.com.github.model.entities.RepairOrder;
 import agency.illiaderhun.com.github.model.exeptions.IdInvalid;
 import org.apache.log4j.Logger;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 
 public class RepairOrderCommand {
@@ -28,13 +29,21 @@ public class RepairOrderCommand {
     }
 
     public ArrayList<RepairOrder> getCustomerOrders(Integer userId){
+        LOGGER.info("getCustomerOrders start with userId " + userId);
         try {
             ArrayList<RepairOrder> repairOrders = repairOrderDao.readByCustomerId(userId);
             if (repairOrders != null) {
+                LOGGER.info("getCustomerOrders found order");
                 for (RepairOrder tempOrder : repairOrders) {
-                    tempOrder.setManagerName(new LoginCommand().findUserNameById(tempOrder.getManagerId()));
+                    tempOrder.setManagerName(new UserCommand().findUserNameById(tempOrder.getManagerId()));
+                    try {
+                        tempOrder.setReport(new ReportCommand().getReportByOrderId(tempOrder.getOrderId()).getBreakingDescription());
+                    } catch (IdInvalid e){
+
+                    }
                 }
             }
+            LOGGER.info("getCustomerOrders return order " + repairOrders);
             return repairOrders;
         } catch (IdInvalid idInvalid) {
             return null;
@@ -42,12 +51,19 @@ public class RepairOrderCommand {
     }
 
     public ArrayList<RepairOrder> getManagerOrders(Integer userId){
+        LOGGER.info("getManagerOrders start with userId " + userId);
+
         try {
             ArrayList<RepairOrder> repairOrders = repairOrderDao.readByManagerId(userId);
             if (repairOrders != null) {
                 for (RepairOrder tempOrder : repairOrders) {
-                    tempOrder.setCustomerName(new LoginCommand().findUserNameById(tempOrder.getCustomerId()));
-                    tempOrder.setMasterName(new LoginCommand().findUserNameById(tempOrder.getMasterId()));
+                    tempOrder.setCustomerName(new UserCommand().findUserNameById(tempOrder.getCustomerId()));
+                    tempOrder.setMasterName(new UserCommand().findUserNameById(tempOrder.getMasterId()));
+                    try {
+                        tempOrder.setReport(new ReportCommand().getReportByOrderId(tempOrder.getOrderId()).getBreakingDescription());
+                    } catch (IdInvalid e){
+
+                    }
                 }
             }
             return repairOrders;
@@ -57,11 +73,17 @@ public class RepairOrderCommand {
     }
 
     public ArrayList<RepairOrder> getMasterOrders(Integer userId){
+        LOGGER.info("getMasterOrders start with userId " + userId);
         try {
             ArrayList<RepairOrder> repairOrders = repairOrderDao.readByMasterId(userId);
             if (repairOrders != null) {
                 for (RepairOrder tempOrder : repairOrders) {
-                    tempOrder.setManagerName(new LoginCommand().findUserNameById(tempOrder.getManagerId()));
+                    tempOrder.setManagerName(new UserCommand().findUserNameById(tempOrder.getManagerId()));
+                    try {
+                        tempOrder.setReport(new ReportCommand().getReportByOrderId(tempOrder.getOrderId()).getBreakingDescription());
+                    } catch (IdInvalid e){
+
+                    }
                 }
             }
             return repairOrders;
@@ -72,9 +94,20 @@ public class RepairOrderCommand {
 
     public RepairOrder readOrderById(Integer orderId) throws IdInvalid {
         RepairOrder repairOrder = repairOrderDao.read(orderId);
-        repairOrder.setCustomerName(new LoginCommand().findUserNameById(repairOrder.getCustomerId()));
-        repairOrder.setMasterName(new LoginCommand().findUserNameById(repairOrder.getMasterId()));
+        repairOrder.setCustomerName(new UserCommand().findUserNameById(repairOrder.getCustomerId()));
+        repairOrder.setMasterName(new UserCommand().findUserNameById(repairOrder.getMasterId()));
 
         return repairOrder;
+    }
+
+    public void updateOrder(String deviceName, String description, BigDecimal price, Integer orderId, Integer customerId){
+        LOGGER.info("updateOrder start");
+        RepairOrder repairOrder = new RepairOrder.Builder(deviceName, customerId)
+                .description(description)
+                .price(price)
+                .orderId(orderId)
+                .build();
+        repairOrderDao.update(repairOrder);
+        LOGGER.info("update order done");
     }
 }

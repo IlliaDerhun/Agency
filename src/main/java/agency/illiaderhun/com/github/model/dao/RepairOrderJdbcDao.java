@@ -301,7 +301,7 @@ public class RepairOrderJdbcDao implements RepairOrderDao<RepairOrder, Integer> 
     }
 
     /**
-     * Update all order's fields bu repairOrderId
+     * Update all order's fields by repairOrderId
      * except date and orderId
      *
      * @param repairOrder for updating

@@ -16,6 +16,7 @@
             </tr>
             </thead>
             <tbody>
+            <c:if test="${!repairOrders.equals('noOrders')}">
                 <c:forEach var="tempOrder" items="${repairOrders}">
 
                     <c:url var="deleteLink" value="/ControllerDispatcherServlet">
@@ -27,22 +28,35 @@
                         <c:param name="command" value="LOAD_ORDER"/>
                         <c:param name="orderId" value="${tempOrder.orderId}"/>
                     </c:url>
-
-                    <tr>
+                    <c:choose>
+                        <c:when test="${tempOrder.price <= 0}">
+                            <tr class="danger">
+                        </c:when>
+                        <c:otherwise>
+                            <tr>
+                        </c:otherwise>
+                    </c:choose>
                         <td>${tempOrder.orderId}</td>
                         <td>${tempOrder.deviceName}</td>
                         <td>${tempOrder.description}</td>
-                        <td>${tempOrder.customerName}</td>
+                        <td><a href="/moderatorPage.jsp">${tempOrder.customerName}</a></td>
                         <td>${tempOrder.masterName}</td>
                         <td>${tempOrder.date}</td>
                         <td>${tempOrder.price}</td>
                         <td>
                             <a href="${tempLink}"><fmt:message key="label.edit"/></a>
-                            |
-                            <a href="${deleteLink}"><fmt:message key="label.delete"/></a>
+                            <c:if test="${tempOrder.report==null}">
+                                |
+                                <a href="${deleteLink}"><fmt:message key="label.delete"/></a>
+                            </c:if>
+
                         </td>
                     </tr>
+                    <tr>
+                        <td colspan="6">${tempOrder.report}</td>
+                    </tr>
                 </c:forEach>
+            </c:if>
             </tbody>
         </table>
     </div>

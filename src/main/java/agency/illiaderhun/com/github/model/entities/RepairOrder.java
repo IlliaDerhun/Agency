@@ -54,6 +54,7 @@ public class RepairOrder {
     private String managerName;
     private String masterName;
     private String customerName;
+    private String report;
 
     public static class Builder{
 
@@ -71,6 +72,8 @@ public class RepairOrder {
         private String managerName;
         private String masterName;
         private String customerName;
+        private String report;
+
 
         public Builder(String deviceName, int cusotmerId){
             this.deviceName = deviceName;
@@ -122,6 +125,11 @@ public class RepairOrder {
             return this;
         }
 
+        public Builder report(String report){
+            this.report = report;
+            return this;
+        }
+
         public Builder customerName(String customerName){
             this.customerName = customerName;
             return this;
@@ -141,6 +149,7 @@ public class RepairOrder {
         this.masterId = builder.masterId;
         this.date = builder.date;
         this.price = builder.price;
+        this.report = builder.report;
     }
 
     public int getOrderId() {
@@ -233,6 +242,14 @@ public class RepairOrder {
 
     public void setCustomerName(String customerName) {
         this.customerName = customerName;
+    }
+
+    public String getReport() {
+        return report;
+    }
+
+    public void setReport(String report) {
+        this.report = report;
     }
 
     @Override

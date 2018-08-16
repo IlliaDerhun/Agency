@@ -10,15 +10,15 @@ import agency.illiaderhun.com.github.model.utils.PasswordEncoder;
 import org.apache.log4j.Logger;
 
 /**
- * LoginCommand work with {@link User}
+ * UserCommand work with {@link User}
  * Send to {@link UserJdbcDao} readByEmail(email) and return it
  *
  * @author Illia Derhun
  * @version 1.0
  */
-public class LoginCommand {
+public class UserCommand {
 
-    private static final Logger LOGGER = Logger.getLogger(LoginCommand.class.getSimpleName());
+    private static final Logger LOGGER = Logger.getLogger(UserCommand.class.getSimpleName());
     private UserDao<User, Integer> userDao = UserDaoFactory.getUser("mysql");
 
     public User byEmailFindUserInDB(String email, String password) {
@@ -50,5 +50,32 @@ public class LoginCommand {
         }
 
         return name;
+    }
+
+    public User createNewUser(String email, String password, String name, String surname, String phone) {
+        LOGGER.info("createNewUser start");
+        String encodPass = PasswordEncoder.encodeIt(password);
+        User user = new User.Builder(0, 1, email)
+                .catchword(encodPass)
+                .firstName(name)
+                .lastName(surname)
+                .phone(phone)
+                .build();
+
+        try {
+            userDao.readByEmail(email);
+            user = null;
+        } catch (InvalidSearchingString invalidSearchingString) {
+            LOGGER.info("it is new user");
+            userDao.create(user);
+            try {
+                user = userDao.readByEmail(email);
+            } catch (InvalidSearchingString invalidSearchingString1) {
+                invalidSearchingString1.printStackTrace();
+            }
+        }
+
+        LOGGER.info("createNewUser return " + user);
+        return user;
     }
 }

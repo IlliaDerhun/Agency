@@ -41,8 +41,19 @@
                 </tr>
                 </thead>
                 <tbody>
+                <c:if test="${!repairOrders.equals('noOrders')}">
                     <c:forEach var="tempOrder" items="${repairOrders}">
-                        <tr>
+                        <c:choose>
+                            <c:when test="${tempOrder.price <= 0}">
+                                <tr class="warning">
+                            </c:when>
+                            <c:when test="${tempOrder.price > 0}">
+                                <tr class="success">
+                            </c:when>
+                            <c:otherwise>
+                                <tr>
+                            </c:otherwise>
+                        </c:choose>
                             <td>${tempOrder.orderId}</td>
                             <td>${tempOrder.deviceName}</td>
                             <td>${tempOrder.description}</td>
@@ -50,7 +61,11 @@
                             <td>${tempOrder.date}</td>
                             <td>${tempOrder.price}</td>
                         </tr>
+                        <tr>
+                            <td colspan="6">${tempOrder.report}</td>
+                        </tr>
                     </c:forEach>
+                </c:if>
                     <tr>
                         <td></td>
                         <td><input type="text" name="deviceName" maxlength="45" required placeholder="<fmt:message key='label.deviceName'/>"/></td>

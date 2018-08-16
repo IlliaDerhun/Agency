@@ -65,10 +65,42 @@
         <url-pattern>/ControllerDispatcherServlet</url-pattern>
     </filter-mapping>
 
+    <filter>
+        <filter-name>updateOrderFilter</filter-name>
+        <filter-class>agency.illiaderhun.com.github.filters.UpdateOrderFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>updateOrderFilter</filter-name>
+        <url-pattern>/ControllerDispatcherServlet</url-pattern>
+    </filter-mapping>
+
+    <filter>
+        <filter-name>fixOrderFilter</filter-name>
+        <filter-class>agency.illiaderhun.com.github.filters.FixOrderFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>fixOrderFilter</filter-name>
+        <url-pattern>/ControllerDispatcherServlet</url-pattern>
+    </filter-mapping>
+
+    <filter>
+        <filter-name>registerFilter</filter-name>
+        <filter-class>agency.illiaderhun.com.github.filters.RegistrationFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>registerFilter</filter-name>
+        <url-pattern>/ControllerDispatcherServlet</url-pattern>
+    </filter-mapping>
+
     <error-page>
         <error-code>404</error-code>
         <location>/accessDenied.jsp</location>
     </error-page>
+
+
 <!--
 
     <filter>
