@@ -1,5 +1,6 @@
 package agency.illiaderhun.com.github.model.dao;
 
+import agency.illiaderhun.com.github.model.ConnectionManager;
 import agency.illiaderhun.com.github.model.QueriesManager;
 import agency.illiaderhun.com.github.model.daoFactory.FeedbackDaoFactory;
 import agency.illiaderhun.com.github.model.daoFactory.RepairOrderDaoFactory;
@@ -49,7 +50,7 @@ public class FeedbackJdbcDaoTest {
 
     private Properties properties = QueriesManager.getProperties("feedback");
 
-    private FeedbackDao<Feedback, Integer> feedbackDao = FeedbackDaoFactory.getFeedback("mysql");
+    private FeedbackDao<Feedback, Integer> feedbackDao = new FeedbackJdbcDao(ConnectionManager.testConnection(), QueriesManager.getProperties("feedback"));
 
     @Before
     public void setUp() throws Exception {

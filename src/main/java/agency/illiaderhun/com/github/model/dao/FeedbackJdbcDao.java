@@ -54,10 +54,11 @@ public class FeedbackJdbcDao implements FeedbackDao<Feedback, Integer> {
             if (resultSet != null && resultSet.next()){
                 theFeedback = madeFeedback(resultSet);
             } else {
-                LOGGER.warn("method readByReportId throw IdInvalidException with message: \"Invalid reportId: \"" + reportId);
+                LOGGER.error("method readByReportId throw IdInvalidException with message: \"Invalid reportId: \"" + reportId);
                 throw new IdInvalid("Invalid reportId: " + reportId);
             }
         } catch (SQLException e) {
+            LOGGER.error("readByReportId caught SQLException");
             e.printStackTrace();
         }
 
@@ -73,6 +74,7 @@ public class FeedbackJdbcDao implements FeedbackDao<Feedback, Integer> {
      * @throws SQLException in case some problem with resultSet
      */
     private Feedback madeFeedback(ResultSet resultSet) throws SQLException {
+        LOGGER.info("madeFeedback start");
         Integer commentId = resultSet.getInt("comment_id");
         String comment = resultSet.getString("comment");
         Integer reportId = resultSet.getInt("report_id");
@@ -82,6 +84,7 @@ public class FeedbackJdbcDao implements FeedbackDao<Feedback, Integer> {
         theFeedback.setCommentId(commentId);
         theFeedback.setDate(date);
 
+        LOGGER.info("madeFeedback return " + theFeedback);
         return theFeedback;
     }
 
@@ -107,10 +110,10 @@ public class FeedbackJdbcDao implements FeedbackDao<Feedback, Integer> {
 
             result = true;
         } catch (SQLException e) {
-            LOGGER.warn("method create caught SLQException");
+            LOGGER.error("method create caught SLQException");
             e.printStackTrace();
         } catch (IdInvalid idInvalid) {
-            LOGGER.warn("method create caught IdInvalid Exception");
+            LOGGER.error("method create caught IdInvalid Exception");
             idInvalid.printStackTrace();
         }
 
@@ -135,6 +138,7 @@ public class FeedbackJdbcDao implements FeedbackDao<Feedback, Integer> {
     }
 
     private void setStatement(PreparedStatement statement, Feedback feedback) throws SQLException {
+        LOGGER.info("setStatement start");
         statement.setString(1, feedback.getComment());
         statement.setInt(2, feedback.getReportId());
     }
@@ -160,11 +164,11 @@ public class FeedbackJdbcDao implements FeedbackDao<Feedback, Integer> {
             if (resultSet != null && resultSet.next()){
                 theFeedback = madeFeedback(resultSet);
             } else {
-                LOGGER.warn("method read throw IdInvalid Exception with message: \"Invalid feedback\" " + feedbackId);
+                LOGGER.error("method read throw IdInvalid Exception with message: \"Invalid feedback\" " + feedbackId);
                 throw new IdInvalid("Invalid feedbackId " + feedbackId);
             }
         } catch (SQLException e) {
-            LOGGER.warn("method read caught SQLException " + e);
+            LOGGER.error("method read caught SQLException " + e);
             e.printStackTrace();
         }
 
@@ -191,7 +195,7 @@ public class FeedbackJdbcDao implements FeedbackDao<Feedback, Integer> {
 
             result = statement.executeUpdate() == 1;
         } catch (SQLException e) {
-            LOGGER.info("method update caught SQLException " + e);
+            LOGGER.error("method update caught SQLException " + e);
             e.printStackTrace();
         }
 
@@ -210,7 +214,7 @@ public class FeedbackJdbcDao implements FeedbackDao<Feedback, Integer> {
             result = statement.executeUpdate() == 1;
 
         } catch (SQLException e) {
-            LOGGER.warn("method delete caught SQLException " + e);
+            LOGGER.error("method delete caught SQLException " + e);
             e.printStackTrace();
         }
         LOGGER.info("method delete return result: " + result);

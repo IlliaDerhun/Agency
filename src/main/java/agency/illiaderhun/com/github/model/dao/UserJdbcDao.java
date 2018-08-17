@@ -84,7 +84,7 @@ public class UserJdbcDao implements UserDao<User, Integer> {
             user.setUserId(setInsertedId());
             result = true;
         } catch (SQLException e) {
-            LOGGER.warn("method create caught SQLException " + e);
+            LOGGER.error("method create caught SQLException " + e);
             e.printStackTrace();
         }
 

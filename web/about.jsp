@@ -10,6 +10,6 @@
 <fmt:setBundle basename="agency.illiaderhun.com.github.i18n"/>
 
 <%@include file="html/header.html"%>
-<%@include file="html/moderatorPage.html"%>
+<%@include file="html/about.html"%>
 <%@include file="html/footer.html"%>
 

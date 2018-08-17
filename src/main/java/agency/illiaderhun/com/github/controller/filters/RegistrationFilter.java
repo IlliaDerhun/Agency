@@ -1,4 +1,4 @@
-package agency.illiaderhun.com.github.filters;
+package agency.illiaderhun.com.github.controller.filters;
 
 import javax.servlet.*;
 import java.io.IOException;
@@ -28,7 +28,7 @@ public class RegistrationFilter implements Filter {
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
         try {
             String theCommand = request.getParameter("command");
-            LOGGER.info("RegistrationFilter doFilter, the commend: " + theCommand);
+            LOGGER.info("RegistrationFilter doFilter, the command: " + theCommand);
             if (theCommand == null){
                 theCommand = "INDEX";
             }

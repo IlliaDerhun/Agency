@@ -1,4 +1,4 @@
-package agency.illiaderhun.com.github.filters;
+package agency.illiaderhun.com.github.controller.filters;
 
 import org.apache.log4j.Logger;
 

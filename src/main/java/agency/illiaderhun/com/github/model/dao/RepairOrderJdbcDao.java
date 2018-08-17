@@ -57,11 +57,11 @@ public class RepairOrderJdbcDao implements RepairOrderDao<RepairOrder, Integer> 
                     theRepairOrders.add(madeOrder(resultSet));
                 }
             } else {
-                LOGGER.warn("method readByCustomerId throw IdInvalid Exception \"Invalid customer id: \"" + customerId);
+                LOGGER.error("method readByCustomerId throw IdInvalid Exception \"Invalid customer id: \"" + customerId);
                 throw new IdInvalid("Invalid customer id: " + customerId);
             }
         } catch (SQLException e) {
-            LOGGER.info("method readByCustomerId caught SQLException " + e);
+            LOGGER.error("method readByCustomerId caught SQLException " + e);
             e.printStackTrace();
         }
 
@@ -92,11 +92,11 @@ public class RepairOrderJdbcDao implements RepairOrderDao<RepairOrder, Integer> 
                     theRepairOrders.add(madeOrder(resultSet));
                 }
             } else {
-                LOGGER.warn("method readByManagerId throw IdInvalid Exception \"Invalid manager id: \"" + managerId);
+                LOGGER.error("method readByManagerId throw IdInvalid Exception \"Invalid manager id: \"" + managerId);
                 throw new IdInvalid("Invalid manager id: " + managerId);
             }
         } catch (SQLException e) {
-            LOGGER.info("method readByManagerId caught SQLException " + e);
+            LOGGER.error("method readByManagerId caught SQLException " + e);
             e.printStackTrace();
         }
 
@@ -127,11 +127,11 @@ public class RepairOrderJdbcDao implements RepairOrderDao<RepairOrder, Integer> 
                     theRepairOrders.add(madeOrder(resultSet));
                 }
             } else {
-                LOGGER.warn("method readByMasterId throw IdInvalid Exception \"Invalid manager id: \"" + masterId);
+                LOGGER.error("method readByMasterId throw IdInvalid Exception \"Invalid manager id: \"" + masterId);
                 throw new IdInvalid("Invalid master id: " + masterId);
             }
         } catch (SQLException e) {
-            LOGGER.info("method readByMasterId caught SQLException " + e);
+            LOGGER.error("method readByMasterId caught SQLException " + e);
             e.printStackTrace();
         }
 
@@ -147,7 +147,7 @@ public class RepairOrderJdbcDao implements RepairOrderDao<RepairOrder, Integer> 
              PreparedStatement statement = connection.prepareStatement(properties.getProperty("freeManager"))){
             ResultSet resultSet = statement.executeQuery();
             if (resultSet.next()){
-                freeManagerId = resultSet.getInt("manager_id");
+                freeManagerId = resultSet.getInt("manager");
             }
         } catch (SQLException e) {
             LOGGER.error("caught SQLException " + e);
@@ -166,7 +166,7 @@ public class RepairOrderJdbcDao implements RepairOrderDao<RepairOrder, Integer> 
              PreparedStatement statement = connection.prepareStatement(properties.getProperty("freeMaster"))){
             ResultSet resultSet = statement.executeQuery();
             if (resultSet.next()){
-                freeMasterId = resultSet.getInt("master_id");
+                freeMasterId = resultSet.getInt("master");
             }
         } catch (SQLException e) {
             LOGGER.error("caught SQLException " + e);
@@ -201,10 +201,10 @@ public class RepairOrderJdbcDao implements RepairOrderDao<RepairOrder, Integer> 
 
             result = true;
         } catch (SQLException e) {
-            LOGGER.warn("method create caught SQLException " + e);
+            LOGGER.error("method create caught SQLException " + e);
             e.printStackTrace();
         } catch (IdInvalid idInvalid) {
-            LOGGER.warn("method create caught IdInvalid Exception");
+            LOGGER.error("method create caught IdInvalid Exception");
             idInvalid.printStackTrace();
         }
 
@@ -260,11 +260,11 @@ public class RepairOrderJdbcDao implements RepairOrderDao<RepairOrder, Integer> 
             if (resultSet != null && resultSet.next()){
                 theOrder = madeOrder(resultSet);
             } else {
-                LOGGER.warn("method read throw IdInvalid Exception with message: \"Invalid repairOrderId\"" + repairOrderId);
+                LOGGER.error("method read throw IdInvalid Exception with message: \"Invalid repairOrderId\"" + repairOrderId);
                 throw new IdInvalid("Invalid repairOrderId");
             }
         } catch (SQLException e) {
-            LOGGER.warn("method read caught SQLException " + e);
+            LOGGER.error("method read caught SQLException " + e);
             e.printStackTrace();
         }
 
@@ -320,7 +320,7 @@ public class RepairOrderJdbcDao implements RepairOrderDao<RepairOrder, Integer> 
 
             result = statement.executeUpdate() == 1;
         } catch (SQLException e) {
-            LOGGER.info("method update caught SQLException");
+            LOGGER.error("method update caught SQLException");
             e.printStackTrace();
         }
 
@@ -338,7 +338,7 @@ public class RepairOrderJdbcDao implements RepairOrderDao<RepairOrder, Integer> 
 
             result = statement.executeUpdate() == 1;
         } catch (SQLException e) {
-            LOGGER.warn("method delete caught SQLException " + e);
+            LOGGER.error("method delete caught SQLException " + e);
             e.printStackTrace();
         }
 

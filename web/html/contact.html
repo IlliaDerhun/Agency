@@ -1,0 +1,23 @@
+<link href="css/contact.css" rel="stylesheet">
+<div class="userInfo">
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th><fmt:message key="label.name"/></th>
+                <th><fmt:message key="label.phone"/></th>
+                <th><fmt:message key="label.email"/></th>
+            </tr>
+            </thead>
+            <tbody>
+            <c:forEach var="currentManager" items="${tempManagers}">
+                <tr>
+                    <td>${currentManager.firstName}</td>
+                    <td>${currentManager.phone}</td>
+                    <td>${currentManager.eMail}</td>
+                </tr>
+            </c:forEach>
+            </tbody>
+        </table>
+    </div>
+</div>

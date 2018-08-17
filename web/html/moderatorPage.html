@@ -1,0 +1,53 @@
+<link href="css/moderatorPage.css" rel="stylesheet"/>
+
+<div class="userInfo">
+    <div class="table-responsive">
+        <form action="/ControllerDispatcherServlet" method="get">
+            <input type="hidden" name="command" value="UPDATE_ROLE"/>
+            <input type="hidden" name="fixedUserId" value="${tempUser.userId}"/>
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th><fmt:message key="label.name"/></th>
+                    <th><fmt:message key="label.surname"/></th>
+                    <th><fmt:message key="label.phone"/></th>
+                    <th><fmt:message key="label.email"/></th>
+                    <th><fmt:message key="label.role"/></th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>${tempUser.firstName}</td>
+                        <td>${tempUser.lastName}</td>
+                        <td>${tempUser.phone}</td>
+                        <td>${tempUser.eMail}</td>
+                        <td>
+                            <select name="newUserRole" >
+                                <c:choose>
+                                    <c:when test="${tempUser.roleId == 1}">
+                                        <option selected value="1">Customer</option>
+                                        <option value="2">Manager</option>
+                                        <option value="3">Master</option>
+                                    </c:when>
+                                    <c:when test="${tempUser.roleId == 2}">
+                                        <option value="1">Customer</option>
+                                        <option selected value="2">Manager</option>
+                                        <option value="3">Master</option>
+                                    </c:when>
+                                    <c:when test="${tempUser.roleId == 3}">
+                                        <option value="1">Customer</option>
+                                        <option value="2">Manager</option>
+                                        <option selected value="3">Master</option>
+                                    </c:when>
+                                </c:choose>
+                            </select>
+                        </td>
+                        <td><input type="submit" value="<fmt:message key='label.edit'/>"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+    </div>
+</div>
+
+<%@include file="managerPage.html"%>

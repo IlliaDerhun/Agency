@@ -1,4 +1,4 @@
-package agency.illiaderhun.com.github.filters;
+package agency.illiaderhun.com.github.controller.filters;
 
 import javax.servlet.*;
 import java.io.IOException;

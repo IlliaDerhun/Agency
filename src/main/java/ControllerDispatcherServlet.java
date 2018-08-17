@@ -4,7 +4,6 @@ import agency.illiaderhun.com.github.controller.UserCommand;
 import agency.illiaderhun.com.github.model.entities.RepairOrder;
 import agency.illiaderhun.com.github.model.entities.User;
 import agency.illiaderhun.com.github.model.exeptions.IdInvalid;
-import agency.illiaderhun.com.github.model.exeptions.InvalidSearchingString;
 import org.apache.log4j.Logger;
 
 import javax.servlet.RequestDispatcher;
@@ -43,30 +42,36 @@ public class ControllerDispatcherServlet extends HttpServlet {
             }
             LOGGER.info("command: " + theCommand);
             // route to the appropriate method
-            switch (theCommand){
+            switch (theCommand) {
                 case "LOGIN":{
                     loginUser(request, response);
                 };break;
-                case "USER_PAGE":{
+                case "USER_PAGE": {
                     showUserPage(request, response);
                 };break;
-                case "ADD_ORDER":{
+                case "ADD_ORDER": {
                     addOrder(request, response);
                 };break;
-                case "DELETE_ORDER":{
+                case "DELETE_ORDER": {
                     deleteOrder(request, response);
                 };break;
-                case "LOAD_ORDER":{
+                case "LOAD_ORDER": {
                     loadOrder(request, response);
                 };break;
-                case "UPDATE_ORDER":{
+                case "UPDATE_ORDER": {
                     updateOrder(request, response);
                 };break;
-                case "FIX_ORDER":{
+                case "FIX_ORDER": {
                     fixOrder(request, response);
                 };break;
-                case "REGISTRATION":{
+                case "REGISTRATION": {
                     registerNewUser(request, response);
+                };break;
+                case "USER_INFO": {
+                    showUserInfoPage(request, response);
+                };break;
+                case "UPDATE_ROLE": {
+                    updateUserRole(request, response);
                 };break;
                 default:{
                     LOGGER.info("default case");
@@ -80,6 +85,36 @@ public class ControllerDispatcherServlet extends HttpServlet {
             dispatcher.forward(request, response);
             throw new ServletException(e);
         }
+    }
+
+    private void showContactPage(HttpServletRequest request, HttpServletResponse response) {
+
+    }
+
+    private void updateUserRole(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        LOGGER.info("updateUserRole start");
+        Integer userIdForFix = Integer.valueOf(request.getParameter("fixedUserId"));
+        Integer updatedRoleId = Integer.valueOf(request.getParameter("newUserRole"));
+        LOGGER.info("user ID for fix: " + userIdForFix + " new role: " + updatedRoleId);
+
+        new UserCommand().updateRoleIdForUser(userIdForFix, updatedRoleId);
+
+        showUserPage(request, response);
+    }
+
+    private void showUserInfoPage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        Integer customerId = Integer.valueOf(request.getParameter("customerId"));
+        ArrayList<RepairOrder> repairOrders = new RepairOrderCommand().getCustomerOrders(customerId);
+        if (repairOrders == null){
+            repairOrders = new RepairOrderCommand().getMasterOrders(customerId);
+        }
+        User theUser = new UserCommand().getUserInfoById(customerId);
+
+        request.setAttribute("repairOrders", repairOrders);
+        request.setAttribute("tempUser", theUser);
+
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/moderatorPage.jsp");
+        dispatcher.forward(request, response);
     }
 
     private void registerNewUser(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -216,7 +251,7 @@ public class ControllerDispatcherServlet extends HttpServlet {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
 
-        User theUser = loginCommand.byEmailFindUserInDB(email, password);
+        User theUser = loginCommand.validateUserByEmailPassword(email, password);
 
         if (theUser == null){
             request.setAttribute("err", "logPass");

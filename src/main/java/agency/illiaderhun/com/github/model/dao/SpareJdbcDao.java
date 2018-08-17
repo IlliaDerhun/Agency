@@ -58,12 +58,12 @@ public class SpareJdbcDao implements SpareDao<Spare, Integer> {
             if (resultSet != null && resultSet.next()){
                 theSpare = madeSpare(resultSet);
             } else {
-                LOGGER.warn("method readByName throw InvalidSearchingString Exception with message: \"Invalid spare's name: " + name + "\"");
+                LOGGER.error("method readByName throw InvalidSearchingString Exception with message: \"Invalid spare's name: " + name + "\"");
                 throw new InvalidSearchingString("Invalid spare's name: " + name);
             }
 
         } catch (SQLException e) {
-            LOGGER.warn("method readByName caught SQLException " + e);
+            LOGGER.error("method readByName caught SQLException " + e);
             e.printStackTrace();
         }
         LOGGER.info("method readByName return spare: " + theSpare);
@@ -115,7 +115,7 @@ public class SpareJdbcDao implements SpareDao<Spare, Integer> {
             result = true;
 
         } catch (SQLException e) {
-            LOGGER.warn("method create caught SQLException " + e);
+            LOGGER.error("method create caught SQLException " + e);
             e.printStackTrace();
         }
         LOGGER.info("method create return result of creation: " + result);
@@ -175,7 +175,7 @@ public class SpareJdbcDao implements SpareDao<Spare, Integer> {
             }
 
         } catch (SQLException e) {
-            LOGGER.warn("method read caught SQLException " + e);
+            LOGGER.error("method read caught SQLException " + e);
             e.printStackTrace();
         }
 
@@ -201,7 +201,7 @@ public class SpareJdbcDao implements SpareDao<Spare, Integer> {
             result = statement.executeUpdate() == 1;
 
         } catch (SQLException e) {
-            LOGGER.warn("method update caught SQLException " + e);
+            LOGGER.error("method update caught SQLException " + e);
             e.printStackTrace();
         }
         LOGGER.info("method update return spare: " + spare);
@@ -219,7 +219,7 @@ public class SpareJdbcDao implements SpareDao<Spare, Integer> {
             result = statement.executeUpdate() == 1;
 
         } catch (SQLException e) {
-            LOGGER.warn("method delete caught SQLException " + e);
+            LOGGER.error("method delete caught SQLException " + e);
             e.printStackTrace();
         }
         LOGGER.info("method delete return result: " + result);

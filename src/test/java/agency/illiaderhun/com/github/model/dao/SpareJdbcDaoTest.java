@@ -1,5 +1,6 @@
 package agency.illiaderhun.com.github.model.dao;
 
+import agency.illiaderhun.com.github.model.ConnectionManager;
 import agency.illiaderhun.com.github.model.QueriesManager;
 import agency.illiaderhun.com.github.model.daoFactory.SpareDaoFactory;
 import agency.illiaderhun.com.github.model.daoInterface.SpareDao;
@@ -43,7 +44,7 @@ public class SpareJdbcDaoTest {
     private Properties properties = QueriesManager.getProperties("spare");
 
     @NotNull
-    private SpareDao<Spare, Integer> spareDao = SpareDaoFactory.getSpare("mysql");
+    private SpareDao<Spare, Integer> spareDao = new SpareJdbcDao(ConnectionManager.testConnection(), QueriesManager.getProperties("spare"));
 
     @Before
     public void setUp() throws Exception {

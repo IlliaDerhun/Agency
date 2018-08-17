@@ -28,6 +28,17 @@
                         <c:param name="command" value="LOAD_ORDER"/>
                         <c:param name="orderId" value="${tempOrder.orderId}"/>
                     </c:url>
+
+                    <c:url var="userInfo" value="/ControllerDispatcherServlet">
+                        <c:param name="command" value="USER_INFO"/>
+                        <c:param name="customerId" value="${tempOrder.customerId}"/>
+                    </c:url>
+
+                    <c:url var="masterInfo" value="/ControllerDispatcherServlet">
+                        <c:param name="command" value="USER_INFO"/>
+                        <c:param name="customerId" value="${tempOrder.masterId}"/>
+                    </c:url>
+
                     <c:choose>
                         <c:when test="${tempOrder.price <= 0}">
                             <tr class="danger">
@@ -39,8 +50,8 @@
                         <td>${tempOrder.orderId}</td>
                         <td>${tempOrder.deviceName}</td>
                         <td>${tempOrder.description}</td>
-                        <td><a href="/moderatorPage.jsp">${tempOrder.customerName}</a></td>
-                        <td>${tempOrder.masterName}</td>
+                        <td><a href="${userInfo}">${tempOrder.customerName}</a></td>
+                        <td><a href="${masterInfo}">${tempOrder.masterName}</a></td>
                         <td>${tempOrder.date}</td>
                         <td>${tempOrder.price}</td>
                         <td>

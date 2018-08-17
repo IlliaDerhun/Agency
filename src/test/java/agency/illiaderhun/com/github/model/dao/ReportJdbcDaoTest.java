@@ -1,5 +1,6 @@
 package agency.illiaderhun.com.github.model.dao;
 
+import agency.illiaderhun.com.github.model.ConnectionManager;
 import agency.illiaderhun.com.github.model.QueriesManager;
 import agency.illiaderhun.com.github.model.daoFactory.ReportDaoFactory;
 import agency.illiaderhun.com.github.model.daoInterface.ReportDao;
@@ -39,7 +40,7 @@ public class ReportJdbcDaoTest {
 
     private Report report;
 
-    private ReportDao<Report, Integer> reportDao = ReportDaoFactory.getReport("mysql");
+    private ReportDao<Report, Integer> reportDao = new ReportJdbcDao(ConnectionManager.testConnection(), QueriesManager.getProperties("report"));
 
     private Properties properties = QueriesManager.getProperties("report");
 

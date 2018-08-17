@@ -1,14 +1,16 @@
-package agency.illiaderhun.com.github.filters;
+package agency.illiaderhun.com.github.controller.filters;
+
+import org.apache.log4j.Logger;
 
 import javax.servlet.*;
 import java.io.IOException;
-import java.util.logging.Logger;
+import java.math.BigDecimal;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class AddOrderFilter implements Filter {
+public class UpdateOrderFilter implements Filter {
 
-    private static final Logger LOGGER = Logger.getLogger(AddOrderFilter.class.getSimpleName());
+    private static final Logger LOGGER = Logger.getLogger(UpdateOrderFilter.class.getSimpleName());
 
     private Pattern namePattern;
     private Pattern descriptionPattern;
@@ -29,22 +31,21 @@ public class AddOrderFilter implements Filter {
 
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-        LOGGER.info("doFilter start");
         try {
             String theCommand = request.getParameter("command");
-            LOGGER.info("LoginFilter doFilter, the commend: " + theCommand);
+            LOGGER.info("UpdateOrderFilter doFilter, the command: " + theCommand);
             if (theCommand == null){
                 theCommand = "INDEX";
             }
 
             // route to the appropriate method
             switch (theCommand){
-                case "ADD_ORDER":{
+                case "UPDATE_ORDER":{
                     if(checkFields(request, response)){
                         chain.doFilter(request, response);
                     } else {
                         request.setAttribute("err", "regExp");
-                        RequestDispatcher dispatcher = request.getRequestDispatcher("/userPage.jsp");
+                        RequestDispatcher dispatcher = request.getRequestDispatcher("/updateOrder.jsp");
                         dispatcher.forward(request, response);
                     }
                 };break;
@@ -53,23 +54,33 @@ public class AddOrderFilter implements Filter {
                 }
             }
         } catch (Exception e) {
-            LOGGER.warning("caught Exception");
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/accessDenied.jsp");
-            dispatcher.forward(request, response);
+            LOGGER.error("Exception " + e);
             throw new ServletException(e);
         }
     }
 
-    private boolean checkFields(ServletRequest request, ServletResponse response) {
+    private boolean checkFields(ServletRequest request, ServletResponse response) throws ServletException {
+        LOGGER.info("checkFields start");
         boolean result = false;
+        try {
 
-        String deviceName = request.getParameter("deviceName").trim();
-        String description = request.getParameter("description").trim();
+            String deviceName = request.getParameter("deviceName").trim();
+            String description = request.getParameter("description").trim();
+            Integer bons = Integer.valueOf(request.getParameter("bons").trim());
+            Integer coins = Integer.valueOf(request.getParameter("coins").trim());
+            BigDecimal price = BigDecimal.valueOf(bons).add((BigDecimal.valueOf(coins).divide(BigDecimal.valueOf(100))));
+            LOGGER.info(deviceName + " " + description + " " + bons + " " + coins + " " + price);
+            if (checkName(deviceName) && checkDescription(description)){
+                LOGGER.info("checkFields checked");
+                result = true;
+            }
 
-        if (checkName(deviceName) && checkDescription(description)){
-            result = true;
+        }catch (Exception e){
+            LOGGER.warn("checkFields caught Exception");
+            throw new ServletException();
         }
 
+        LOGGER.info("checkFields return result " + result);
         return result;
     }
 

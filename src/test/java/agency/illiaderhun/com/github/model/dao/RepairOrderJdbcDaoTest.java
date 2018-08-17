@@ -51,13 +51,13 @@ public class RepairOrderJdbcDaoTest {
         when(connection.prepareStatement(any(String.class))).thenReturn(statement);
         when(dataSource.getConnection()).thenReturn(connection);
 
-        repairOrder = new RepairOrder.Builder("some device", 1)
+        repairOrder = new RepairOrder.Builder("iPhone 7", 1)
                 .orderId(87)
-                .description("some description")
+                .description("Camera doesnt work")
                 .managerId(2)
                 .masterId(3)
                 .date(new Date(118, 7, 7))
-                .price(123.45)
+                .price(75.99)
                 .build();
 
         when(resultSet.first()).thenReturn(true);

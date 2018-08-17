@@ -52,12 +52,12 @@ public class ReportJdbcDao implements ReportDao<Report, Integer> {
             if (resultSet != null && resultSet.next()){
                 theReport = madeReport(resultSet);
             } else {
-                LOGGER.warn("method readByOrderId throw IdInvalid Exception message: \"Invalid order's id\": " + orderId);
+                LOGGER.error("method readByOrderId throw IdInvalid Exception message: \"Invalid order's id\": " + orderId);
                 throw new IdInvalid("Invalid order's id");
             }
 
         } catch (SQLException e) {
-            LOGGER.warn("method readByOrderId caught SQLException " + e);
+            LOGGER.error("method readByOrderId caught SQLException " + e);
             e.printStackTrace();
         }
 
@@ -116,10 +116,10 @@ public class ReportJdbcDao implements ReportDao<Report, Integer> {
             result = true;
 
         } catch (SQLException e) {
-            LOGGER.warn("method create caught SLQException " + e);
+            LOGGER.error("method create caught SLQException " + e);
             e.printStackTrace();
         } catch (IdInvalid idInvalid) {
-            LOGGER.warn("method create caught IdInvalid");
+            LOGGER.error("method create caught IdInvalid");
             idInvalid.printStackTrace();
         }
 
@@ -177,11 +177,11 @@ public class ReportJdbcDao implements ReportDao<Report, Integer> {
             if (resultSet != null && resultSet.next()){
                 theReport = madeReport(resultSet);
             } else {
-                LOGGER.warn("method read throw IdInvalid Exception message: \"Invalid entityId\": " + reportId);
+                LOGGER.error("method read throw IdInvalid Exception message: \"Invalid entityId\": " + reportId);
                 throw new IdInvalid("Invalid entityId");
             }
         } catch (SQLException e) {
-            LOGGER.warn("method read caught SQLException " + e);
+            LOGGER.error("method read caught SQLException " + e);
             e.printStackTrace();
         }
 
@@ -209,7 +209,7 @@ public class ReportJdbcDao implements ReportDao<Report, Integer> {
             result = statement.executeUpdate() == 1;
 
         } catch (SQLException e) {
-            LOGGER.warn("method update caught SQLException " + e);
+            LOGGER.error("method update caught SQLException " + e);
             e.printStackTrace();
         }
 
@@ -227,10 +227,10 @@ public class ReportJdbcDao implements ReportDao<Report, Integer> {
 
             result = statement.executeUpdate() == 1;
         } catch (SQLException e) {
-            LOGGER.info("method delete caught SQLException " + e);
+            LOGGER.error("method delete caught SQLException " + e);
             e.printStackTrace();
         }
-        LOGGER.info("method delete return result: " + result);
+        LOGGER.error("method delete return result: " + result);
         return result;
     }
 }
