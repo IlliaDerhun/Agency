@@ -1,5 +1,6 @@
 # Agency
-</br>Description Environment: Tomcat 8.0.52, JSTL 1.2, MySQL 8.0.11, Log4j 1.2.17.
+</br>Description Environment: Tomcat 8.0.52, JSTL 1.2, MySQL 8.0.11, Log4j 1.2.17, Mockito 1.9.5
+
 </br>Система <b>Ремонтное Агенство.</b>
 </br><b>Пользователь</b> может создать заявку на ремонт изделия.
 </br><b>Менеджер</b> может принять заявку указав цену, либо отклонить заявку, указав причину.
