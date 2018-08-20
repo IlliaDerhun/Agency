@@ -55,6 +55,15 @@ public class RepairOrder {
     private String masterName;
     private String customerName;
     private String report;
+    private String feedback;
+
+    public String getFeedback() {
+        return feedback;
+    }
+
+    public void setFeedback(String feedback) {
+        this.feedback = feedback;
+    }
 
     public static class Builder{
 

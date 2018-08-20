@@ -1,12 +1,15 @@
 package agency.illiaderhun.com.github.controller.service.impl;
 
+import agency.illiaderhun.com.github.controller.FeedbackCommand;
 import agency.illiaderhun.com.github.controller.RepairOrderCommand;
 import agency.illiaderhun.com.github.controller.ReportCommand;
 import agency.illiaderhun.com.github.controller.UserCommand;
 import agency.illiaderhun.com.github.controller.service.RepairOrderService;
 import agency.illiaderhun.com.github.model.daoFactory.RepairOrderDaoFactory;
 import agency.illiaderhun.com.github.model.daoInterface.RepairOrderDao;
+import agency.illiaderhun.com.github.model.entities.Feedback;
 import agency.illiaderhun.com.github.model.entities.RepairOrder;
+import agency.illiaderhun.com.github.model.entities.Report;
 import agency.illiaderhun.com.github.model.exeptions.IdInvalid;
 import org.apache.log4j.Logger;
 
@@ -40,19 +43,7 @@ public class RepairOrderControllerHelper implements RepairOrderService {
         LOGGER.info("getCustomerOrders start with userId " + userId);
         try {
             ArrayList<RepairOrder> repairOrders = repairOrderDao.readByCustomerId(userId);
-            if (repairOrders != null) {
-                LOGGER.info("getCustomerOrders found order");
-                for (RepairOrder tempOrder : repairOrders) {
-                    tempOrder.setManagerName(new UserCommand().readNameByUserId(tempOrder.getManagerId()));
-                    tempOrder.setMasterName(new UserCommand().readNameByUserId(tempOrder.getMasterId()));
-                    tempOrder.setCustomerName(new UserCommand().readNameByUserId(tempOrder.getCustomerId()));
-                    try {
-                        tempOrder.setReport(new ReportCommand().getReportByOrderId(tempOrder.getOrderId()).getBreakingDescription());
-                    } catch (IdInvalid e){
-
-                    }
-                }
-            }
+            setHelpInfoIntoOrder(repairOrders);
             LOGGER.info("getCustomerOrders return order " + repairOrders);
             return repairOrders;
         } catch (IdInvalid idInvalid) {
@@ -66,18 +57,7 @@ public class RepairOrderControllerHelper implements RepairOrderService {
 
         try {
             ArrayList<RepairOrder> repairOrders = repairOrderDao.readByManagerId(userId);
-            if (repairOrders != null) {
-                for (RepairOrder tempOrder : repairOrders) {
-                    tempOrder.setCustomerName(new UserCommand().readNameByUserId(tempOrder.getCustomerId()));
-                    tempOrder.setMasterName(new UserCommand().readNameByUserId(tempOrder.getMasterId()));
-                    tempOrder.setManagerName(new UserCommand().readNameByUserId(tempOrder.getManagerId()));
-                    try {
-                        tempOrder.setReport(new ReportCommand().getReportByOrderId(tempOrder.getOrderId()).getBreakingDescription());
-                    } catch (IdInvalid e){
-
-                    }
-                }
-            }
+            setHelpInfoIntoOrder(repairOrders);
             return repairOrders;
         } catch (IdInvalid idInvalid) {
             return null;
@@ -89,23 +69,44 @@ public class RepairOrderControllerHelper implements RepairOrderService {
         LOGGER.info("getMasterOrders start with userId " + userId);
         try {
             ArrayList<RepairOrder> repairOrders = repairOrderDao.readByMasterId(userId);
-            if (repairOrders != null) {
-                for (RepairOrder tempOrder : repairOrders) {
-                    tempOrder.setManagerName(new UserCommand().readNameByUserId(tempOrder.getManagerId()));
-                    tempOrder.setCustomerName(new UserCommand().readNameByUserId(tempOrder.getCustomerId()));
-                    tempOrder.setMasterName(new UserCommand().readNameByUserId(tempOrder.getMasterId()));
-                    try {
-                        tempOrder.setReport(new ReportCommand().getReportByOrderId(tempOrder.getOrderId()).getBreakingDescription());
-                    } catch (IdInvalid e){
-
-                    }
-                }
-            }
+            setHelpInfoIntoOrder(repairOrders);
             return repairOrders;
         } catch (IdInvalid idInvalid) {
             return null;
         }
     }
+
+    private void setHelpInfoIntoOrder(ArrayList<RepairOrder> repairOrders) {
+        if (repairOrders != null) {
+            for (RepairOrder tempOrder : repairOrders) {
+                tempOrder.setManagerName(new UserCommand().readNameByUserId(tempOrder.getManagerId()));
+                tempOrder.setMasterName(new UserCommand().readNameByUserId(tempOrder.getMasterId()));
+                tempOrder.setCustomerName(new UserCommand().readNameByUserId(tempOrder.getCustomerId()));
+
+                try {
+                    Report theReport = new ReportCommand().getReportByOrderId(tempOrder.getOrderId());
+                    if (theReport != null){
+                        Feedback theFeedback = new FeedbackCommand().findFeedbackByReportId(theReport.getReportId());
+                        if (theFeedback != null){
+                            tempOrder.setFeedback(theFeedback.getComment());
+                        }
+                    }
+                } catch (IdInvalid idInvalid) {
+                    LOGGER.error("for this order the feedback doesn't exist");
+                    idInvalid.printStackTrace();
+                }
+                try {
+                    tempOrder.setReport(new ReportCommand().getReportByOrderId(tempOrder.getOrderId()).getBreakingDescription());
+                } catch (IdInvalid e){
+
+                }
+            }
+        }
+
+
+    }
+
+
 
     @Override
     public RepairOrder readOrderById(Integer orderId) throws IdInvalid {

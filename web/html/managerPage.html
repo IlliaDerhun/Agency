@@ -63,9 +63,18 @@
 
                         </td>
                     </tr>
-                    <tr>
-                        <td colspan="6">${tempOrder.report}</td>
-                    </tr>
+                    <c:if test="${(tempOrder.report) != null}">
+                        <tr>
+                            <td><fmt:message key="label.report"/></td>
+                            <td colspan="6">${tempOrder.report}</td>
+                        </tr>
+                    </c:if>
+                    <c:if test="${(tempOrder.feedback) != null}">
+                        <tr>
+                            <td><fmt:message key="label.comment"/></td>
+                            <td colspan="6">${tempOrder.feedback}</td>
+                        </tr>
+                    </c:if>
                 </c:forEach>
             </c:if>
             </tbody>

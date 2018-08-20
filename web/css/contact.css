@@ -1,10 +1,12 @@
-.userInfo{
-    border: 1px solid #5c5858;
-    border-radius: 10px;
-    display:inline-block;
-    padding: 8px;
-    margin-top: 10px;
-    margin-left: 10px;
+.leftimg{
+    float: right;
+    margin: 7px 7px 7px 0;
+}
+
+.addr{
+    width: 25%;
+    margin-top: 5%;
+    margin-left: 10%;
+    text-align: center;
     float: left;
-    max-width: 75%;
 }

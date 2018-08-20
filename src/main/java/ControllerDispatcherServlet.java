@@ -1,3 +1,4 @@
+import agency.illiaderhun.com.github.controller.FeedbackCommand;
 import agency.illiaderhun.com.github.controller.RepairOrderCommand;
 import agency.illiaderhun.com.github.controller.ReportCommand;
 import agency.illiaderhun.com.github.controller.UserCommand;
@@ -73,6 +74,9 @@ public class ControllerDispatcherServlet extends HttpServlet {
                 case "UPDATE_ROLE": {
                     updateUserRole(request, response);
                 };break;
+                case "ADD_COMMENT": {
+                    addFeedback(request, response);
+                };break;
                 default:{
                     LOGGER.info("default case");
                     RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
@@ -87,8 +91,12 @@ public class ControllerDispatcherServlet extends HttpServlet {
         }
     }
 
-    private void showContactPage(HttpServletRequest request, HttpServletResponse response) {
+    private void addFeedback(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String comment = request.getParameter("comment");
+        Integer orderId = Integer.valueOf(request.getParameter("orderId"));
 
+        new FeedbackCommand().createFeedback(comment, orderId);
+        showUserPage(request, response);
     }
 
     private void updateUserRole(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
