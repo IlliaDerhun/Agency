@@ -6,6 +6,13 @@ import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * Filter before order creating.
+ * It checks two main fields: name and description by patterns.
+ *
+ * @author Illia Derhun
+ * @version 1.0
+ */
 public class AddOrderFilter implements Filter {
 
     private static final Logger LOGGER = Logger.getLogger(AddOrderFilter.class.getSimpleName());
@@ -60,6 +67,12 @@ public class AddOrderFilter implements Filter {
         }
     }
 
+    /**
+     *
+     * @param request standart request from user with "name" and "description"
+     * @param response standart HttpServlet response
+     * @return true in case all fields are OK
+     */
     private boolean checkFields(ServletRequest request, ServletResponse response) {
         boolean result = false;
 
@@ -73,12 +86,24 @@ public class AddOrderFilter implements Filter {
         return result;
     }
 
+    /**
+     * Check description by descriptionPattern
+     *
+     * @param description text description from user
+     * @return true in case description is OK
+     */
     private boolean checkDescription(String description) {
         matcher = descriptionPattern.matcher(description);
 
         return matcher.matches();
     }
 
+    /**
+     * Check name by namePattern
+     *
+     * @param deviceName name from user
+     * @return true in case deviceName is OK
+     */
     private boolean checkName(final String deviceName) {
         matcher = namePattern.matcher(deviceName);
 

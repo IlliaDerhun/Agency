@@ -38,8 +38,7 @@ public class QueriesManager {
             LOGGER.info("Property caught FileNotFoundException");
             LOGGER.trace(ex);
             ex.printStackTrace();
-        }
-        catch (IOException e) {
+        } catch (IOException e) {
             LOGGER.error("Property caught IOException");
             LOGGER.trace(e);
             e.printStackTrace();

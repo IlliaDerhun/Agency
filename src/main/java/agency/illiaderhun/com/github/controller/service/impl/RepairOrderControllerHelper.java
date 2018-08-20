@@ -26,11 +26,22 @@ public class RepairOrderControllerHelper implements RepairOrderService {
     private static final Logger LOGGER = Logger.getLogger(RepairOrderControllerHelper.class.getSimpleName());
     private RepairOrderDao<RepairOrder, Integer> repairOrderDao = RepairOrderDaoFactory.getReport("mysql");
 
+    /**
+     * Delete order by order's id through {@link RepairOrderDao}
+     *
+     * @param orderId order's id for deleting
+     */
     @Override
     public void deleteOrder(Integer orderId){
+        LOGGER.info("deleteOrder start with orderId: " + orderId);
         repairOrderDao.delete(orderId);
     }
 
+    /**
+     * Create order in DB with all required fields
+     *
+     * @param newRepairOrder already checked and validated repair order for creating
+     */
     @Override
     public void createNewOrder(RepairOrder newRepairOrder) {
         LOGGER.info("createNewOrder start");
@@ -38,6 +49,12 @@ public class RepairOrderControllerHelper implements RepairOrderService {
         LOGGER.info("createNewOrder done");
     }
 
+    /**
+     * Searches all customer's orders by userId through {@link RepairOrderDao}
+     *
+     * @param userId for searching
+     * @return all customer's orders
+     */
     @Override
     public ArrayList<RepairOrder> getCustomerOrders(Integer userId) {
         LOGGER.info("getCustomerOrders start with userId " + userId);
@@ -51,6 +68,12 @@ public class RepairOrderControllerHelper implements RepairOrderService {
         }
     }
 
+    /**
+     * Searches all manager's orders by userId through {@link RepairOrderDao}
+     *
+     * @param userId for searching
+     * @return all manager's orders
+     */
     @Override
     public ArrayList<RepairOrder> getManagerOrders(Integer userId) {
         LOGGER.info("getManagerOrders start with userId " + userId);
@@ -64,6 +87,12 @@ public class RepairOrderControllerHelper implements RepairOrderService {
         }
     }
 
+    /**
+     * Searches all master's orders by userId through {@link RepairOrderDao}
+     *
+     * @param userId for searching
+     * @return all master's orders
+     */
     @Override
     public ArrayList<RepairOrder> getMasterOrders(Integer userId) {
         LOGGER.info("getMasterOrders start with userId " + userId);
@@ -76,6 +105,12 @@ public class RepairOrderControllerHelper implements RepairOrderService {
         }
     }
 
+    /**
+     * For all get/Users/Orders needs this help method
+     * to avoid duplicate code
+     *
+     * @param repairOrders ready repair order without help info (master/customer/manager name or comment)
+     */
     private void setHelpInfoIntoOrder(ArrayList<RepairOrder> repairOrders) {
         if (repairOrders != null) {
             for (RepairOrder tempOrder : repairOrders) {
@@ -106,8 +141,13 @@ public class RepairOrderControllerHelper implements RepairOrderService {
 
     }
 
-
-
+    /**
+     * Find and read one order from DB through {@link RepairOrderDao}
+     *
+     * @param orderId for searching
+     * @return valid RepairOrder if it exist
+     * @throws IdInvalid if orderId not valid and nothing exist
+     */
     @Override
     public RepairOrder readOrderById(Integer orderId) throws IdInvalid {
         RepairOrder repairOrder = repairOrderDao.read(orderId);
@@ -117,6 +157,11 @@ public class RepairOrderControllerHelper implements RepairOrderService {
         return repairOrder;
     }
 
+    /**
+     * Send to {@link RepairOrderDao} repairOrder for updating
+     *
+     * @param repairOrder with already updated fields
+     */
     @Override
     public void updateOrder(RepairOrder repairOrder){
         LOGGER.info("updateOrder start");

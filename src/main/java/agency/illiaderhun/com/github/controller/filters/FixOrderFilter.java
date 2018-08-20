@@ -7,6 +7,13 @@ import java.io.IOException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * Filter before order will be fixing.
+ * It checks one main field: report.
+ *
+ * @author Illia Derhun
+ * @version 1.0
+ */
 public class FixOrderFilter implements Filter {
 
     private static final Logger LOGGER = Logger.getLogger(FixOrderFilter.class.getSimpleName());
@@ -58,6 +65,12 @@ public class FixOrderFilter implements Filter {
         }
     }
 
+    /**
+     *
+     * @param request standart request from user (master) with "report"
+     * @param response standart HttpServlet response
+     * @return true in case report field is OK
+     */
     private boolean checkFields(ServletRequest request, ServletResponse response) {
         LOGGER.info("checkFields start");
         boolean result = false;

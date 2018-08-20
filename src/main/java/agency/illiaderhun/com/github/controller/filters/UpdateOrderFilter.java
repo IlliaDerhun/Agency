@@ -8,6 +8,13 @@ import java.math.BigDecimal;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * Filter before order updating.
+ * It checks main fields: name, description and price by patterns.
+ *
+ * @author Illia Derhun
+ * @version 1.0
+ */
 public class UpdateOrderFilter implements Filter {
 
     private static final Logger LOGGER = Logger.getLogger(UpdateOrderFilter.class.getSimpleName());
@@ -84,12 +91,24 @@ public class UpdateOrderFilter implements Filter {
         return result;
     }
 
+    /**
+     * Check description by descriptionPattern
+     *
+     * @param description text description from user
+     * @return true in case description is OK
+     */
     private boolean checkDescription(String description) {
         matcher = descriptionPattern.matcher(description);
 
         return matcher.matches();
     }
 
+    /**
+     * Check name by namePattern
+     *
+     * @param deviceName name from user
+     * @return true in case deviceName is OK
+     */
     private boolean checkName(final String deviceName) {
         matcher = namePattern.matcher(deviceName);
 

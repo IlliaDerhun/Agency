@@ -6,6 +6,13 @@ import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * Filter before users logging.
+ * It checks two main fields: email and password by patterns.
+ *
+ * @author Illia Derhun
+ * @version 1.0
+ */
 public class LoginFilter implements Filter {
 
     private static final Logger LOGGER = Logger.getLogger(LoginFilter.class.getSimpleName());
@@ -52,13 +59,19 @@ public class LoginFilter implements Filter {
         }
     }
 
+    /**
+     *
+     * @param request standart request from user with "email" and "password"
+     * @param response standart HttpServlet response
+     * @return true in case all fields are OK
+     */
     private boolean checkLoginAndPassword(ServletRequest request, ServletResponse response) throws ServletException {
         LOGGER.info("checkLoginAndPassword");
         boolean result = false;
         try {
             String email = request.getParameter("email").trim();
             String password = request.getParameter("password").trim();
-            if (email != null && validate(email) && checkPassword(password)) {
+            if (email != null && validateEmail(email) && checkPassword(password)) {
                 result = true;
             }
         } catch (Exception e){
@@ -68,12 +81,24 @@ public class LoginFilter implements Filter {
         return result;
     }
 
-    private boolean validate(final String hex) {
-        matcher = pattern.matcher(hex);
+    /**
+     * Check email by EMAIL_PATTERN
+     *
+     * @param email email from user
+     * @return true in case email is OK
+     */
+    private boolean validateEmail(final String email) {
+        matcher = pattern.matcher(email);
 
         return matcher.matches();
     }
 
+    /**
+     * Check password if ot not null
+     *
+     * @param password text description from user
+     * @return true in case password is OK
+     */
     private boolean checkPassword(String password){
         boolean result = false;
         if (password != null && !password.equalsIgnoreCase("")){

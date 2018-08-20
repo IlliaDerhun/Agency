@@ -58,9 +58,9 @@ public class FeedbackJdbcDaoTest {
         when(connection.prepareStatement(any(String.class))).thenReturn(statement);
         when(dataSource.getConnection()).thenReturn(connection);
 
-        feedback = new Feedback("Быстро сделали. Варит кофе хорошо, пена тоже есть", 2);
-        feedback.setCommentId(1);
-        feedback.setDate(new Date(118, 6, 19));
+        feedback = new Feedback("Хорошо сделали, спасибо", 2);
+        feedback.setCommentId(33);
+        feedback.setDate(new Date(118, 7, 19));
 
         when(resultSet.first()).thenReturn(true);
         when(resultSet.getInt(1)).thenReturn(feedback.getCommentId());
@@ -86,7 +86,7 @@ public class FeedbackJdbcDaoTest {
 
     @Test
     public void readByValidFeedbackIdReturnValidEntity() throws IdInvalid {
-        assertEquals(feedback.toString(), feedbackDao.read(1).toString());
+        assertEquals(feedback.toString(), feedbackDao.read(33).toString());
     }
 
     @Test(expected = IdInvalid.class)

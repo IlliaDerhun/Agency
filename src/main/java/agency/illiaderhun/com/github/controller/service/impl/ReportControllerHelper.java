@@ -19,6 +19,13 @@ public class ReportControllerHelper implements ReportService {
     private static final Logger LOGGER =  Logger.getLogger(ReportControllerHelper.class.getSimpleName());
     private ReportDao<Report, Integer> reportDao = ReportDaoFactory.getReport("mysql");
 
+    /**
+     * Find {@link Report} in DB by orderId
+     *
+     * @param orderId the number on which the report was made
+     * @return valid Report in case it exist
+     * @throws IdInvalid in case orderId or Report doesn't exist
+     */
     @Override
     public Report getReportByOrderId(Integer orderId) throws IdInvalid {
         LOGGER.info("getReportByOrderId start with order " + orderId);
@@ -27,6 +34,12 @@ public class ReportControllerHelper implements ReportService {
         return theReport;
     }
 
+    /**
+     * Create new {@link Report} through {@link ReportDao}
+     *
+     * @param breakingDescription already validated description about break
+     * @param orderId for setting description
+     */
     @Override
     public void createNewReport(String breakingDescription, Integer orderId){
         LOGGER.info("createNewReport start with" + breakingDescription + " " + orderId);

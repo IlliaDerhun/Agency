@@ -21,6 +21,13 @@ public class UserControllerHelper implements UserService {
     private static final Logger LOGGER = Logger.getLogger(UserControllerHelper.class.getSimpleName());
     private UserDao<User, Integer> userDao = UserDaoFactory.getUser("mysql");
 
+    /**
+     * Validates user by email and password through comparing encoded passwords
+     *
+     * @param email validated and checked email
+     * @param password validated and checked password
+     * @return valid {@link User} in case it exist and password the same as in DB
+     */
     @Override
     public User byEmailFindUserInDB(String email, String password) {
         LOGGER.info("findUserInDB email: " + email + " pass: " + password);
@@ -38,6 +45,12 @@ public class UserControllerHelper implements UserService {
         return theUser;
     }
 
+    /**
+     * Find {@link User} by userId and return it name
+     *
+     * @param userId for searching name by this id
+     * @return valid name if something exist by this id
+     */
     @Override
     public String findUserNameById(Integer userId) {
         LOGGER.info("byIdFindUserInDB userId: " + userId);
@@ -84,6 +97,12 @@ public class UserControllerHelper implements UserService {
         return user;
     }
 
+    /**
+     * Find {@link User} by userId and return valid entity
+     *
+     * @param userId for searching entity by this id
+     * @return valid {@link User} entity if it exist
+     */
     @Override
     public User readUserById(Integer userId) {
         LOGGER.info("readUserById userId: " + userId);
@@ -97,6 +116,11 @@ public class UserControllerHelper implements UserService {
         return theUser;
     }
 
+    /**
+     * Find and update current user
+     *
+     * @param theUser validated and already checked entity with updated fields
+     */
     @Override
     public void updateUser(User theUser) {
         userDao.update(theUser);

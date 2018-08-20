@@ -5,6 +5,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+/**
+ * Filter before all pages
+ * In case some user wanna go to not valid jsp page
+ *
+ * @author Illia Derhun
+ * @version 1.0
+ */
 public class PageRedirectSecurityFilter implements Filter {
 
     private String indexPath;

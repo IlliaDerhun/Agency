@@ -51,13 +51,13 @@ public class RepairOrderJdbcDaoTest {
         when(connection.prepareStatement(any(String.class))).thenReturn(statement);
         when(dataSource.getConnection()).thenReturn(connection);
 
-        repairOrder = new RepairOrder.Builder("iPhone 7", 1)
-                .orderId(87)
-                .description("Camera doesnt work")
-                .managerId(2)
+        repairOrder = new RepairOrder.Builder("some device", 1)
+                .orderId(114)
+                .description("some description")
+                .managerId(1)
                 .masterId(3)
-                .date(new Date(118, 7, 7))
-                .price(75.99)
+                .date(new Date(118, 7, 16))
+                .price(45.12)
                 .build();
 
         when(resultSet.first()).thenReturn(true);
@@ -108,7 +108,7 @@ public class RepairOrderJdbcDaoTest {
 
     @Test
     public void readByValidRepairOrderIdReturnTrue() throws IdInvalid {
-        assertEquals(repairOrder.toString(), repairOrderDao.read(87).toString());
+        assertEquals(repairOrder.toString(), repairOrderDao.read(114).toString());
     }
 
     @Test(expected = IdInvalid.class)

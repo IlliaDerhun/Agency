@@ -3,6 +3,12 @@ package agency.illiaderhun.com.github.controller.filters;
 import javax.servlet.*;
 import java.io.IOException;
 
+/**
+ * Filter before all jsp pages which sets UTF-8
+ *
+ * @author Illia Derhun
+ * @version 1.0
+ */
 public class EncodingFilter implements Filter {
 
     private String code;

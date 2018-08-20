@@ -6,6 +6,13 @@ import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * Filter before user registration
+ * It checks all main fields: firstName, lastName, email, password and phone
+ *
+ * @author Illia Derhun
+ * @version 1.0
+ */
 public class RegistrationFilter implements Filter {
 
     private static final Logger LOGGER = Logger.getLogger(RegistrationFilter.class.getSimpleName());
@@ -74,6 +81,12 @@ public class RegistrationFilter implements Filter {
         return result;
     }
 
+    /**
+     * Check phone by PHONE_PATTERN
+     *
+     * @param phone user's phone
+     * @return true in case phone is OK
+     */
     private boolean checkPhone(String phone) {
         LOGGER.info("checkPhone start with phone: " + phone);
         pattern = Pattern.compile(PHONE_PATTERN);
@@ -82,6 +95,14 @@ public class RegistrationFilter implements Filter {
         return matcher.matches();
     }
 
+    /**
+     * Check password if it bigger then 0 and less then 9
+     * And the same as a confirm password
+     *
+     * @param password user's password for verification
+     * @param confirm the same password for checking
+     * @return true in case password and confirm password are OK
+     */
     private boolean checkPassword(String password, String confirm) {
         LOGGER.info("checkedPassword start pass: " + password + " confirm: " + confirm);
         if (password.length() <= 9 && password.length() > 0){
@@ -97,6 +118,12 @@ public class RegistrationFilter implements Filter {
         return false;
     }
 
+    /**
+     * Check email by EMAIL_PATTERN
+     *
+     * @param email email from user
+     * @return true in case email is OK
+     */
     private boolean checkEmail(String email) {
         LOGGER.info("checkEmail start with email: " + email);
         pattern = Pattern.compile(EMAIL_PATTERN);
@@ -105,6 +132,12 @@ public class RegistrationFilter implements Filter {
         return matcher.matches();
     }
 
+    /**
+     * Check firstName and lastName by NAME_PATTERN
+     *
+     * @param name email from user
+     * @return true in case firstName and lastName are OK
+     */
     private boolean checkName(String name) {
         LOGGER.info("checkName start with name: " + name);
         pattern = Pattern.compile(NAME_PATTERN);
