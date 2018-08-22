@@ -4,7 +4,7 @@ import agency.illiaderhun.com.github.controller.ReportCommand;
 import agency.illiaderhun.com.github.controller.UserCommand;
 import agency.illiaderhun.com.github.model.entities.RepairOrder;
 import agency.illiaderhun.com.github.model.entities.User;
-import agency.illiaderhun.com.github.model.exeptions.IdInvalid;
+import agency.illiaderhun.com.github.model.exeptions.IdInvalidExcepiton;
 import org.apache.log4j.Logger;
 
 import javax.servlet.RequestDispatcher;
@@ -192,11 +192,11 @@ public class ControllerDispatcherServlet extends HttpServlet {
                 request.setAttribute("coins", coins);
                 request.setAttribute("tempOrder", repairOrder);
             }
-        } catch (IdInvalid idInvalid) {
+        } catch (IdInvalidExcepiton idInvalidExcepiton) {
             LOGGER.error("caught Exception");
             RequestDispatcher dispatcher = request.getRequestDispatcher("/accessDenied.jsp");
             dispatcher.forward(request, response);
-            idInvalid.printStackTrace();
+            idInvalidExcepiton.printStackTrace();
         }
 
         LOGGER.info("loadOrder send to updateOrder.jsp");

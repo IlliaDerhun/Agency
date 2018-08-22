@@ -3,7 +3,7 @@ package agency.illiaderhun.com.github.controller;
 import agency.illiaderhun.com.github.controller.service.impl.ReportControllerHelper;
 import agency.illiaderhun.com.github.model.dao.ReportJdbcDao;
 import agency.illiaderhun.com.github.model.entities.Report;
-import agency.illiaderhun.com.github.model.exeptions.IdInvalid;
+import agency.illiaderhun.com.github.model.exeptions.IdInvalidExcepiton;
 import org.apache.log4j.Logger;
 
 /**
@@ -19,7 +19,7 @@ public class ReportCommand {
 
     private ReportControllerHelper reportControllerHelper = new ReportControllerHelper();
 
-    public Report getReportByOrderId(Integer orderId) throws IdInvalid {
+    public Report getReportByOrderId(Integer orderId) throws IdInvalidExcepiton {
         LOGGER.info("getReportByOrderId start with order " + orderId);
         Report theReport = reportControllerHelper.getReportByOrderId(orderId);
         LOGGER.info("getReportByOrderId return " + theReport);

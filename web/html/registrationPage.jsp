@@ -5,7 +5,7 @@
         <span style=" text-align: center; color: #ff0000"><fmt:message key="label.wrongPassEmail"/></span>
     </c:if>
     <div class="row main-form">
-        <form class="" action="/ControllerDispatcherServlet" method="get">
+        <form class="" action="/ControllerDispatcherServlet" method="post">
             <input type="hidden" name="command" value="REGISTRATION"/>
             <div class="form-group">
                 <label for="name" class="cols-sm-2 control-label"><fmt:message key="label.name"/></label>
@@ -28,7 +28,7 @@
             </div>
 
             <div class="form-group">
-                <label for="phone" class="cols-sm-2 control-label">Your Phone</label>
+                <label for="phone" class="cols-sm-2 control-label">Your phone</label>
                 <div class="cols-sm-10">
                     <div class="input-group">
                         <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>

@@ -13,7 +13,7 @@ import java.lang.annotation.Target;
  * @version 1.0
  */
 
-@Retention(RetentionPolicy.RUNTIME)
+@Retention(RetentionPolicy.SOURCE)
 @Target(ElementType.FIELD)
 public @interface AutoGeneration {
 

@@ -2,7 +2,7 @@ package agency.illiaderhun.com.github.model.dao;
 
 import agency.illiaderhun.com.github.model.daoInterface.FeedbackDao;
 import agency.illiaderhun.com.github.model.entities.Feedback;
-import agency.illiaderhun.com.github.model.exeptions.IdInvalid;
+import agency.illiaderhun.com.github.model.exeptions.IdInvalidExcepiton;
 import com.sun.istack.internal.NotNull;
 import org.apache.log4j.Logger;
 
@@ -38,10 +38,10 @@ public class FeedbackJdbcDao implements FeedbackDao<Feedback, Integer> {
      *
      * @param reportId for select all customer's feedback about this report.
      * @return return all valid feedback if it exist.
-     * @exception IdInvalid in case method couldn't find anything by reportId
+     * @exception IdInvalidExcepiton in case method couldn't find anything by reportId
      */
     @Override
-    public Feedback readByReportId(Integer reportId) throws IdInvalid {
+    public Feedback readByReportId(Integer reportId) throws IdInvalidExcepiton {
         LOGGER.info("method readByReportId start with reportId: " + reportId);
         Feedback theFeedback = null;
         try (Connection connection = dataSource.getConnection();
@@ -55,7 +55,7 @@ public class FeedbackJdbcDao implements FeedbackDao<Feedback, Integer> {
                 theFeedback = madeFeedback(resultSet);
             } else {
                 LOGGER.error("method readByReportId throw IdInvalidException with message: \"Invalid reportId: \"" + reportId);
-                throw new IdInvalid("Invalid reportId: " + reportId);
+                throw new IdInvalidExcepiton("Invalid reportId: " + reportId);
             }
         } catch (SQLException e) {
             LOGGER.error("readByReportId caught SQLException");
@@ -112,9 +112,9 @@ public class FeedbackJdbcDao implements FeedbackDao<Feedback, Integer> {
         } catch (SQLException e) {
             LOGGER.error("method create caught SLQException");
             e.printStackTrace();
-        } catch (IdInvalid idInvalid) {
-            LOGGER.error("method create caught IdInvalid Exception");
-            idInvalid.printStackTrace();
+        } catch (IdInvalidExcepiton idInvalidExcepiton) {
+            LOGGER.error("method create caught IdInvalidExcepiton Exception");
+            idInvalidExcepiton.printStackTrace();
         }
 
         LOGGER.info("method create return result " + result);
@@ -148,10 +148,10 @@ public class FeedbackJdbcDao implements FeedbackDao<Feedback, Integer> {
      *
      * @param feedbackId for select all comments.
      * @return return valid feedback if it exist.
-     * @exception IdInvalid in case method couldn't find anything by commentId
+     * @exception IdInvalidExcepiton in case method couldn't find anything by commentId
      */
     @Override
-    public Feedback read(Integer feedbackId) throws IdInvalid {
+    public Feedback read(Integer feedbackId) throws IdInvalidExcepiton {
         LOGGER.info("method read start with entityId " + feedbackId);
         Feedback theFeedback = null;
 
@@ -164,8 +164,8 @@ public class FeedbackJdbcDao implements FeedbackDao<Feedback, Integer> {
             if (resultSet != null && resultSet.next()){
                 theFeedback = madeFeedback(resultSet);
             } else {
-                LOGGER.error("method read throw IdInvalid Exception with message: \"Invalid feedback\" " + feedbackId);
-                throw new IdInvalid("Invalid feedbackId " + feedbackId);
+                LOGGER.error("method read throw IdInvalidExcepiton Exception with message: \"Invalid feedback\" " + feedbackId);
+                throw new IdInvalidExcepiton("Invalid feedbackId " + feedbackId);
             }
         } catch (SQLException e) {
             LOGGER.error("method read caught SQLException " + e);

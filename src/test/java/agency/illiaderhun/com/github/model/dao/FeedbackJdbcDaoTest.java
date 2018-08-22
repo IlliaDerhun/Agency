@@ -1,34 +1,22 @@
 package agency.illiaderhun.com.github.model.dao;
 
-import agency.illiaderhun.com.github.model.ConnectionManager;
 import agency.illiaderhun.com.github.model.QueriesManager;
-import agency.illiaderhun.com.github.model.daoFactory.FeedbackDaoFactory;
-import agency.illiaderhun.com.github.model.daoFactory.RepairOrderDaoFactory;
 import agency.illiaderhun.com.github.model.daoInterface.FeedbackDao;
-import agency.illiaderhun.com.github.model.daoInterface.RepairOrderDao;
 import agency.illiaderhun.com.github.model.entities.Feedback;
-import agency.illiaderhun.com.github.model.entities.RepairOrder;
-import agency.illiaderhun.com.github.model.exeptions.IdInvalid;
+import agency.illiaderhun.com.github.model.exeptions.IdInvalidExcepiton;
 import org.junit.Before;
-import org.junit.Rule;
 import org.junit.Test;
-import org.junit.rules.ExpectedException;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 import org.osjava.sj.loader.SJDataSource;
 
-import java.sql.Connection;
-import java.sql.Date;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+import java.sql.*;
 import java.util.Properties;
 
 import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.core.StringContains.containsString;
 import static org.junit.Assert.*;
 import static org.mockito.Matchers.any;
-import static org.mockito.Matchers.contains;
 import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -50,10 +38,11 @@ public class FeedbackJdbcDaoTest {
 
     private Properties properties = QueriesManager.getProperties("feedback");
 
-    private FeedbackDao<Feedback, Integer> feedbackDao = new FeedbackJdbcDao(ConnectionManager.testConnection(), QueriesManager.getProperties("feedback"));
+    private FeedbackDao<Feedback, Integer> feedbackDao;
 
     @Before
     public void setUp() throws Exception {
+        feedbackDao = new FeedbackJdbcDao(dataSource, properties);
         assertNotNull(dataSource);
         when(connection.prepareStatement(any(String.class))).thenReturn(statement);
         when(dataSource.getConnection()).thenReturn(connection);
@@ -63,19 +52,21 @@ public class FeedbackJdbcDaoTest {
         feedback.setDate(new Date(118, 7, 19));
 
         when(resultSet.first()).thenReturn(true);
-        when(resultSet.getInt(1)).thenReturn(feedback.getCommentId());
-        when(resultSet.getString(2)).thenReturn(feedback.getComment());
-        when(resultSet.getInt(3)).thenReturn(feedback.getReportId());
-        when(resultSet.getDate(4)).thenReturn(feedback.getDate());
+        when(resultSet.next()).thenReturn(true);
+        when(resultSet.getInt("comment_id")).thenReturn(feedback.getCommentId());
+        when(resultSet.getString("comment")).thenReturn(feedback.getComment());
+        when(resultSet.getInt("report_id")).thenReturn(feedback.getReportId());
+        when(resultSet.getDate("date")).thenReturn(feedback.getDate());
     }
 
     @Test
-    public void readByValidReportIdReturnValidEntity() throws IdInvalid {
+    public void readByValidReportIdReturnValidEntity() throws IdInvalidExcepiton, SQLException {
+        when(statement.executeQuery()).thenReturn(resultSet);
         assertEquals(feedback.toString(), feedbackDao.readByReportId(2).toString());
     }
 
-    @Test(expected = IdInvalid.class)
-    public void readByInvalidReportIdThrowException() throws IdInvalid {
+    @Test(expected = IdInvalidExcepiton.class)
+    public void readByInvalidReportIdThrowException() throws IdInvalidExcepiton {
         new FeedbackJdbcDao(dataSource, properties).readByReportId(0);
     }
 
@@ -85,17 +76,18 @@ public class FeedbackJdbcDaoTest {
     }
 
     @Test
-    public void readByValidFeedbackIdReturnValidEntity() throws IdInvalid {
+    public void readByValidFeedbackIdReturnValidEntity() throws IdInvalidExcepiton, SQLException {
+        when(statement.executeQuery()).thenReturn(resultSet);
         assertEquals(feedback.toString(), feedbackDao.read(33).toString());
     }
 
-    @Test(expected = IdInvalid.class)
-    public void readByInValidFeedbackIdThrowException() throws IdInvalid {
+    @Test(expected = IdInvalidExcepiton.class)
+    public void readByInValidFeedbackIdThrowException() throws IdInvalidExcepiton {
         feedbackDao.read(0);
     }
 
     @Test
     public void delete() {
-        assertFalse(new FeedbackJdbcDao(dataSource, properties).delete(0));
+        feedbackDao.delete(0);
     }
 }

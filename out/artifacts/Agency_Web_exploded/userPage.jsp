@@ -8,19 +8,19 @@
 <fmt:setLocale value="${theLocale}"/>
 <fmt:setBundle basename="agency.illiaderhun.com.github.i18n"/>
 
-<%@include file="html/header.html"%>
+<%@include file="html/header.jsp"%>
 <c:choose>
     <c:when test="${sessionScope.userRole==1}">
-        <%@include file="html/userPage.html"%>
+        <%@include file="html/userPageInfo.jsp"%>
     </c:when>
     <c:when test="${sessionScope.userRole==2}">
-        <%@include file="html/managerPage.html"%>
+        <%@include file="html/managerPage.jsp"%>
     </c:when>
     <c:when test="${sessionScope.userRole==3}">
-        <%@include file="html/masterPage.html"%>
+        <%@include file="html/masterPage.jsp"%>
     </c:when>
     <c:otherwise>
-        <%@include file="html/login.html"%>
+        <%@include file="html/login.jsp"%>
     </c:otherwise>
 </c:choose>
 <%@include file="html/footer.html"%>

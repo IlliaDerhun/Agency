@@ -2,7 +2,7 @@ package agency.illiaderhun.com.github.model.dao;
 
 import agency.illiaderhun.com.github.model.daoInterface.RepairOrderDao;
 import agency.illiaderhun.com.github.model.entities.RepairOrder;
-import agency.illiaderhun.com.github.model.exeptions.IdInvalid;
+import agency.illiaderhun.com.github.model.exeptions.IdInvalidExcepiton;
 import com.sun.istack.internal.NotNull;
 import org.apache.log4j.Logger;
 
@@ -39,10 +39,10 @@ public class RepairOrderJdbcDao implements RepairOrderDao<RepairOrder, Integer> 
      *
      * @param customerId for select all customer's orders.
      * @return return all valid orders if it exist.
-     * @exception IdInvalid in case method couldn't find anything by customerId
+     * @exception IdInvalidExcepiton in case method couldn't find anything by customerId
      */
     @Override
-    public ArrayList<RepairOrder> readByCustomerId(Integer customerId) throws IdInvalid {
+    public ArrayList<RepairOrder> readByCustomerId(Integer customerId) throws IdInvalidExcepiton {
         LOGGER.info("method readByCustomerId start with customerId: " + customerId);
         ArrayList<RepairOrder> theRepairOrders = new ArrayList<>();
 
@@ -57,8 +57,8 @@ public class RepairOrderJdbcDao implements RepairOrderDao<RepairOrder, Integer> 
                     theRepairOrders.add(madeOrder(resultSet));
                 }
             } else {
-                LOGGER.error("method readByCustomerId throw IdInvalid Exception \"Invalid customer id: \"" + customerId);
-                throw new IdInvalid("Invalid customer id: " + customerId);
+                LOGGER.error("method readByCustomerId throw IdInvalidExcepiton Exception \"Invalid customer id: \"" + customerId);
+                throw new IdInvalidExcepiton("Invalid customer id: " + customerId);
             }
         } catch (SQLException e) {
             LOGGER.error("method readByCustomerId caught SQLException " + e);
@@ -74,10 +74,10 @@ public class RepairOrderJdbcDao implements RepairOrderDao<RepairOrder, Integer> 
      *
      * @param managerId for select all managers's orders.
      * @return return all valid orders if it exist.
-     * @exception IdInvalid in case method couldn't find anything by managerId
+     * @exception IdInvalidExcepiton in case method couldn't find anything by managerId
      */
     @Override
-    public ArrayList<RepairOrder> readByManagerId(Integer managerId) throws IdInvalid {
+    public ArrayList<RepairOrder> readByManagerId(Integer managerId) throws IdInvalidExcepiton {
         LOGGER.info("method readByManagerId start with managerId: " + managerId);
         ArrayList<RepairOrder> theRepairOrders = new ArrayList<>();
 
@@ -92,8 +92,8 @@ public class RepairOrderJdbcDao implements RepairOrderDao<RepairOrder, Integer> 
                     theRepairOrders.add(madeOrder(resultSet));
                 }
             } else {
-                LOGGER.error("method readByManagerId throw IdInvalid Exception \"Invalid manager id: \"" + managerId);
-                throw new IdInvalid("Invalid manager id: " + managerId);
+                LOGGER.error("method readByManagerId throw IdInvalidExcepiton Exception \"Invalid manager id: \"" + managerId);
+                throw new IdInvalidExcepiton("Invalid manager id: " + managerId);
             }
         } catch (SQLException e) {
             LOGGER.error("method readByManagerId caught SQLException " + e);
@@ -109,10 +109,10 @@ public class RepairOrderJdbcDao implements RepairOrderDao<RepairOrder, Integer> 
      *
      * @param masterId for select all master's orders.
      * @return return all valid orders if it exist.
-     * @exception IdInvalid in case method couldn't find anything by masterId
+     * @exception IdInvalidExcepiton in case method couldn't find anything by masterId
      */
     @Override
-    public ArrayList<RepairOrder> readByMasterId(Integer masterId) throws IdInvalid {
+    public ArrayList<RepairOrder> readByMasterId(Integer masterId) throws IdInvalidExcepiton {
         LOGGER.info("method readByMasterId start with masterId: " + masterId);
         ArrayList<RepairOrder> theRepairOrders = new ArrayList<>();
 
@@ -127,8 +127,8 @@ public class RepairOrderJdbcDao implements RepairOrderDao<RepairOrder, Integer> 
                     theRepairOrders.add(madeOrder(resultSet));
                 }
             } else {
-                LOGGER.error("method readByMasterId throw IdInvalid Exception \"Invalid manager id: \"" + masterId);
-                throw new IdInvalid("Invalid master id: " + masterId);
+                LOGGER.error("method readByMasterId throw IdInvalidExcepiton Exception \"Invalid manager id: \"" + masterId);
+                throw new IdInvalidExcepiton("Invalid master id: " + masterId);
             }
         } catch (SQLException e) {
             LOGGER.error("method readByMasterId caught SQLException " + e);
@@ -203,9 +203,9 @@ public class RepairOrderJdbcDao implements RepairOrderDao<RepairOrder, Integer> 
         } catch (SQLException e) {
             LOGGER.error("method create caught SQLException " + e);
             e.printStackTrace();
-        } catch (IdInvalid idInvalid) {
-            LOGGER.error("method create caught IdInvalid Exception");
-            idInvalid.printStackTrace();
+        } catch (IdInvalidExcepiton idInvalidExcepiton) {
+            LOGGER.error("method create caught IdInvalidExcepiton Exception");
+            idInvalidExcepiton.printStackTrace();
         }
 
         LOGGER.info("method create return result: " + result);
@@ -245,10 +245,10 @@ public class RepairOrderJdbcDao implements RepairOrderDao<RepairOrder, Integer> 
      *
      * @param repairOrderId for select all user's orders.
      * @return return valid order if it exist.
-     * @exception IdInvalid in case method couldn't find anything by repairOrderId
+     * @exception IdInvalidExcepiton in case method couldn't find anything by repairOrderId
      */
     @Override
-    public RepairOrder read(Integer repairOrderId) throws IdInvalid {
+    public RepairOrder read(Integer repairOrderId) throws IdInvalidExcepiton {
         LOGGER.info("method read start with repairOrderId: " + repairOrderId);
         RepairOrder theOrder = null;
         try (Connection connection = dataSource.getConnection();
@@ -260,8 +260,8 @@ public class RepairOrderJdbcDao implements RepairOrderDao<RepairOrder, Integer> 
             if (resultSet != null && resultSet.next()){
                 theOrder = madeOrder(resultSet);
             } else {
-                LOGGER.error("method read throw IdInvalid Exception with message: \"Invalid repairOrderId\"" + repairOrderId);
-                throw new IdInvalid("Invalid repairOrderId");
+                LOGGER.error("method read throw IdInvalidExcepiton Exception with message: \"Invalid repairOrderId\"" + repairOrderId);
+                throw new IdInvalidExcepiton("Invalid repairOrderId");
             }
         } catch (SQLException e) {
             LOGGER.error("method read caught SQLException " + e);

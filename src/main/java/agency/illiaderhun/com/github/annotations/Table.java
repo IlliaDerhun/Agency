@@ -14,7 +14,7 @@ import java.lang.annotation.Target;
  * @version 1.0
  * */
 
-@Retention(RetentionPolicy.RUNTIME)
+@Retention(RetentionPolicy.SOURCE)
 @Target(ElementType.TYPE)
 public @interface Table {
     String name();

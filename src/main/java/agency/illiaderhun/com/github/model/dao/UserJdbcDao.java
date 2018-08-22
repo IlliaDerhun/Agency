@@ -2,8 +2,8 @@ package agency.illiaderhun.com.github.model.dao;
 
 import agency.illiaderhun.com.github.model.daoInterface.UserDao;
 import agency.illiaderhun.com.github.model.entities.User;
-import agency.illiaderhun.com.github.model.exeptions.IdInvalid;
-import agency.illiaderhun.com.github.model.exeptions.InvalidSearchingString;
+import agency.illiaderhun.com.github.model.exeptions.IdInvalidExcepiton;
+import agency.illiaderhun.com.github.model.exeptions.InvalidSearchingStringException;
 import com.sun.istack.internal.NotNull;
 import org.apache.log4j.Logger;
 
@@ -42,10 +42,10 @@ public class UserJdbcDao implements UserDao<User, Integer> {
      *
      * @param eMail user's email for searching
      * @return valid entity if it exist
-     * @exception InvalidSearchingString if email invalid
+     * @exception InvalidSearchingStringException if email invalid
      */
     @Override
-    public User readByEmail(String eMail) throws InvalidSearchingString {
+    public User readByEmail(String eMail) throws InvalidSearchingStringException {
         LOGGER.info("readByEmail start with: email: " + eMail);
         User theUser = null;
         LOGGER.info("readByEmail query: " + properties.getProperty("selectByEmail"));
@@ -57,7 +57,7 @@ public class UserJdbcDao implements UserDao<User, Integer> {
                 theUser = madeUser(resultSet);
             } else {
                 LOGGER.error("nonexistent user email " + eMail);
-                throw new InvalidSearchingString("Invalid user's email");
+                throw new InvalidSearchingStringException("Invalid user's email");
             }
         } catch (SQLException e) {
             LOGGER.error("method readByEmail caught SQLException " + e);
@@ -132,7 +132,7 @@ public class UserJdbcDao implements UserDao<User, Integer> {
      * If entity does not exist throw new Exception "Could not find user :"
      */
     @Override
-    public User read(Integer entityId) throws IdInvalid {
+    public User read(Integer entityId) throws IdInvalidExcepiton {
         LOGGER.info("method read start with entityId: " + entityId);
         User theUser = null;
         try (Connection connection = dataSource.getConnection();
@@ -143,7 +143,7 @@ public class UserJdbcDao implements UserDao<User, Integer> {
                 theUser = madeUser(resultSet);
             } else {
                 LOGGER.error("nonexistent userId : " + entityId);
-                throw new IdInvalid("Invalid user's ID : " + entityId);
+                throw new IdInvalidExcepiton("Invalid user's ID : " + entityId);
             }
         } catch (SQLException e) {
             LOGGER.error("method read caught SQLException " + e);

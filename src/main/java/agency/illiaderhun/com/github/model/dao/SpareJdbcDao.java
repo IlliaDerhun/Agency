@@ -2,8 +2,8 @@ package agency.illiaderhun.com.github.model.dao;
 
 import agency.illiaderhun.com.github.model.daoInterface.SpareDao;
 import agency.illiaderhun.com.github.model.entities.Spare;
-import agency.illiaderhun.com.github.model.exeptions.IdInvalid;
-import agency.illiaderhun.com.github.model.exeptions.InvalidSearchingString;
+import agency.illiaderhun.com.github.model.exeptions.IdInvalidExcepiton;
+import agency.illiaderhun.com.github.model.exeptions.InvalidSearchingStringException;
 import com.sun.istack.internal.NotNull;
 import org.apache.log4j.Logger;
 
@@ -42,10 +42,10 @@ public class SpareJdbcDao implements SpareDao<Spare, Integer> {
      *
      * @param name spare's name for searching
      * @return valid entity if it exist
-     * @exception InvalidSearchingString if name doesn't exist
+     * @exception InvalidSearchingStringException if name doesn't exist
      */
     @Override
-    public Spare readByName(String name) throws InvalidSearchingString {
+    public Spare readByName(String name) throws InvalidSearchingStringException {
         LOGGER.info("method readByName start with name: " + name);
         Spare theSpare = null;
         try (Connection connection = dataSource.getConnection();
@@ -58,8 +58,8 @@ public class SpareJdbcDao implements SpareDao<Spare, Integer> {
             if (resultSet != null && resultSet.next()){
                 theSpare = madeSpare(resultSet);
             } else {
-                LOGGER.error("method readByName throw InvalidSearchingString Exception with message: \"Invalid spare's name: " + name + "\"");
-                throw new InvalidSearchingString("Invalid spare's name: " + name);
+                LOGGER.error("method readByName throw InvalidSearchingStringException Exception with message: \"Invalid spare's name: " + name + "\"");
+                throw new InvalidSearchingStringException("Invalid spare's name: " + name);
             }
 
         } catch (SQLException e) {
@@ -155,10 +155,10 @@ public class SpareJdbcDao implements SpareDao<Spare, Integer> {
      *
      * @param detailId for select.
      * @return return valid entity if it exist.
-     * @exception IdInvalid in case nothing exist by this detailId
+     * @exception IdInvalidExcepiton in case nothing exist by this detailId
      */
     @Override
-    public Spare read(Integer detailId) throws IdInvalid {
+    public Spare read(Integer detailId) throws IdInvalidExcepiton {
         LOGGER.info("method read start with entityID: " + detailId);
         Spare theSpare = null;
 
@@ -170,8 +170,8 @@ public class SpareJdbcDao implements SpareDao<Spare, Integer> {
             if (resultSet != null && resultSet.next()){
                 theSpare = madeSpare(resultSet);
             } else {
-                LOGGER.error("method read throw IdInvalid Exception with message: \"Invalid spare's ID : \"" + detailId);
-                throw new IdInvalid("Invalid spare's ID : " + detailId);
+                LOGGER.error("method read throw IdInvalidExcepiton Exception with message: \"Invalid spare's ID : \"" + detailId);
+                throw new IdInvalidExcepiton("Invalid spare's ID : " + detailId);
             }
 
         } catch (SQLException e) {

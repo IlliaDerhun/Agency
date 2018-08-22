@@ -3,7 +3,7 @@ package agency.illiaderhun.com.github.controller;
 import agency.illiaderhun.com.github.controller.service.impl.RepairOrderControllerHelper;
 import agency.illiaderhun.com.github.controller.service.impl.ReportControllerHelper;
 import agency.illiaderhun.com.github.model.entities.RepairOrder;
-import agency.illiaderhun.com.github.model.exeptions.IdInvalid;
+import agency.illiaderhun.com.github.model.exeptions.IdInvalidExcepiton;
 import org.apache.log4j.Logger;
 
 import java.math.BigDecimal;
@@ -52,7 +52,7 @@ public class RepairOrderCommand {
         return repairOrderControllerHelper.getMasterOrders(userId);
     }
 
-    public RepairOrder readOrderById(Integer orderId) throws IdInvalid {
+    public RepairOrder readOrderById(Integer orderId) throws IdInvalidExcepiton {
         RepairOrder repairOrder = repairOrderControllerHelper.readOrderById(orderId);
 
         return repairOrder;

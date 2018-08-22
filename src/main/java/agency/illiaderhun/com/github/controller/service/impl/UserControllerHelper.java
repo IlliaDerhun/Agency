@@ -5,8 +5,8 @@ import agency.illiaderhun.com.github.controller.service.UserService;
 import agency.illiaderhun.com.github.model.daoFactory.UserDaoFactory;
 import agency.illiaderhun.com.github.model.daoInterface.UserDao;
 import agency.illiaderhun.com.github.model.entities.User;
-import agency.illiaderhun.com.github.model.exeptions.IdInvalid;
-import agency.illiaderhun.com.github.model.exeptions.InvalidSearchingString;
+import agency.illiaderhun.com.github.model.exeptions.IdInvalidExcepiton;
+import agency.illiaderhun.com.github.model.exeptions.InvalidSearchingStringException;
 import agency.illiaderhun.com.github.model.utils.PasswordEncoder;
 import org.apache.log4j.Logger;
 
@@ -38,7 +38,7 @@ public class UserControllerHelper implements UserService {
             if (theUser == null || !encodedPassword.equals(theUser.getCatchword())){
                 theUser = null;
             }
-        } catch (InvalidSearchingString invalidSearchingString) {
+        } catch (InvalidSearchingStringException invalidSearchingStringException) {
             theUser = null;
         }
 
@@ -60,8 +60,8 @@ public class UserControllerHelper implements UserService {
             if (theUser != null){
                 name = theUser.getFirstName();
             }
-        } catch (IdInvalid idInvalid) {
-            idInvalid.printStackTrace();
+        } catch (IdInvalidExcepiton idInvalidExcepiton) {
+            idInvalidExcepiton.printStackTrace();
         }
 
         return name;
@@ -82,14 +82,14 @@ public class UserControllerHelper implements UserService {
             // If user exist return null
             userDao.readByEmail(email);
             user = null;
-        } catch (InvalidSearchingString invalidSearchingString) {
-            // If user doesn't exist try throw InvalidSearchingString
+        } catch (InvalidSearchingStringException invalidSearchingStringException) {
+            // If user doesn't exist try throw InvalidSearchingStringException
             LOGGER.info("it is new user");
             userDao.create(user);
             try {
                 user = userDao.readByEmail(email);
-            } catch (InvalidSearchingString invalidSearchingString1) {
-                invalidSearchingString1.printStackTrace();
+            } catch (InvalidSearchingStringException invalidSearchingStringException1) {
+                invalidSearchingStringException1.printStackTrace();
             }
         }
 
@@ -109,8 +109,8 @@ public class UserControllerHelper implements UserService {
         User theUser = null;
         try {
             theUser = userDao.read(userId);
-        } catch (IdInvalid idInvalid) {
-            idInvalid.printStackTrace();
+        } catch (IdInvalidExcepiton idInvalidExcepiton) {
+            idInvalidExcepiton.printStackTrace();
         }
 
         return theUser;

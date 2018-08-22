@@ -1,6 +1,6 @@
 package agency.illiaderhun.com.github.model.daoInterface;
 
-import agency.illiaderhun.com.github.model.exeptions.IdInvalid;
+import agency.illiaderhun.com.github.model.exeptions.IdInvalidExcepiton;
 
 /**
  * Basic DAO interface which describes all required, CRUD,
@@ -12,7 +12,7 @@ import agency.illiaderhun.com.github.model.exeptions.IdInvalid;
 public interface Dao<Entity, Integer> {
 
     boolean create(Entity entity);
-    Entity read(Integer entityId) throws IdInvalid;
+    Entity read(Integer entityId) throws IdInvalidExcepiton;
     boolean update(Entity entity);
     boolean delete(Integer entityId);
 

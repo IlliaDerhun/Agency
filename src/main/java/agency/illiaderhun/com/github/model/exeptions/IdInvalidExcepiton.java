@@ -7,18 +7,18 @@ package agency.illiaderhun.com.github.model.exeptions;
  * @author Illia Derhun
  * @version 1.0
  */
-public class IdInvalid extends Exception {
+public class IdInvalidExcepiton extends Exception {
     private static final long serialVersionUID = 7845544125415684484L;
 
-    public IdInvalid(){
+    public IdInvalidExcepiton(){
         super();
     }
 
-    public IdInvalid(String message){
+    public IdInvalidExcepiton(String message){
         super(message);
     }
 
-    public IdInvalid(String message, Throwable throwable){
+    public IdInvalidExcepiton(String message, Throwable throwable){
         super(message, throwable);
     }
 }

@@ -2,7 +2,7 @@ package agency.illiaderhun.com.github.model.dao;
 
 import agency.illiaderhun.com.github.model.daoInterface.ReportDao;
 import agency.illiaderhun.com.github.model.entities.Report;
-import agency.illiaderhun.com.github.model.exeptions.IdInvalid;
+import agency.illiaderhun.com.github.model.exeptions.IdInvalidExcepiton;
 import com.sun.istack.internal.NotNull;
 import org.apache.log4j.Logger;
 
@@ -37,10 +37,10 @@ public class ReportJdbcDao implements ReportDao<Report, Integer> {
      *
      * @param orderId report's name for searching
      * @return valid entity if it exist
-     * @exception IdInvalid if name doesn't exist
+     * @exception IdInvalidExcepiton if name doesn't exist
      */
     @Override
-    public Report readByOrderId(Integer orderId) throws IdInvalid {
+    public Report readByOrderId(Integer orderId) throws IdInvalidExcepiton {
         LOGGER.info("method readByOrderId start with orderId: " + orderId);
         Report theReport = null;
         try (Connection connection = dataSource.getConnection();
@@ -52,8 +52,8 @@ public class ReportJdbcDao implements ReportDao<Report, Integer> {
             if (resultSet != null && resultSet.next()){
                 theReport = madeReport(resultSet);
             } else {
-                LOGGER.error("method readByOrderId throw IdInvalid Exception message: \"Invalid order's id\": " + orderId);
-                throw new IdInvalid("Invalid order's id");
+                LOGGER.error("method readByOrderId throw IdInvalidExcepiton Exception message: \"Invalid order's id\": " + orderId);
+                throw new IdInvalidExcepiton("Invalid order's id");
             }
 
         } catch (SQLException e) {
@@ -118,9 +118,9 @@ public class ReportJdbcDao implements ReportDao<Report, Integer> {
         } catch (SQLException e) {
             LOGGER.error("method create caught SLQException " + e);
             e.printStackTrace();
-        } catch (IdInvalid idInvalid) {
-            LOGGER.error("method create caught IdInvalid");
-            idInvalid.printStackTrace();
+        } catch (IdInvalidExcepiton idInvalidExcepiton) {
+            LOGGER.error("method create caught IdInvalidExcepiton");
+            idInvalidExcepiton.printStackTrace();
         }
 
         LOGGER.info("method create return result: " + result);
@@ -161,10 +161,10 @@ public class ReportJdbcDao implements ReportDao<Report, Integer> {
      *
      * @param reportId for select.
      * @return return valid entity if it exist.
-     * @exception IdInvalid in case nothing exist by this reportId
+     * @exception IdInvalidExcepiton in case nothing exist by this reportId
      */
     @Override
-    public Report read(Integer reportId) throws IdInvalid {
+    public Report read(Integer reportId) throws IdInvalidExcepiton {
         LOGGER.info("method read start with entityId: " + reportId);
         Report theReport = null;
 
@@ -177,8 +177,8 @@ public class ReportJdbcDao implements ReportDao<Report, Integer> {
             if (resultSet != null && resultSet.next()){
                 theReport = madeReport(resultSet);
             } else {
-                LOGGER.error("method read throw IdInvalid Exception message: \"Invalid entityId\": " + reportId);
-                throw new IdInvalid("Invalid entityId");
+                LOGGER.error("method read throw IdInvalidExcepiton Exception message: \"Invalid entityId\": " + reportId);
+                throw new IdInvalidExcepiton("Invalid entityId");
             }
         } catch (SQLException e) {
             LOGGER.error("method read caught SQLException " + e);

@@ -1,7 +1,7 @@
 package agency.illiaderhun.com.github.controller.service;
 
 import agency.illiaderhun.com.github.model.entities.RepairOrder;
-import agency.illiaderhun.com.github.model.exeptions.IdInvalid;
+import agency.illiaderhun.com.github.model.exeptions.IdInvalidExcepiton;
 
 import java.util.ArrayList;
 
@@ -12,6 +12,6 @@ public interface RepairOrderService {
     ArrayList<RepairOrder> getCustomerOrders(Integer userId);
     ArrayList<RepairOrder> getManagerOrders(Integer userId);
     ArrayList<RepairOrder> getMasterOrders(Integer userId);
-    RepairOrder readOrderById(Integer orderId) throws IdInvalid;
+    RepairOrder readOrderById(Integer orderId) throws IdInvalidExcepiton;
     void updateOrder(RepairOrder repairOrder);
 }

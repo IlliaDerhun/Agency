@@ -5,7 +5,7 @@ import agency.illiaderhun.com.github.controller.service.ReportService;
 import agency.illiaderhun.com.github.model.daoFactory.ReportDaoFactory;
 import agency.illiaderhun.com.github.model.daoInterface.ReportDao;
 import agency.illiaderhun.com.github.model.entities.Report;
-import agency.illiaderhun.com.github.model.exeptions.IdInvalid;
+import agency.illiaderhun.com.github.model.exeptions.IdInvalidExcepiton;
 import org.apache.log4j.Logger;
 
 /**
@@ -24,10 +24,10 @@ public class ReportControllerHelper implements ReportService {
      *
      * @param orderId the number on which the report was made
      * @return valid Report in case it exist
-     * @throws IdInvalid in case orderId or Report doesn't exist
+     * @throws IdInvalidExcepiton in case orderId or Report doesn't exist
      */
     @Override
-    public Report getReportByOrderId(Integer orderId) throws IdInvalid {
+    public Report getReportByOrderId(Integer orderId) throws IdInvalidExcepiton {
         LOGGER.info("getReportByOrderId start with order " + orderId);
         Report theReport = reportDao.readByOrderId(orderId);
         LOGGER.info("getReportByOrderId return " + theReport);

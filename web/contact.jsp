@@ -9,7 +9,7 @@
 <fmt:setLocale value="${theLocale}"/>
 <fmt:setBundle basename="agency.illiaderhun.com.github.i18n"/>
 
-<%@include file="html/header.html"%>
-<%@include file="html/contact.html"%>
+<%@include file="html/header.jsp"%>
+<%@include file="html/contact.jsp"%>
 <%@include file="html/footer.html"%>
 

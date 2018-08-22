@@ -10,7 +10,7 @@ import agency.illiaderhun.com.github.model.daoInterface.RepairOrderDao;
 import agency.illiaderhun.com.github.model.entities.Feedback;
 import agency.illiaderhun.com.github.model.entities.RepairOrder;
 import agency.illiaderhun.com.github.model.entities.Report;
-import agency.illiaderhun.com.github.model.exeptions.IdInvalid;
+import agency.illiaderhun.com.github.model.exeptions.IdInvalidExcepiton;
 import org.apache.log4j.Logger;
 
 import java.util.ArrayList;
@@ -63,7 +63,7 @@ public class RepairOrderControllerHelper implements RepairOrderService {
             setHelpInfoIntoOrder(repairOrders);
             LOGGER.info("getCustomerOrders return order " + repairOrders);
             return repairOrders;
-        } catch (IdInvalid idInvalid) {
+        } catch (IdInvalidExcepiton idInvalidExcepiton) {
             return null;
         }
     }
@@ -82,7 +82,7 @@ public class RepairOrderControllerHelper implements RepairOrderService {
             ArrayList<RepairOrder> repairOrders = repairOrderDao.readByManagerId(userId);
             setHelpInfoIntoOrder(repairOrders);
             return repairOrders;
-        } catch (IdInvalid idInvalid) {
+        } catch (IdInvalidExcepiton idInvalidExcepiton) {
             return null;
         }
     }
@@ -100,7 +100,7 @@ public class RepairOrderControllerHelper implements RepairOrderService {
             ArrayList<RepairOrder> repairOrders = repairOrderDao.readByMasterId(userId);
             setHelpInfoIntoOrder(repairOrders);
             return repairOrders;
-        } catch (IdInvalid idInvalid) {
+        } catch (IdInvalidExcepiton idInvalidExcepiton) {
             return null;
         }
     }
@@ -126,13 +126,13 @@ public class RepairOrderControllerHelper implements RepairOrderService {
                             tempOrder.setFeedback(theFeedback.getComment());
                         }
                     }
-                } catch (IdInvalid idInvalid) {
+                } catch (IdInvalidExcepiton idInvalidExcepiton) {
                     LOGGER.error("for this order the feedback doesn't exist");
-                    idInvalid.printStackTrace();
+                    idInvalidExcepiton.printStackTrace();
                 }
                 try {
                     tempOrder.setReport(new ReportCommand().getReportByOrderId(tempOrder.getOrderId()).getBreakingDescription());
-                } catch (IdInvalid e){
+                } catch (IdInvalidExcepiton e){
 
                 }
             }
@@ -146,10 +146,10 @@ public class RepairOrderControllerHelper implements RepairOrderService {
      *
      * @param orderId for searching
      * @return valid RepairOrder if it exist
-     * @throws IdInvalid if orderId not valid and nothing exist
+     * @throws IdInvalidExcepiton if orderId not valid and nothing exist
      */
     @Override
-    public RepairOrder readOrderById(Integer orderId) throws IdInvalid {
+    public RepairOrder readOrderById(Integer orderId) throws IdInvalidExcepiton {
         RepairOrder repairOrder = repairOrderDao.read(orderId);
         repairOrder.setCustomerName(new UserCommand().readNameByUserId(repairOrder.getCustomerId()));
         repairOrder.setMasterName(new UserCommand().readNameByUserId(repairOrder.getMasterId()));

@@ -12,13 +12,13 @@
 
         <div class="container-fluid">
             <div class="navbar-header">
-                <a href="index.jsp" class="navbar-brand"><fmt:message key="label.title"/></a>
+                <a href="index" class="navbar-brand"><fmt:message key="label.title"/></a>
             </div>
             <div>
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="index.jsp"><fmt:message key="label.mainPage"/></a></li>
-                    <li><a href="about.jsp"><fmt:message key="label.about"/></a></li>
-                    <li><a href="contact.jsp"><fmt:message key="label.contact"/></a></li>
+                    <li class="active"><a href="index"><fmt:message key="label.mainPage"/></a></li>
+                    <li><a href="aboutUs"><fmt:message key="label.about"/></a></li>
+                    <li><a href="contact"><fmt:message key="label.contact"/></a></li>
                 </ul>
                 <ul class="nav navbar-nav login">
                     <c:choose>
@@ -30,8 +30,8 @@
                             <li><a href="${userPageLink}"><fmt:message key="label.userPage"/></a></li>
                         </c:when>
                         <c:otherwise>
-                            <li><a href="login.jsp"><fmt:message key="label.login"/></a></li>
-                            <li><a href="register.jsp"><fmt:message key="label.register"/></a></li>
+                            <li><a href="login"><fmt:message key="label.login"/></a></li>
+                            <li><a href="register"><fmt:message key="label.register"/></a></li>
                         </c:otherwise>
                     </c:choose>
                 </ul>

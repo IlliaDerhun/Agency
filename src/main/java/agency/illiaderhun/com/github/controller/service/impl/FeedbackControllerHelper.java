@@ -6,7 +6,7 @@ import agency.illiaderhun.com.github.controller.service.FeedbackService;
 import agency.illiaderhun.com.github.model.daoFactory.FeedbackDaoFactory;
 import agency.illiaderhun.com.github.model.daoInterface.FeedbackDao;
 import agency.illiaderhun.com.github.model.entities.Feedback;
-import agency.illiaderhun.com.github.model.exeptions.IdInvalid;
+import agency.illiaderhun.com.github.model.exeptions.IdInvalidExcepiton;
 import org.apache.log4j.Logger;
 
 /**
@@ -34,9 +34,9 @@ public class FeedbackControllerHelper implements FeedbackService {
 
         try {
             theFeedback = feedbackDao.readByReportId(reportId);
-        } catch (IdInvalid idInvalid) {
+        } catch (IdInvalidExcepiton idInvalidExcepiton) {
             LOGGER.error("feedback by reportId not found");
-            idInvalid.printStackTrace();
+            idInvalidExcepiton.printStackTrace();
         }
 
         LOGGER.info("return " + theFeedback);
@@ -57,9 +57,9 @@ public class FeedbackControllerHelper implements FeedbackService {
             Integer reportId = new ReportCommand().getReportByOrderId(orderId).getReportId();
             Feedback theFeedback = new Feedback(comment, reportId);
             feedbackDao.create(theFeedback);
-        } catch (IdInvalid idInvalid) {
-            LOGGER.error("caught IdInvalid exception");
-            idInvalid.printStackTrace();
+        } catch (IdInvalidExcepiton idInvalidExcepiton) {
+            LOGGER.error("caught IdInvalidExcepiton exception");
+            idInvalidExcepiton.printStackTrace();
         }
     }
 }

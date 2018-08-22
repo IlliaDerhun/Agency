@@ -50,4 +50,4 @@
     </div>
 </div>
 
-<%@include file="managerPage.html"%>
+<%@include file="managerPage.jsp"%>
