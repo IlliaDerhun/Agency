@@ -236,6 +236,7 @@ public class ControllerDispatcherServlet extends HttpServlet {
         }
 
         if (repairOrders != null) {
+            request.setAttribute("amount", repairOrders.size());
             request.setAttribute("repairOrders", repairOrders);
         } else {
             request.setAttribute("repairOrders", "noOrders");
