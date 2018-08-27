@@ -34,7 +34,7 @@
             <button class="tablinks" onclick="openTab(event, 'Third')"><fmt:message key="label.third"/></button>
         </div>
 
-        <div id="First" class="tabcontent">
+        <div id="First" class="tabcontent" style="display: block;">
             <span hidden>${start = 0}</span>
             <span hidden>${finish = amount / 3}</span>
             <%@include file="userTable.jsp"%>

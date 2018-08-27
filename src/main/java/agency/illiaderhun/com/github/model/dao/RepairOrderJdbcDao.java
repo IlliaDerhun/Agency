@@ -187,14 +187,18 @@ public class RepairOrderJdbcDao implements RepairOrderDao<RepairOrder, Integer> 
     public boolean create(RepairOrder repairOrder) {
         LOGGER.info("method create start with order: " + repairOrder);
         boolean result = false;
-
-        try (Connection connection = dataSource.getConnection();
-             PreparedStatement statement = connection.prepareStatement(properties.getProperty("insert"))){
+        Connection connection = null;
+        PreparedStatement statement = null;
+        try {
+            connection = dataSource.getConnection();
+            statement = connection.prepareStatement(properties.getProperty("insert"));
+            connection.setAutoCommit(false);
 
             setStatement(statement, repairOrder);
             statement.setInt(4, findFreeManager());
             statement.setInt(5, findFreeMaster());
             statement.executeUpdate();
+            connection.commit();
 
             repairOrder.setOrderId(setInsertedId());
             repairOrder.setDate(read(repairOrder.getOrderId()).getDate());
@@ -202,10 +206,25 @@ public class RepairOrderJdbcDao implements RepairOrderDao<RepairOrder, Integer> 
             result = true;
         } catch (SQLException e) {
             LOGGER.error("method create caught SQLException " + e);
+            try {
+                connection.rollback();
+            } catch (SQLException rolExc) {
+                LOGGER.error("method create caught SQLException while did rollback" + e);
+                rolExc.printStackTrace();
+            }
             e.printStackTrace();
         } catch (IdInvalidExcepiton idInvalidExcepiton) {
             LOGGER.error("method create caught IdInvalidExcepiton Exception");
             idInvalidExcepiton.printStackTrace();
+        } finally {
+            try {
+                statement.close();
+                connection.close();
+
+            } catch (SQLException e) {
+                LOGGER.error("method create caught SQLException while closed connection" + e);
+                e.printStackTrace();
+            }
         }
 
         LOGGER.info("method create return result: " + result);

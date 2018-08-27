@@ -60,11 +60,23 @@ public class RepairOrderCommand {
 
     public void updateOrder(String deviceName, String description, BigDecimal price, Integer orderId, Integer customerId) {
         LOGGER.info("updateOrder start");
-        RepairOrder repairOrder = new RepairOrder.Builder(deviceName, customerId)
+        /*RepairOrder repairOrder = new RepairOrder.Builder(deviceName, customerId)
                 .description(description)
                 .price(price)
                 .orderId(orderId)
-                .build();
+                .build();*/
+        RepairOrder repairOrder = null;
+        try {
+            repairOrder = repairOrderControllerHelper.readOrderById(orderId);
+        } catch (IdInvalidExcepiton idInvalidExcepiton) {
+            idInvalidExcepiton.printStackTrace();
+        }
+
+        repairOrder.setDeviceName(deviceName);
+        repairOrder.setDescription(description);
+        repairOrder.setPrice(price);
+        repairOrder.setCustomerId(customerId);
+
         repairOrderControllerHelper.updateOrder(repairOrder);
         LOGGER.info("update order done");
     }
