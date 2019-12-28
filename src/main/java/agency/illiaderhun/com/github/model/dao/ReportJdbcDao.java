@@ -3,7 +3,6 @@ package agency.illiaderhun.com.github.model.dao;
 import agency.illiaderhun.com.github.model.daoInterface.ReportDao;
 import agency.illiaderhun.com.github.model.entities.Report;
 import agency.illiaderhun.com.github.model.exeptions.IdInvalid;
-import com.sun.istack.internal.NotNull;
 import org.apache.log4j.Logger;
 
 import javax.sql.DataSource;
@@ -21,10 +20,8 @@ public class ReportJdbcDao implements ReportDao<Report, Integer> {
 
     private static final Logger LOGGER = Logger.getLogger(ReportJdbcDao.class.getSimpleName());
 
-    @NotNull
     private DataSource dataSource;
 
-    @NotNull
     private Properties properties;
 
     public ReportJdbcDao(DataSource dataSource, Properties properties) {

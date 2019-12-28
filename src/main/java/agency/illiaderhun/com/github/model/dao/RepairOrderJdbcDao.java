@@ -3,7 +3,6 @@ package agency.illiaderhun.com.github.model.dao;
 import agency.illiaderhun.com.github.model.daoInterface.RepairOrderDao;
 import agency.illiaderhun.com.github.model.entities.RepairOrder;
 import agency.illiaderhun.com.github.model.exeptions.IdInvalid;
-import com.sun.istack.internal.NotNull;
 import org.apache.log4j.Logger;
 
 import javax.sql.DataSource;
@@ -23,10 +22,8 @@ public class RepairOrderJdbcDao implements RepairOrderDao<RepairOrder, Integer> 
 
     private static final Logger LOGGER = Logger.getLogger(RepairOrderJdbcDao.class.getSimpleName());
 
-    @NotNull
     private DataSource dataSource;
 
-    @NotNull
     private Properties properties;
 
     public RepairOrderJdbcDao(DataSource dataSource, Properties properties) {

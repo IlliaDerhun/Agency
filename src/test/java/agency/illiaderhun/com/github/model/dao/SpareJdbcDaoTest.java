@@ -7,7 +7,6 @@ import agency.illiaderhun.com.github.model.daoInterface.SpareDao;
 import agency.illiaderhun.com.github.model.entities.Spare;
 import agency.illiaderhun.com.github.model.exeptions.IdInvalid;
 import agency.illiaderhun.com.github.model.exeptions.InvalidSearchingString;
-import com.sun.istack.internal.NotNull;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -43,7 +42,6 @@ public class SpareJdbcDaoTest {
 
     private Properties properties = QueriesManager.getProperties("spare");
 
-    @NotNull
     private SpareDao<Spare, Integer> spareDao = new SpareJdbcDao(ConnectionManager.testConnection(), QueriesManager.getProperties("spare"));
 
     @Before

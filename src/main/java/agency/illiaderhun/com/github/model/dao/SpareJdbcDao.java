@@ -4,7 +4,6 @@ import agency.illiaderhun.com.github.model.daoInterface.SpareDao;
 import agency.illiaderhun.com.github.model.entities.Spare;
 import agency.illiaderhun.com.github.model.exeptions.IdInvalid;
 import agency.illiaderhun.com.github.model.exeptions.InvalidSearchingString;
-import com.sun.istack.internal.NotNull;
 import org.apache.log4j.Logger;
 
 import javax.sql.DataSource;
@@ -26,10 +25,8 @@ public class SpareJdbcDao implements SpareDao<Spare, Integer> {
 
     private static final Logger LOGGER = Logger.getLogger(SpareJdbcDao.class.getSimpleName());
 
-    @NotNull
     private DataSource dataSource;
 
-    @NotNull
     private Properties properties;
 
     public SpareJdbcDao(DataSource dataSource, Properties properties) {

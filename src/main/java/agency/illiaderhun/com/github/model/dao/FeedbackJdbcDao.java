@@ -3,7 +3,6 @@ package agency.illiaderhun.com.github.model.dao;
 import agency.illiaderhun.com.github.model.daoInterface.FeedbackDao;
 import agency.illiaderhun.com.github.model.entities.Feedback;
 import agency.illiaderhun.com.github.model.exeptions.IdInvalid;
-import com.sun.istack.internal.NotNull;
 import org.apache.log4j.Logger;
 
 import javax.sql.DataSource;
@@ -22,10 +21,8 @@ public class FeedbackJdbcDao implements FeedbackDao<Feedback, Integer> {
 
     private static final Logger LOGGER = Logger.getLogger(FeedbackJdbcDao.class.getSimpleName());
 
-    @NotNull
     private DataSource dataSource;
 
-    @NotNull
     private Properties properties;
 
     public FeedbackJdbcDao(DataSource dataSource, Properties properties) {

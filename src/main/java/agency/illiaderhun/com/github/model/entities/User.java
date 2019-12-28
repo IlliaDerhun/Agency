@@ -1,7 +1,6 @@
 package agency.illiaderhun.com.github.model.entities;
 
 import agency.illiaderhun.com.github.annotations.*;
-import com.sun.istack.internal.NotNull;
 
 import java.util.Objects;
 
@@ -25,7 +24,6 @@ public class User {
     @Column(name = "last_name")
     private String lastName;
 
-    @NotNull
     @Column(name = "e_mail")
     private String eMail;
 
